@@ -224,7 +224,7 @@ void ReversiGame :: scoreGame() {
     } else if(count2 > count1) {
         cout << "The Winner is- " << player2->getName();
     } else {
-        cout << "The Game ended in a DRAW." << endl;
+        cout << "The Game ended in a Draw." << endl;
     }
 }
 //function gets a player as a parameter and update the possible moves of
