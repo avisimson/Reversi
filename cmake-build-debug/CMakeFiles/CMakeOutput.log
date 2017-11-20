@@ -623,3 +623,35 @@ make[1]: Leaving directory '/home/avi/CLionProjects/Reversi/cmake-build-debug/CM
     Feature record: CXX_FEATURE:0cxx_variable_templates
     Feature record: CXX_FEATURE:0cxx_variadic_macros
     Feature record: CXX_FEATURE:0cxx_variadic_templates
+Determining if the include file pthread.h exists passed with the following output:
+Change Dir: /home/avi/CLionProjects/Reversi/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_ef402/fast"
+make[1]: Entering directory '/home/avi/CLionProjects/Reversi/cmake-build-debug/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_ef402.dir/build.make CMakeFiles/cmTC_ef402.dir/build
+make[2]: Entering directory '/home/avi/CLionProjects/Reversi/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_ef402.dir/CheckIncludeFile.c.o
+/usr/bin/cc    -o CMakeFiles/cmTC_ef402.dir/CheckIncludeFile.c.o   -c /home/avi/CLionProjects/Reversi/cmake-build-debug/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_ef402
+/home/avi/clion-2017.2.3/bin/cmake/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ef402.dir/link.txt --verbose=1
+/usr/bin/cc      -rdynamic CMakeFiles/cmTC_ef402.dir/CheckIncludeFile.c.o  -o cmTC_ef402 
+make[2]: Leaving directory '/home/avi/CLionProjects/Reversi/cmake-build-debug/CMakeFiles/CMakeTmp'
+make[1]: Leaving directory '/home/avi/CLionProjects/Reversi/cmake-build-debug/CMakeFiles/CMakeTmp'
+
+
+Determining if the function pthread_create exists in the pthread passed with the following output:
+Change Dir: /home/avi/CLionProjects/Reversi/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_a33f9/fast"
+make[1]: Entering directory '/home/avi/CLionProjects/Reversi/cmake-build-debug/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_a33f9.dir/build.make CMakeFiles/cmTC_a33f9.dir/build
+make[2]: Entering directory '/home/avi/CLionProjects/Reversi/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_a33f9.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_a33f9.dir/CheckFunctionExists.c.o   -c /home/avi/clion-2017.2.3/bin/cmake/share/cmake-3.8/Modules/CheckFunctionExists.c
+Linking C executable cmTC_a33f9
+/home/avi/clion-2017.2.3/bin/cmake/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a33f9.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create    -rdynamic CMakeFiles/cmTC_a33f9.dir/CheckFunctionExists.c.o  -o cmTC_a33f9 -lpthread 
+make[2]: Leaving directory '/home/avi/CLionProjects/Reversi/cmake-build-debug/CMakeFiles/CMakeTmp'
+make[1]: Leaving directory '/home/avi/CLionProjects/Reversi/cmake-build-debug/CMakeFiles/CMakeTmp'
+
+
