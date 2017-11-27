@@ -37,7 +37,10 @@ ReversiGame :: ReversiGame(char p1, char p2) {
     } else { //player entered HUMAN - 'H'
         player2 = new Player(p2, HUMAN, 2); //HUMAN PLAYER
     }
-    board = new Board(p1, p2);
+    int size;
+    cout << "Enter board size." << endl;
+    cin >> size;
+    board = new Board(p1, p2, size);
     space = ((board->getSize()) * board->getSize()) - 4;
     //allocate memory for possible points matrix for computer and human players,
     // and initialize their values to -1.

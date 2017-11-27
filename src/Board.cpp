@@ -10,12 +10,10 @@
 #include "Board.h"
 using namespace std;
 // constructor. put initial board status on matrix.
-//parameters-p1, p2 are player 1 and 2 names.
-Board :: Board(char p1, char p2) {
-    cout << "Enter board size." << endl;
-    cin >> size;
+//parameters-p1, p2 are player 1 and 2 names, size is the size of the board.
+Board :: Board(char p1, char p2, int size1) {
     // row and col 0 are for the board numbers.
-    size = size + 1;
+    size = size1 + 1;
     // memory allocation for board matrix.
     board = new char*[size];
     int i;

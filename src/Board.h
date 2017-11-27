@@ -16,7 +16,7 @@ private:
     char **board;
 // constructor function and print function.
 public:
-    Board(char p1, char p2);
+    Board(char p1, char p2, int size1);
     Board(int size);
     ~Board();
     void printBoard();

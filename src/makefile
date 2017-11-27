@@ -1,4 +1,5 @@
 #AviSimson205789100
+#YakirPinchas203200530
 a.out: Board.o main.o Game.o Player.o ReversiGame.o
 	g++ main.o Board.o Game.o Player.o ReversiGame.o
 
