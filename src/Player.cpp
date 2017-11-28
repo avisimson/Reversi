@@ -25,9 +25,9 @@ char Player :: getName() {
 char Player :: getType() {
     return type;
 }
-//function changes type of player to parameter c.
-void Player :: setType(char c) {
-    type = c;
+//function changes number of player to parameter num1.
+void Player :: setNum(int num1) {
+    num = num1;
 }
 //function get players num (if player is player1 or player2.
 int Player :: getNum() {

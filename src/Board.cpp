@@ -12,6 +12,10 @@ using namespace std;
 // constructor. put initial board status on matrix.
 //parameters-p1, p2 are player 1 and 2 names, size is the size of the board.
 Board :: Board(char p1, char p2, int size1) {
+    while(size1 < 2) {
+        cout << "Size of board must be at least 2, enter size again" << endl;
+        cin >> size1;
+    }
     // row and col 0 are for the board numbers.
     size = size1 + 1;
     // memory allocation for board matrix.

@@ -19,7 +19,7 @@ class Player {
         ~Player();
         char getName();
         char getType();
-        void setType(char c);
+        void setNum(int num1);
         int getNum();
 };
 #endif //REVERSI_PLAYER_H

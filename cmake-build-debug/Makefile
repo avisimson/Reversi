@@ -261,6 +261,33 @@ Tests/Board_test.cpp.s:
 	$(MAKE) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/Tests/Board_test.cpp.s
 .PHONY : Tests/Board_test.cpp.s
 
+Tests/Player_test.o: Tests/Player_test.cpp.o
+
+.PHONY : Tests/Player_test.o
+
+# target to build an object file
+Tests/Player_test.cpp.o:
+	$(MAKE) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/Tests/Player_test.cpp.o
+.PHONY : Tests/Player_test.cpp.o
+
+Tests/Player_test.i: Tests/Player_test.cpp.i
+
+.PHONY : Tests/Player_test.i
+
+# target to preprocess a source file
+Tests/Player_test.cpp.i:
+	$(MAKE) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/Tests/Player_test.cpp.i
+.PHONY : Tests/Player_test.cpp.i
+
+Tests/Player_test.s: Tests/Player_test.cpp.s
+
+.PHONY : Tests/Player_test.s
+
+# target to generate assembly for a file
+Tests/Player_test.cpp.s:
+	$(MAKE) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/Tests/Player_test.cpp.s
+.PHONY : Tests/Player_test.cpp.s
+
 Tests/test_main.o: Tests/test_main.cpp.o
 
 .PHONY : Tests/test_main.o
@@ -456,6 +483,9 @@ help:
 	@echo "... Tests/Board_test.o"
 	@echo "... Tests/Board_test.i"
 	@echo "... Tests/Board_test.s"
+	@echo "... Tests/Player_test.o"
+	@echo "... Tests/Player_test.i"
+	@echo "... Tests/Player_test.s"
 	@echo "... Tests/test_main.o"
 	@echo "... Tests/test_main.i"
 	@echo "... Tests/test_main.s"

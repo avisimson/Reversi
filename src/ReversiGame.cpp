@@ -12,11 +12,13 @@
 #define HUMAN 'H'
 #define PC 'C'
 #define QUIT 'Q'
+#define PLAYERONE 1
+#define PLAYERTWO 2
 using namespace std;
 //constructor, initialize board, possible points matrix and players
 //parameters-p1, p2 are player 1 and 2 names.
 ReversiGame :: ReversiGame(char p1, char p2) {
-    player1 = new Player(p1, HUMAN, 1); //HUMAN PLAYER
+    player1 = new Player(p1, HUMAN, PLAYERONE); //HUMAN PLAYER
     //initial player 2 to be computer or human player.
     cout << "Reversi Game" << endl << endl;
     cout << "Opponet choices:" << endl;
@@ -33,9 +35,9 @@ ReversiGame :: ReversiGame(char p1, char p2) {
         return;
     }
     if(choice == PC) {
-        player2 = new Player(p2, PC, 2); //COMPUTER PLAYER
+        player2 = new Player(p2, PC, PLAYERTWO); //COMPUTER PLAYER
     } else { //player entered HUMAN - 'H'
-        player2 = new Player(p2, HUMAN, 2); //HUMAN PLAYER
+        player2 = new Player(p2, HUMAN, PLAYERTWO); //HUMAN PLAYER
     }
     int size;
     cout << "Enter board size." << endl;
@@ -76,6 +78,11 @@ ReversiGame :: ~ReversiGame() {
 //function runs reversi game until both players can't play or board is full.
 //at the end of the game function prints the score and the winner.
 void ReversiGame :: playGame() {
+    //check if numbers of players 1,2 are wrong and fix it if needbe.
+    if(player1->getNum() != PLAYERONE || player2->getNum() != PLAYERTWO) {
+        player1->setNum(PLAYERONE);
+        player2->setNum(PLAYERTWO);
+    }
     int currentTurn = 1; //tells who's turn is it player1/player2.
     int cantPlay = 0; //counts if both players cant play to finish game.
     bool b = true;
@@ -133,9 +140,9 @@ bool ReversiGame :: HumanplayOneTurn(Player* player) {
     int** possiblePoints;
     //create new matrix that will point on the correct matrix according to
     // if player is player 1 or 2.
-    if(player->getNum() == 1) {
+    if(player->getNum() == PLAYERONE) {
         possiblePoints = possiblePointsone;
-    } else if(player->getNum() == 2) {
+    } else if(player->getNum() == PLAYERTWO) {
         possiblePoints = possiblePointstwo;
     } else {
         cout << player->getName() <<
@@ -212,7 +219,7 @@ bool ReversiGame :: ComputerplayOneTurn(Player* player) {
     //create new matrixes that will point on the correct matrix according to
     // if player is player 1 or 2.
     Player* opposePlayer;
-    if(player->getNum() == 1) {
+    if(player->getNum() == PLAYERONE) {
         opposePlayer = player2;
         possiblePointsPlayer = possiblePointsone;
         possiblePointsOppose = possiblePointstwo;
@@ -340,7 +347,7 @@ void ReversiGame :: playPossiblePoints(Player* player, int i, int j, Board *b1) 
 int ReversiGame :: checkBoard(Board* board, Player* player) {
     int i, j, sum1 = 0, sum2 = 0;
     Player* oppose;
-    if(player->getNum() == 1) {
+    if(player->getNum() == PLAYERONE) {
         oppose = player2;
     } else {
         oppose = player1;
@@ -395,10 +402,10 @@ void ReversiGame :: checkPossibleMoves(Player* player, Board* b) {
                    || checkUpRight(player, i, j, false, b)
                    || checkDownLeft(player, i, j, false, b)
                    || checkDownRight(player, i, j, false, b)) {
-                    if(player->getNum() == 1) {
+                    if(player->getNum() == PLAYERONE) {
                         possiblePointsone[count][0] = i;
                         possiblePointsone[count][1] = j;
-                    } else if(player->getNum() == 2){
+                    } else if(player->getNum() == PLAYERTWO){
                         possiblePointstwo[count][0] = i;
                         possiblePointstwo[count][1] = j;
                     } else {
