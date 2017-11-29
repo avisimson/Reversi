@@ -29,7 +29,7 @@ TEST(Player_Test, getNum_Test) {
     delete player;
 }
 //function tests setNum method in Player class.
-TEST(Player_Test, setNum_Test) {
+TEST(Player_Test, setNum_Test1) {
     Player* player = new Player(NAME, TYPE, NUM);
     player->setNum(NUM + 1);
     EXPECT_EQ(NUM + 1, player->getNum());

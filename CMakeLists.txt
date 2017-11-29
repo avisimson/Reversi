@@ -13,7 +13,7 @@ include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
 set(SOURCE_FILES src/Board.h src/Board.cpp src/Game.cpp src/Game.h
         src/GameType.h src/Player.h src/Player.cpp src/ReversiGame.cpp src/ReversiGame.h)
 
-set(TEST_FILES Tests/Board_test.cpp Tests/Board_test.h Tests/Player_test.cpp Tests/Player_test.h)
+set(TEST_FILES Tests/Board_test.cpp Tests/Board_test.h Tests/Player_test.cpp Tests/Player_test.h Tests/test_main.cpp)
 
 add_executable(game ${SOURCE_FILES} src/main.cpp)
 add_executable(tests ${SOURCE_FILES} ${TEST_FILES} Tests/test_main.cpp)
