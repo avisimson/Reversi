@@ -406,6 +406,12 @@
 		<Unit filename="/home/avi/CLionProjects/Reversi/Tests/Player_test.h">
 			<Option target="tests"/>
 		</Unit>
+		<Unit filename="/home/avi/CLionProjects/Reversi/Tests/ReversiGame_test.cpp">
+			<Option target="tests"/>
+		</Unit>
+		<Unit filename="/home/avi/CLionProjects/Reversi/Tests/ReversiGame_test.h">
+			<Option target="tests"/>
+		</Unit>
 		<Unit filename="/home/avi/CLionProjects/Reversi/Tests/test_main.cpp">
 			<Option target="tests"/>
 		</Unit>

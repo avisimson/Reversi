@@ -1,5 +1,5 @@
 /*
- * Board_test.cpp
+ * Player_test.h
  *
  *  Created on: Nov 27, 2017
  *  Author: avi simson & yakir pinchas

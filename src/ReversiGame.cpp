@@ -16,9 +16,9 @@
 #define PLAYERTWO 2
 using namespace std;
 //constructor, initialize board, possible points matrix and players
-//parameters-p1, p2 are player 1 and 2 names.
-ReversiGame :: ReversiGame(char p1, char p2) {
-    player1 = new Player(p1, HUMAN, PLAYERONE); //HUMAN PLAYER
+//parameters-p1, p2 are player 1 and 2 names, and the type of player1.
+ReversiGame :: ReversiGame(char p1, char p2, char p1Type) {
+    player1 = new Player(p1, p1Type, PLAYERONE); //HUMAN PLAYER
     //initial player 2 to be computer or human player.
     cout << "Reversi Game" << endl << endl;
     cout << "Opponet choices:" << endl;
@@ -735,4 +735,20 @@ bool ReversiGame :: checkDownRight(Player* player, int i, int j,
         }
         return false;
     }
+}
+//return board of the game.
+Board* ReversiGame :: getBoard() {
+    return board;
+}
+//return player1 of the game.
+Player* ReversiGame :: getPlayerOne() {
+    return player1;
+}
+//return player2 of the game.
+Player* ReversiGame :: getPlayerTwo() {
+    return player2;
+}
+//return the number of spaces in the board matrix of the game.
+int ReversiGame :: getBoardSpace() {
+    return space;
 }

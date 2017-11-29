@@ -7,10 +7,11 @@
 #include "Game.h"
 #define SYMBOL1 'X'
 #define SYMBOL2  'O'
+#define HUMANTYPE 'H'
 using namespace std;
 //program creates reversi game board and prints it as output.
 int main() {
-    GameType* reversi = new ReversiGame(SYMBOL1, SYMBOL2);
+    GameType* reversi = new ReversiGame(SYMBOL1, SYMBOL2, HUMANTYPE);
     Game* game = new Game(reversi);
     game->Run();
     delete game;

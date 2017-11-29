@@ -22,7 +22,7 @@ private:
     int** possiblePointsone; //possible moves for player1.
     int** possiblePointstwo; //possible moves for player2.
 public:
-    ReversiGame(char p1, char p2);
+    ReversiGame(char p1, char p2, char p1Type);
     ~ReversiGame();
     void playGame();
     bool HumanplayOneTurn(Player* player);
@@ -39,5 +39,10 @@ public:
     bool checkDownRight(Player* player, int i, int j, bool flip, Board* b1);
     int checkBoard(Board* board, Player* player);
     void playPossiblePoints(Player* player, int i, int j, Board* b1);
+    //these getters are for the ReversiGame_test.
+    Board* getBoard();
+    Player* getPlayerOne();
+    Player* getPlayerTwo();
+    int getBoardSpace();
 };
 #endif //REVERSI_REVERSIGAME_H
