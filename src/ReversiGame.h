@@ -44,5 +44,7 @@ public:
     Player* getPlayerOne();
     Player* getPlayerTwo();
     int getBoardSpace();
+    int** getPossiblePointsOne();
+    int** getPossiblePointsTwo();
 };
 #endif //REVERSI_REVERSIGAME_H

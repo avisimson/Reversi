@@ -31,53 +31,62 @@ ReversiGame :: ReversiGame(char p1, char p2, char p1Type) {
         cout << "Wrong input, try again." << endl;
         cin >> choice;
     }
-    if(choice == QUIT) { //game ended.
-        return;
-    }
-    if(choice == PC) {
-        player2 = new Player(p2, PC, PLAYERTWO); //COMPUTER PLAYER
-    } else { //player entered HUMAN - 'H'
-        player2 = new Player(p2, HUMAN, PLAYERTWO); //HUMAN PLAYER
-    }
-    int size;
-    cout << "Enter board size." << endl;
-    cin >> size;
-    board = new Board(p1, p2, size);
-    space = ((board->getSize()) * board->getSize()) - 4;
-    //allocate memory for possible points matrix for computer and human players,
-    // and initialize their values to -1.
-    possiblePointsone = new int*[space];
-    for (int i = 0; i < space; i++) {
-        possiblePointsone[i] = new int[2];
-        for(int j = 0; j < 2; j++) {
-            possiblePointsone[i][j] = -1;
+    if(choice != QUIT) { //game being played.
+        if (choice == PC) {
+            player2 = new Player(p2, PC, PLAYERTWO); //COMPUTER PLAYER
+        } else { //player entered HUMAN - 'H'
+            player2 = new Player(p2, HUMAN, PLAYERTWO); //HUMAN PLAYER
         }
-    }
-    possiblePointstwo = new int*[space];
-    for (int i = 0; i < space; i++) {
-        possiblePointstwo[i] = new int[2];
-        for(int j = 0; j < 2; j++) {
-            possiblePointstwo[i][j] = -1;
+        int size;
+        cout << "Enter board size." << endl;
+        cin >> size;
+        board = new Board(p1, p2, size);
+        space = ((board->getSize()) * board->getSize()) - 4;
+        //allocate memory for possible points matrix for computer and human players,
+        // and initialize their values to -1.
+        possiblePointsone = new int *[space];
+        for (int i = 0; i < space; i++) {
+            possiblePointsone[i] = new int[2];
+            for (int j = 0; j < 2; j++) {
+                possiblePointsone[i][j] = -1;
+            }
         }
+        possiblePointstwo = new int *[space];
+        for (int i = 0; i < space; i++) {
+            possiblePointstwo[i] = new int[2];
+            for (int j = 0; j < 2; j++) {
+                possiblePointstwo[i][j] = -1;
+            }
+        }
+    } else { //player want to quit game.
+        space = -1;
     }
 }
 //destructor-releases all memory from system.
 ReversiGame :: ~ReversiGame() {
     delete player1;
     delete player2;
-    for (int i = 0; i < ((board->getSize()) * board->getSize()) - 4; i++) {
-        delete possiblePointsone[i];
+    if(space == -1) {
+        delete possiblePointsone;
+        delete possiblePointstwo;
+    } else {
+        for (int i = 0; i < ((board->getSize()) * board->getSize()) - 4; i++) {
+            delete possiblePointsone[i];
+        }
+        delete possiblePointsone;
+        for (int i = 0; i < ((board->getSize()) * board->getSize()) - 4; i++) {
+            delete possiblePointstwo[i];
+        }
+        delete possiblePointstwo;
     }
-    delete possiblePointsone;
-    for (int i = 0; i < ((board->getSize()) * board->getSize()) - 4; i++) {
-        delete possiblePointstwo[i];
-    }
-    delete possiblePointstwo;
     delete board;
 }
 //function runs reversi game until both players can't play or board is full.
 //at the end of the game function prints the score and the winner.
 void ReversiGame :: playGame() {
+    if(space == -1) { //quit game.
+        return;
+    }
     //check if numbers of players 1,2 are wrong and fix it if needbe.
     if(player1->getNum() != PLAYERONE || player2->getNum() != PLAYERTWO) {
         player1->setNum(PLAYERONE);
@@ -751,4 +760,10 @@ Player* ReversiGame :: getPlayerTwo() {
 //return the number of spaces in the board matrix of the game.
 int ReversiGame :: getBoardSpace() {
     return space;
+}
+int** ReversiGame :: getPossiblePointsOne() {
+    return possiblePointsone;
+}
+int** ReversiGame :: getPossiblePointsTwo() {
+    return possiblePointstwo;
 }

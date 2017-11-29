@@ -38,3 +38,27 @@ TEST(Reversi_Test, HumanTurn_Test) {
     EXPECT_TRUE(game->HumanplayOneTurn(game->getPlayerOne()));
     delete game;
 }
+//function tests if PC turn happened.
+TEST(Reversi_Test, PCTurn_Test) {
+    ReversiGame* game = new ReversiGame(SYMBOL1, SYMBOL2, PC);
+    EXPECT_TRUE(game->ComputerplayOneTurn(game->getPlayerOne()));
+    delete game;
+}
+//function checks if checkPossibleMoves does its job.
+TEST(Reversi_Test, CheckPossiblePoints_Test) {
+    ReversiGame* game = new ReversiGame(SYMBOL1, SYMBOL2, PC);
+    if(game->getBoard()->getSize() > 2) {
+        game->checkPossibleMoves(game->getPlayerOne(), game->getBoard());
+        EXPECT_NE(-1, game->getPossiblePointsOne()[0][0]);
+        EXPECT_NE(-1, game->getPossiblePointsOne()[0][1]);
+    } else {
+        EXPECT_EQ(1, 1); //size is 2, game cannot be played.
+    }
+    delete game;
+}
+//function checks the checkBoard method.
+TEST(ReversiGame_Test, ScoreGame_Test) {
+    ReversiGame* game = new ReversiGame(SYMBOL1, SYMBOL2, PC);
+    int num = game->checkBoard(game->getBoard(), game->getPlayerOne());
+    EXPECT_EQ(0, num); //no player played- result should be 2-2.
+}
