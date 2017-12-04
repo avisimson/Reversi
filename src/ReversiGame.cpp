@@ -12,6 +12,7 @@
 #define HUMAN 'H'
 #define PC 'C'
 #define QUIT 'Q'
+#define REMOTE 'R'
 #define PLAYERONE 1
 #define PLAYERTWO 2
 using namespace std;
@@ -24,10 +25,13 @@ ReversiGame :: ReversiGame(char p1, char p2, char p1Type) {
     cout << "Opponet choices:" << endl;
     cout << "Type " << HUMAN << " for human player opponet" << endl;
     cout << "Type " << PC << " for PC opponet" << endl;
+    cout << "Type " << REMOTE << " for remote player opponet" << endl;
     cout << "Type " << QUIT << " to quit game." << endl;
     char choice;
     cin >> choice;
-    while(choice != PC && choice != HUMAN && choice != QUIT) {
+    //check if input is ok.
+    while(choice != PC && choice != HUMAN && choice != QUIT
+          && choice != REMOTE) {
         cout << "Wrong input, try again." << endl;
         cin >> choice;
     }
