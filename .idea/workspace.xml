@@ -17,10 +17,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="da7829aa-c6bb-4831-95ca-8285f13fe83d" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/ReversiServer.cpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/ReversiServer.h" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/main.cpp" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server/ReversiServer.cpp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server/ReversiServer.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server/main.cpp" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Player.h" afterPath="$PROJECT_DIR$/src/Player.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ReversiGame.cpp" afterPath="$PROJECT_DIR$/src/ReversiGame.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ReversiGame.h" afterPath="$PROJECT_DIR$/src/ReversiGame.h" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -32,122 +35,40 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ReversiGame_test.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Tests/ReversiGame_test.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="11" column="17" lean-forward="false" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Player_test.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Tests/Player_test.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="18">
-              <caret line="1" column="9" lean-forward="false" selection-start-line="1" selection-start-column="9" selection-end-line="1" selection-end-column="9" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ReversiGame.h" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ReversiGame.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="8" column="29" lean-forward="false" selection-start-line="8" selection-start-column="29" selection-end-line="8" selection-end-column="29" />
-              <folding>
-                <element signature="e#210#228#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Board.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Board.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1152">
-              <caret line="64" column="4" lean-forward="false" selection-start-line="64" selection-start-column="4" selection-end-line="64" selection-end-column="4" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GameType.h" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/GameType.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Game.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Game.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="ReversiGame.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ReversiGame.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+            <state relative-caret-position="16">
+              <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
               <folding>
                 <element signature="e#149#168#0" expanded="true" />
-                <element signature="e#2387#2963#0" expanded="false" />
-                <element signature="e#4914#7829#0" expanded="false" />
-                <element signature="e#7830#13283#0" expanded="false" />
-                <element signature="e#13284#13854#0" expanded="false" />
-                <element signature="e#13855#14616#0" expanded="false" />
-                <element signature="e#14617#15559#0" expanded="false" />
-                <element signature="e#15560#16904#0" expanded="false" />
-                <element signature="e#16905#18210#0" expanded="false" />
-                <element signature="e#18211#19561#0" expanded="false" />
-                <element signature="e#19562#20870#0" expanded="false" />
-                <element signature="e#20871#22222#0" expanded="false" />
-                <element signature="e#22223#23647#0" expanded="false" />
-                <element signature="e#23648#25118#0" expanded="false" />
-                <element signature="e#25119#26591#0" expanded="false" />
-                <element signature="e#26592#28080#0" expanded="false" />
+                <element signature="e#343#2748#0" expanded="false" />
+                <element signature="e#2749#3325#0" expanded="false" />
+                <element signature="e#3326#5633#0" expanded="false" />
+                <element signature="e#5634#8549#0" expanded="false" />
+                <element signature="e#8550#14003#0" expanded="false" />
+                <element signature="e#14004#14574#0" expanded="false" />
+                <element signature="e#14575#15336#0" expanded="false" />
+                <element signature="e#15337#16279#0" expanded="false" />
+                <element signature="e#16280#17624#0" expanded="false" />
+                <element signature="e#17625#18930#0" expanded="false" />
+                <element signature="e#18931#20281#0" expanded="false" />
+                <element signature="e#20282#21590#0" expanded="false" />
+                <element signature="e#21591#22942#0" expanded="false" />
+                <element signature="e#22943#24367#0" expanded="false" />
+                <element signature="e#24368#25838#0" expanded="false" />
+                <element signature="e#25839#27311#0" expanded="false" />
+                <element signature="e#27312#28800#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Server/main.cpp">
+      <file leaf-file-name="ReversiGame.h" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/ReversiGame.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#19#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CMakeLists.txt" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="324">
-              <caret line="18" column="49" lean-forward="true" selection-start-line="18" selection-start-column="49" selection-end-line="18" selection-end-column="49" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ReversiGame_test.h" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Tests/ReversiGame_test.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
-              <caret line="13" column="18" lean-forward="false" selection-start-line="13" selection-start-column="18" selection-end-line="13" selection-end-column="18" />
+            <state relative-caret-position="270">
+              <caret line="15" column="13" lean-forward="false" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -185,7 +106,6 @@
         <option value="$PROJECT_DIR$/src/Board.h" />
         <option value="$PROJECT_DIR$/src/Board.cpp" />
         <option value="$PROJECT_DIR$/Tests/Board_test.cpp" />
-        <option value="$PROJECT_DIR$/src/Player.h" />
         <option value="$PROJECT_DIR$/src/Player.cpp" />
         <option value="$PROJECT_DIR$/Tests/Player_test.cpp" />
         <option value="$PROJECT_DIR$/Tests/Player_test.h" />
@@ -193,10 +113,14 @@
         <option value="$PROJECT_DIR$/Tests/Game_test.cpp" />
         <option value="$PROJECT_DIR$/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/src/main.cpp" />
-        <option value="$PROJECT_DIR$/src/ReversiGame.h" />
         <option value="$PROJECT_DIR$/Tests/ReversiGame_test.cpp" />
         <option value="$PROJECT_DIR$/Tests/ReversiGame_test.h" />
+        <option value="$PROJECT_DIR$/Server/ReversiServer.h" />
+        <option value="$PROJECT_DIR$/Server/main.cpp" />
+        <option value="$PROJECT_DIR$/Server/ReversiServer.cpp" />
+        <option value="$PROJECT_DIR$/src/Player.h" />
         <option value="$PROJECT_DIR$/src/ReversiGame.cpp" />
+        <option value="$PROJECT_DIR$/src/ReversiGame.h" />
       </list>
     </option>
   </component>
@@ -237,6 +161,12 @@
             <path>
               <item name="Reversi" type="dad4c3:CidrFilesViewHelper$MyProjectTreeStructure$1" />
               <item name="Reversi" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Reversi" type="dad4c3:CidrFilesViewHelper$MyProjectTreeStructure$1" />
+              <item name="Reversi" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="Server" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -336,7 +266,7 @@
       <workItem from="1512409602904" duration="104000" />
       <workItem from="1512409724410" duration="2540000" />
       <workItem from="1512413796400" duration="342000" />
-      <workItem from="1512414204370" duration="79000" />
+      <workItem from="1512414204370" duration="7683000" />
     </task>
     <task id="LOCAL-00001" summary="finished">
       <created>1511810793533</created>
@@ -408,7 +338,14 @@
       <option name="project" value="LOCAL" />
       <updated>1512414092989</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="ex4 server beggining">
+      <created>1512414327362</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1512414327362</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -417,12 +354,13 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="134343000" />
+    <option name="totallyTimeSpent" value="141947000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="260" y="26" width="1922" height="1053" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13333334" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13333334" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32948583" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5556723" sideWeight="0.503125" order="7" side_tool="true" content_ui="tabs" />
@@ -478,14 +416,15 @@
     <MESSAGE value="including more tests" />
     <MESSAGE value="EX3 is finished" />
     <MESSAGE value="ex4 beggining" />
-    <option name="LAST_COMMIT_MESSAGE" value="ex4 beggining" />
+    <MESSAGE value="ex4 server beggining" />
+    <option name="LAST_COMMIT_MESSAGE" value="ex4 server beggining" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="187" />
+      <option name="time" value="188" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="CMakeRunConfiguration">
@@ -494,14 +433,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Game.cpp" />
-    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Board.cpp" />
     <entry file="file://$PROJECT_DIR$/Board.h" />
     <entry file="file://$PROJECT_DIR$/main.cpp" />
@@ -582,13 +513,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Player.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="21" column="28" lean-forward="false" selection-start-line="21" selection-start-column="28" selection-end-line="21" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Tests/Game_test.h" />
     <entry file="file://$PROJECT_DIR$/Tests/Game_test.cpp" />
     <entry file="file://$PROJECT_DIR$/src/Game.h">
@@ -644,19 +568,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ReversiGame.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="8" column="29" lean-forward="false" selection-start-line="8" selection-start-column="29" selection-end-line="8" selection-end-column="29" />
-          <folding>
-            <element signature="e#210#228#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Tests/ReversiGame_test.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
+        <state relative-caret-position="0">
           <caret line="11" column="17" lean-forward="false" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
           <folding />
         </state>
@@ -678,14 +592,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Board.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1152">
-          <caret line="64" column="4" lean-forward="false" selection-start-line="64" selection-start-column="4" selection-end-line="64" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Game.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
@@ -694,45 +600,85 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ReversiGame.cpp">
+    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-          <folding>
-            <element signature="e#149#168#0" expanded="true" />
-            <element signature="e#2387#2963#0" expanded="false" />
-            <element signature="e#4914#7829#0" expanded="false" />
-            <element signature="e#7830#13283#0" expanded="false" />
-            <element signature="e#13284#13854#0" expanded="false" />
-            <element signature="e#13855#14616#0" expanded="false" />
-            <element signature="e#14617#15559#0" expanded="false" />
-            <element signature="e#15560#16904#0" expanded="false" />
-            <element signature="e#16905#18210#0" expanded="false" />
-            <element signature="e#18211#19561#0" expanded="false" />
-            <element signature="e#19562#20870#0" expanded="false" />
-            <element signature="e#20871#22222#0" expanded="false" />
-            <element signature="e#22223#23647#0" expanded="false" />
-            <element signature="e#23648#25118#0" expanded="false" />
-            <element signature="e#25119#26591#0" expanded="false" />
-            <element signature="e#26592#28080#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="324">
+          <caret line="18" column="49" lean-forward="true" selection-start-line="18" selection-start-column="49" selection-end-line="18" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Board.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="887">
+          <caret line="64" column="4" lean-forward="false" selection-start-line="64" selection-start-column="4" selection-end-line="64" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Player.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="14" column="68" lean-forward="false" selection-start-line="14" selection-start-column="68" selection-end-line="14" selection-end-column="68" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Server/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="126">
+          <caret line="7" column="30" lean-forward="true" selection-start-line="7" selection-start-column="30" selection-end-line="7" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server/ReversiServer.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="8" column="5" lean-forward="false" selection-start-line="8" selection-start-column="5" selection-end-line="8" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server/ReversiServer.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1674">
+          <caret line="108" column="0" lean-forward="false" selection-start-line="108" selection-start-column="0" selection-end-line="108" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ReversiGame.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="16">
+          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
           <folding>
-            <element signature="e#0#19#0" expanded="true" />
+            <element signature="e#149#168#0" expanded="true" />
+            <element signature="e#343#2748#0" expanded="false" />
+            <element signature="e#2749#3325#0" expanded="false" />
+            <element signature="e#3326#5633#0" expanded="false" />
+            <element signature="e#5634#8549#0" expanded="false" />
+            <element signature="e#8550#14003#0" expanded="false" />
+            <element signature="e#14004#14574#0" expanded="false" />
+            <element signature="e#14575#15336#0" expanded="false" />
+            <element signature="e#15337#16279#0" expanded="false" />
+            <element signature="e#16280#17624#0" expanded="false" />
+            <element signature="e#17625#18930#0" expanded="false" />
+            <element signature="e#18931#20281#0" expanded="false" />
+            <element signature="e#20282#21590#0" expanded="false" />
+            <element signature="e#21591#22942#0" expanded="false" />
+            <element signature="e#22943#24367#0" expanded="false" />
+            <element signature="e#24368#25838#0" expanded="false" />
+            <element signature="e#25839#27311#0" expanded="false" />
+            <element signature="e#27312#28800#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+    <entry file="file://$PROJECT_DIR$/src/ReversiGame.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="18" column="49" lean-forward="true" selection-start-line="18" selection-start-column="49" selection-end-line="18" selection-end-column="49" />
+        <state relative-caret-position="270">
+          <caret line="15" column="13" lean-forward="false" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
           <folding />
         </state>
       </provider>

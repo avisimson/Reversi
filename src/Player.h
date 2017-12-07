@@ -12,7 +12,7 @@ class Player {
     //class defines a player in a game. the player has name and type.
     private:
         char name;
-        char type; // 'C' for computer, 'H' for user.
+        char type; // 'C' for computer, 'H' for user, 'R' for remote.
         int num; //number of player 1 or 2.
     public:
         Player(char name1, char type1, int num1);

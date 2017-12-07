@@ -11,6 +11,7 @@
 #include "Board.h"
 #include "Player.h"
 #include "GameType.h"
+#include "Server/ReversiServer.h"
 class ReversiGame: public GameType {
     //class has a board, space left in board, 2 matrixes of x,y of
     // possible moves for both players and 2 players.
@@ -25,6 +26,7 @@ public:
     ReversiGame(char p1, char p2, char p1Type);
     ~ReversiGame();
     void playGame();
+    void playGameVsRemote();
     bool HumanplayOneTurn(Player* player);
     bool ComputerplayOneTurn(Player* player);
     void scoreGame();

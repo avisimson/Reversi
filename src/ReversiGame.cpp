@@ -36,17 +36,27 @@ ReversiGame :: ReversiGame(char p1, char p2, char p1Type) {
         cin >> choice;
     }
     if(choice != QUIT) { //game being played.
-        if (choice == PC) {
-            player2 = new Player(p2, PC, PLAYERTWO); //COMPUTER PLAYER
-        } else { //player entered HUMAN - 'H'
-            player2 = new Player(p2, HUMAN, PLAYERTWO); //HUMAN PLAYER
+        switch(choice) { //check what player 2 should be.
+            case PC:
+                player2 = new Player(p2, PC, PLAYERTWO); //COMPUTER PLAYER
+                break;
+            case HUMAN:
+                player2 = new Player(p2, HUMAN, PLAYERTWO); //HUMAN PLAYER
+                break;
+            case REMOTE:
+                player2 = new Player(p2, REMOTE, PLAYERTWO); //REMOTE PLAYER
+                break;
+            default: //will never happen because of before checking but it will
+                //finish the game.
+                space = -1;
+                break;
         }
         int size;
         cout << "Enter board size." << endl;
         cin >> size;
         board = new Board(p1, p2, size);
         space = ((board->getSize()) * board->getSize()) - 4;
-        //allocate memory for possible points matrix for computer and human players,
+        //allocate memory for possible points matrix for player 1 and 2,
         // and initialize their values to -1.
         possiblePointsone = new int *[space];
         for (int i = 0; i < space; i++) {
@@ -100,6 +110,13 @@ void ReversiGame :: playGame() {
     int cantPlay = 0; //counts if both players cant play to finish game.
     bool b = true;
     board->printBoard();
+    //check if to start a network game of user against remote player.
+    if(player1->getType() == HUMAN && player2->getType() == REMOTE) {
+        playGameVsRemote(); //playing game against remote until game ends
+        //or one of the players disconnected.
+        return;
+    }
+    //game is PC-PC, HUMAN-PC, PC-HUMAN, HUMAN-HUMAN. remote wasn't chosen.
     //check if player1 and player2 initialized as C or H type to play.
     if(player1->getType() != PC && player1->getType() != HUMAN)
     {
@@ -770,4 +787,7 @@ int** ReversiGame :: getPossiblePointsOne() {
 }
 int** ReversiGame :: getPossiblePointsTwo() {
     return possiblePointstwo;
+}
+void ReversiGame ::playGameVsRemote() {
+
 }
