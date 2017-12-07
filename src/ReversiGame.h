@@ -11,7 +11,15 @@
 #include "Board.h"
 #include "Player.h"
 #include "GameType.h"
-#include "ReversiServer.h"
+#include "NetworkClient.h"
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <unistd.h>
+#include <string.h>
+#include <iostream>
+#include <fstream>
+#include <stdio.h>
+#include <cstdlib> //for std::atoi
 class ReversiGame: public GameType {
     //class has a board, space left in board, 2 matrixes of x,y of
     // possible moves for both players and 2 players.
