@@ -15,6 +15,8 @@
 #define REMOTE 'R'
 #define PLAYERONE 1
 #define PLAYERTWO 2
+#define BOARDSIZE 8
+#define FILE "info configuration.txt"
 using namespace std;
 //constructor, initialize board, possible points matrix and players
 //parameters-p1, p2 are player 1 and 2 names, and the type of player1.
@@ -51,9 +53,7 @@ ReversiGame :: ReversiGame(char p1, char p2, char p1Type) {
                 space = -1;
                 break;
         }
-        int size;
-        cout << "Enter board size." << endl;
-        cin >> size;
+        int size = BOARDSIZE;
         board = new Board(p1, p2, size);
         space = ((board->getSize()) * board->getSize()) - 4;
         //allocate memory for possible points matrix for player 1 and 2,
@@ -789,5 +789,8 @@ int** ReversiGame :: getPossiblePointsTwo() {
     return possiblePointstwo;
 }
 void ReversiGame ::playGameVsRemote() {
-
+    char* serverIp;
+    int port;
+    int userSocket = 0;
+    ReversiServer* server = new ReversiServer(FILE); //initialize server.
 }

@@ -11,7 +11,7 @@
 #include "Board.h"
 #include "Player.h"
 #include "GameType.h"
-#include "Server/ReversiServer.h"
+#include "ReversiServer.h"
 class ReversiGame: public GameType {
     //class has a board, space left in board, 2 matrixes of x,y of
     // possible moves for both players and 2 players.
