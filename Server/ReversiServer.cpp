@@ -16,7 +16,7 @@ ReversiServer :: ReversiServer(int port1) {
     port = port1;
     cout << "Server initialized through constructor" << endl;
 }
-// constructer that gets a name of a file and read the port from it.
+//constructor that gets a name of a file and read the port from it.
 ReversiServer ::ReversiServer(char* fileName) {
     serverSocket = 0;
     string buffer, dummyLine;
@@ -37,7 +37,8 @@ ReversiServer ::ReversiServer(char* fileName) {
 //exception if there is a problem in connection), and handles all communication
 //between the clients until they disconnect.
 void ReversiServer :: start() {
-    int client1_sd, client2_sd; //sockets for both clients.
+    //sockets for both clients.
+    int client1_sd, client2_sd;
     char buffer[BUFFER_SIZE]; //array of messages between players.
     //clients' variables
     struct sockaddr_in client1Address, client2Address;
@@ -97,10 +98,14 @@ void ReversiServer :: start() {
         while (true) { //send messages between players until game ends.
             if(count == 0) {
                 int check = checkValidate(client1_sd, client2_sd, buffer);
-                count++;
+                if(check != -1) {
+                    count++;
+                }
             } else if(count == 1) {
                 int check = checkValidate(client2_sd, client1_sd, buffer);
-                count--;
+                if(check != -1) {
+                    count--;
+                }
             }
             //if function get "end"
             if (check == 1){
@@ -115,7 +120,11 @@ void ReversiServer :: start() {
 void ReversiServer :: stop() {
     close(serverSocket);
 }
-void Server::checkValidate(int socketClient1, int socketClient2, char *buffer) {
+//function gets 2 strings of clients and a server string and connects and
+//deliver messages between clients through buffer.
+//messages are row, col. return 0 to continue game, 1 to end, -1 to try turn again.
+int ReversiServer :: checkValidate(char* socketClient1,
+                                   char* socketClient2, char *buffer) {
     int rowInput , colInput; //get from one of players and send to other player,
     char dummy; // the "," between row and col.
     //taking input form client 1
@@ -133,29 +142,30 @@ void Server::checkValidate(int socketClient1, int socketClient2, char *buffer) {
     //read the current row
     int n = read(clientSocket1, &rowInput, sizeof(rowInput));
     if(n == -1) { //if reading row failed.
-        cout << "Error reading row";
-        return;
+        cout << "Error reading row" << endl;
+        return -1;
     }
     if(n == 0) { //check if player 1 disconnected
         cout << "client 1 disconnected";
-        return;
+        return 1;
     }
     //read the current ","
     n = read(clientSocket1, &dummy, sizeof(dummy));
     if(n == -1) {
-        cout << "Error reading dummy";
-        return;
+        cout << "Error reading dummy" << endl;
+        return -1;
     }
     //check the current col
-    n = read(clientSocket1,&colInput,sizeof(colInput));
+    n = read(clientSocket1, &colInput, sizeof(colInput));
     if(n == -1) {
-        cout << "Error reading col";
-        return;
+        cout << "Error reading col" << endl;
+        return -1;
     }
     //send the move to player2
     n = write(clientSocket2, buffer, sizeof(BUFFER_SIZE));
     if(n == -1) { //check if message send
         cout << "Error writing to socket" << endl;
-        return;
+        return -1;
     }
+    return 0; //turn success, game continues.
 }

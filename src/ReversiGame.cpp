@@ -16,6 +16,7 @@
 #define PLAYERONE 1
 #define PLAYERTWO 2
 #define BOARDSIZE 8
+#define MESSAGE_SIZE 1024
 #define FILENAME "info configuration.txt"
 using namespace std;
 //constructor, initialize board, possible points matrix and players
@@ -791,5 +792,12 @@ int** ReversiGame :: getPossiblePointsTwo() {
 //function plays game between user and remote player by using an external
 //server.
 void ReversiGame ::playGameVsRemote() {
-    NetworkClient* player = new NetworkClient(FILENAME); //initialize client.
+    NetworkClient* client = new NetworkClient(FILENAME); //initialize client.
+    try {
+        client->connectToServer(); //try to connect to server.
+    } catch(const char *msg) {
+        cout << "Failed to connect to server. Reason:" << msg << endl;
+        delete client;
+        return;
+    }
 }
