@@ -817,9 +817,9 @@ void ReversiGame :: playGameVsRemote() {
                     //played and sent row,col
                     cantPlay = 0;
                     turn++;
+                    space--; // one empty place less on board
                 } else { //player didnt have possible moves/sending move failed
-                    if(possiblePointsone[0][0] == -1 &&
-                            possiblePointstwo[0][0] == -1) { //didnt have moves.
+                    if(possiblePointsone[0][0] == -1) { //didnt have moves.
                         if(cantPlay == 0) {
                             try {
                                 client->sendNoMove();
@@ -862,6 +862,7 @@ void ReversiGame :: playGameVsRemote() {
                         board->printBoard();
                         cout << player2->getName() << " played: ("
                              << info.x << "," << info.y << ")" << endl;
+                        space--; // one empty place less on board
                     }
                     turn--;
                 } catch(char* msg) {
@@ -870,7 +871,65 @@ void ReversiGame :: playGameVsRemote() {
             }
         }
     } else if(type == 2) { //user is player 2
-
+        while(cantPlay < 2 && space > 0) {
+            if(turn == PLAYERONE) {
+                try {
+                    //remote play.
+                    info = client->getMove();
+                    if(info.x == End) { return; } //got end game from remote so exit func.
+                    if(info.x == NoMove) { //remote player did not have moves.
+                        cout << "Remote player did not have moves to play" << endl;
+                        cantPlay++;
+                        if(cantPlay == 2) { //send other player to finish game also.
+                            try {
+                                client->sendEnd();
+                            } catch(char* msg1) { //fail to send.
+                                cout << msg1 << endl;
+                            }
+                        }
+                    } else {
+                        board->setBoard(info.x, info.y, player1->getName());
+                        playPossiblePoints(player1, info.x, info.y, board);
+                        cantPlay = 0;
+                        board->printBoard();
+                        cout << player1->getName() << " played: ("
+                             << info.x << "," << info.y << ")" << endl;
+                        space--; // one empty place less on board
+                    }
+                    turn++;
+                } catch(char* msg) {
+                    cout << msg << endl;
+                }
+            } else { //turn == PLAYERTWO
+                if(PlayTurnAgainstRemote(client, player2)) {
+                    //played and sent row,col
+                    cantPlay = 0;
+                    turn++;
+                    space--; // one empty place less on board
+                } else { //player didnt have possible moves/sending move failed
+                    if(possiblePointstwo[0][0] == -1) { //didnt have moves.
+                        if(cantPlay == 0) {
+                            try {
+                                client->sendNoMove();
+                                cantPlay++;
+                                turn++;
+                            } catch(char* msg) {
+                                cout << msg << endl;
+                            }
+                        } else { //cantplay == 1
+                            try {
+                                client->sendEnd();
+                                cantPlay++;
+                            } catch(char* msg) {
+                                cout << msg << endl;
+                            }
+                        }
+                    } else { //made the move but didnt send to other player
+                        continue;
+                    }
+                }
+            }
+        }
     }
     delete client; //remove client from heap.
 }

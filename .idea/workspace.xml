@@ -18,15 +18,7 @@
   <component name="ChangeListManager">
     <list default="true" id="da7829aa-c6bb-4831-95ca-8285f13fe83d" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server/ReversiServer.cpp" afterPath="$PROJECT_DIR$/Server/ReversiServer.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server/ReversiServer.h" afterPath="$PROJECT_DIR$/Server/ReversiServer.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server/main.cpp" afterPath="$PROJECT_DIR$/Server/main.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/NetworkClient.cpp" afterPath="$PROJECT_DIR$/src/NetworkClient.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/NetworkClient.h" afterPath="$PROJECT_DIR$/src/NetworkClient.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Player.cpp" afterPath="$PROJECT_DIR$/src/Player.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Player.h" afterPath="$PROJECT_DIR$/src/Player.h" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ReversiGame.cpp" afterPath="$PROJECT_DIR$/src/ReversiGame.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ReversiGame.h" afterPath="$PROJECT_DIR$/src/ReversiGame.h" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -71,7 +63,7 @@
       <file leaf-file-name="ReversiServer.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Server/ReversiServer.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
+            <state relative-caret-position="925">
               <caret line="143" column="58" lean-forward="false" selection-start-line="143" selection-start-column="58" selection-end-line="143" selection-end-column="58" />
               <folding>
                 <element signature="e#263#526#0" expanded="false" />
@@ -121,8 +113,8 @@
       <file leaf-file-name="ReversiGame.cpp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ReversiGame.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="903">
-              <caret line="848" column="17" lean-forward="false" selection-start-line="848" selection-start-column="17" selection-end-line="848" selection-end-column="17" />
+            <state relative-caret-position="779">
+              <caret line="793" column="0" lean-forward="false" selection-start-line="793" selection-start-column="0" selection-end-line="793" selection-end-column="0" />
               <folding>
                 <element signature="e#149#168#0" expanded="true" />
                 <element signature="e#387#2738#0" expanded="false" />
@@ -141,7 +133,8 @@
                 <element signature="e#24379#25849#0" expanded="false" />
                 <element signature="e#25850#27322#0" expanded="false" />
                 <element signature="e#27323#28811#0" expanded="false" />
-                <element signature="e#32859#34856#0" expanded="false" />
+                <element signature="e#29355#35644#0" expanded="false" />
+                <element signature="e#35645#37642#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -341,7 +334,7 @@
       <workItem from="1512409602904" duration="104000" />
       <workItem from="1512409724410" duration="2540000" />
       <workItem from="1512413796400" duration="342000" />
-      <workItem from="1512414204370" duration="36829000" />
+      <workItem from="1512414204370" duration="37564000" />
     </task>
     <task id="LOCAL-00001" summary="finished">
       <created>1511810793533</created>
@@ -462,7 +455,14 @@
       <option name="project" value="LOCAL" />
       <updated>1512651708284</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="ex4">
+      <created>1512784490906</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1512784490906</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -471,7 +471,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="171093000" />
+    <option name="totallyTimeSpent" value="171828000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="260" y="26" width="1922" height="1053" extended-state="6" />
@@ -816,7 +816,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Server/ReversiServer.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
+        <state relative-caret-position="925">
           <caret line="143" column="58" lean-forward="false" selection-start-line="143" selection-start-column="58" selection-end-line="143" selection-end-column="58" />
           <folding>
             <element signature="e#263#526#0" expanded="false" />
@@ -828,8 +828,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ReversiGame.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="903">
-          <caret line="848" column="17" lean-forward="false" selection-start-line="848" selection-start-column="17" selection-end-line="848" selection-end-column="17" />
+        <state relative-caret-position="779">
+          <caret line="793" column="0" lean-forward="false" selection-start-line="793" selection-start-column="0" selection-end-line="793" selection-end-column="0" />
           <folding>
             <element signature="e#149#168#0" expanded="true" />
             <element signature="e#387#2738#0" expanded="false" />
@@ -848,7 +848,8 @@
             <element signature="e#24379#25849#0" expanded="false" />
             <element signature="e#25850#27322#0" expanded="false" />
             <element signature="e#27323#28811#0" expanded="false" />
-            <element signature="e#32859#34856#0" expanded="false" />
+            <element signature="e#29355#35644#0" expanded="false" />
+            <element signature="e#35645#37642#0" expanded="false" />
           </folding>
         </state>
       </provider>
