@@ -15,6 +15,9 @@
 #include <fstream>
 #include <stdio.h>
 #include <cstdlib> //for std::atoi
+enum StatusForServer {
+    NoMove = -2, End = -3
+};
 #ifndef SERVER_REVERSISERVER_H
 //class is a server between 2 remote players in ReversiGame in Reversi Project.
 class ReversiServer {
@@ -27,7 +30,7 @@ class ReversiServer {
         ~ReversiServer() {};
         void start();
         void stop();
-        int checkValidate(int socketClient1, int socketClient2, char* buffer);
+        int checkValidate(int socketClient1, int socketClient2);
 };
 #define SERVER_REVERSISERVER_H
 

@@ -16,8 +16,7 @@
 #define PLAYERONE 1
 #define PLAYERTWO 2
 #define BOARDSIZE 8
-#define MESSAGE_SIZE 1024
-#define FILENAME "info configuration.txt"
+#define FILENAMESIZE 50
 using namespace std;
 //constructor, initialize board, possible points matrix and players
 //parameters-p1, p2 are player 1 and 2 names, and the type of player1.
@@ -115,6 +114,7 @@ void ReversiGame :: playGame() {
     if(player1->getType() == HUMAN && player2->getType() == REMOTE) {
         playGameVsRemote(); //playing game against remote until game ends
         //or one of the players disconnected.
+        scoreGame();
         return;
     }
     //game is PC-PC, HUMAN-PC, PC-HUMAN, HUMAN-HUMAN. remote wasn't chosen.
@@ -791,8 +791,10 @@ int** ReversiGame :: getPossiblePointsTwo() {
 }
 //function plays game between user and remote player by using an external
 //server.
-void ReversiGame ::playGameVsRemote() {
-    NetworkClient* client = new NetworkClient(FILENAME); //initialize client.
+void ReversiGame :: playGameVsRemote() {
+    char* filename = new char[FILENAMESIZE];
+    NetworkClient* client = new NetworkClient(filename); //initialize client.
+    delete filename;
     try {
         client->connectToServer(); //try to connect to server.
     } catch(const char *msg) {
@@ -800,4 +802,133 @@ void ReversiGame ::playGameVsRemote() {
         delete client;
         return;
     }
+    int type;
+    try {
+        type =  client->getType(); //get 1,2 to know if client is player 1 or 2
+    } catch(char* msg) {
+        cout << msg;
+    }
+    struct Info info;
+    int cantPlay = 0, turn = PLAYERONE;
+    if(type == 1) { //user is player 1.
+        while(cantPlay < 2 && space > 0) {
+            if(turn == PLAYERONE) { //
+                if(PlayTurnAgainstRemote(client, player1)) {
+                    //played and sent row,col
+                    cantPlay = 0;
+                    turn++;
+                } else { //player didnt have possible moves/sending move failed
+                    if(possiblePointsone[0][0] == -1 &&
+                            possiblePointstwo[0][0] == -1) { //didnt have moves.
+                        if(cantPlay == 0) {
+                            try {
+                                client->sendNoMove();
+                                cantPlay++;
+                                turn++;
+                            } catch(char* msg) {
+                                cout << msg << endl;
+                            }
+                        } else { //cantplay == 1
+                            try {
+                                client->sendEnd();
+                                cantPlay++;
+                            } catch(char* msg) {
+                                cout << msg << endl;
+                            }
+                        }
+                    } else { //made the move but didnt send to other player
+                        continue;
+                    }
+                }
+            } else { //turn == PLAYERTWO
+                try {
+                    //remote play.
+                    info = client->getMove();
+                    if(info.x == End) { return; } //got end game from remote so exit func.
+                    if(info.x == NoMove) { //remote player did not have moves.
+                        cout << "Remote player did not have moves to play" << endl;
+                        cantPlay++;
+                        if(cantPlay == 2) { //send other player to finish game also.
+                            try {
+                                client->sendEnd();
+                            } catch(char* msg1) { //fail to send.
+                                cout << msg1 << endl;
+                            }
+                        }
+                    } else {
+                        board->setBoard(info.x, info.y, player2->getName());
+                        playPossiblePoints(player2, info.x, info.y, board);
+                        cantPlay = 0;
+                        board->printBoard();
+                        cout << player2->getName() << " played: ("
+                             << info.x << "," << info.y << ")" << endl;
+                    }
+                    turn--;
+                } catch(char* msg) {
+                    cout << msg << endl;
+                }
+            }
+        }
+    } else if(type == 2) { //user is player 2
+
+    }
+    delete client; //remove client from heap.
+}
+//function plays one turn against remote
+bool ReversiGame :: PlayTurnAgainstRemote(NetworkClient* client, Player* player) {
+    checkPossibleMoves(player1, board);
+    string row1, col1; //helper for more simple input.
+    int row, col;
+    int** possiblePoints;
+    //create new matrix that will point on the correct matrix according to
+    // if player is player 1 or 2.
+    if(player->getNum() == PLAYERONE) {
+        possiblePoints = possiblePointsone;
+    } else if(player->getNum() == PLAYERTWO) {
+        possiblePoints = possiblePointstwo;
+    }
+    int i = space;
+    if (possiblePoints[0][0] == -1) { //no possible moves, cant play
+        cout << player->getName()
+             << " You have no possible moves, turn passed." << endl;
+        return false;
+    }
+    //player has possible points and can play.
+    while (i >= space) { //input from user to row and col, until good input
+        cout << "Please enter your move- enter row,col: ";
+        cin >> row1 >> col1;
+        istringstream buffer(row1);
+        buffer >> row;
+        istringstream buffer2(col1);
+        buffer2 >> col;
+        for (i = 0; i < space; i++) {
+            if (row == possiblePoints[i][0]) {
+                if (col == possiblePoints[i][1]) {
+                    break;
+                }
+            }
+        }
+        if (i >= space) {
+            cout << "Wrong input!" << endl;
+        }
+    }
+    try { //sending move to socket.
+        client->sendMove(row, col);
+    } catch (char* msg) { //fail to send move to socket.
+        cout << msg << endl;
+        return false;
+    }
+    board->setBoard(row, col, player->getName());
+    playPossiblePoints(player, row, col, board);
+    i = 0;
+    //reset possible moves for next turn.
+    while(possiblePoints[i][0] != -1) {
+        possiblePoints[i][0] = -1;
+        possiblePoints[i][1] = -1;
+        i++;
+    }
+    board->printBoard();
+    cout << player->getName() << " played: ("
+         << row << "," << col << ")" << endl;
+    return true;
 }

@@ -9,6 +9,8 @@
 #include "ReversiServer.h"
 #define MAX_CLIENTS 2
 #define BUFFER_SIZE 1024
+#define FAILURE 1
+#define SUCCESS 0
 //constructor to server class, gets a port and update port in server.
 //constructor initialize serverSocket into 0.
 ReversiServer :: ReversiServer(int port1) {
@@ -21,7 +23,7 @@ ReversiServer ::ReversiServer(char* fileName) {
     serverSocket = 0;
     string buffer, dummyLine;
     ifstream infoAddress;
-    infoAddress.open(fileName, std :: fstream :: in);
+    infoAddress.open(fileName, fstream :: in);
     getline(infoAddress, dummyLine);
     //dummyLine contains the first line of file.
     getline(infoAddress, buffer);
@@ -63,6 +65,7 @@ void ReversiServer :: start() {
              sizeof(serverAddress)) == -1) { //binding fail.
         throw "Error on binding";
     }
+    int num;
     //If a game has ended, start a new one
     while (true) {
         //start listening for clients
@@ -74,26 +77,26 @@ void ReversiServer :: start() {
                             &client1AddressLen);
         cout << "Client 1 entered!" << endl;
         //Sending 1 to him to show him he is the first to enter
-        buffer[0] = '1';
+        num = 1;
         //if have problem in accept
         if(client1_sd == -1) { //client 1 connection failed.
             throw "Error on accept";
         }
         //send client 1 a message that he is player 1.
-        send(client1_sd, buffer, BUFFER_SIZE, 0);
+        write(client1_sd, &num, sizeof(int));
         //Accepting second client
         client2_sd = accept(serverSocket,
                             (struct sockaddr *) &client1Address,
                             &client1AddressLen);
         cout << "Client 2 entered!";
         //Sending 2 to him to show him he is the second to enter
-        buffer[0] = '2';
+        num = 2;
         //if have problem in accept
         if(client2_sd == -1) { //client 2 connection failed.
             throw "Error on accept";
         }
-        //send client 1 a message that he is player 2.
-        send(client2_sd, buffer, BUFFER_SIZE, 0);
+        //send client 2 a message that he is player 2.
+        write(client1_sd, &num, sizeof(int));
         int count = 0;
         while (true) { //send messages between players until game ends.
             if(count == 0) {
@@ -108,7 +111,7 @@ void ReversiServer :: start() {
                 }
             }
             //if function get "end"
-            if (check == 1){
+            if (check == FAILURE){
                 close(client1_sd);
                 close(client2_sd);
                 break;
@@ -120,40 +123,32 @@ void ReversiServer :: start() {
 void ReversiServer :: stop() {
     close(serverSocket);
 }
-//function gets 2 strings of clients and a server string and connects and
-//deliver messages between clients through buffer.
+//function gets 2 ints of client sockets that connected to clients.
 //messages are row, col. return 0 to continue game, 1 to end, -1 to try turn again.
-int ReversiServer :: checkValidate(char* socketClient1,
-                                   char* socketClient2, char *buffer) {
+int ReversiServer :: checkValidate(int socketClient1,
+                                   int socketClient2) {
     int rowInput , colInput; //get from one of players and send to other player,
-    char dummy; // the "," between row and col.
-    //taking input form client 1
-    recv(socketClient1, buffer, BUFFER_SIZE, 0);
-    //if player1 see that game is over
-    if (strcmp(buffer, "End") == 0) {
-        return 1;
-    }
-        //if to player1 no moves to play , send message to player1
-    else if (strcmp(buffer, "NoMove") == 0) {
-        //returning the message to player 2
-        send(socketClient2, buffer, BUFFER_SIZE, 0);
-    }
-    //check if enter "x,y" and enter right.
-    //read the current row
+    //taking input form client 1 for row, game end or no move turn.
     int n = read(clientSocket1, &rowInput, sizeof(rowInput));
+    //if player1 see that game is over
     if(n == -1) { //if reading row failed.
         cout << "Error reading row" << endl;
         return -1;
     }
     if(n == 0) { //check if player 1 disconnected
-        cout << "client 1 disconnected";
-        return 1;
+        cout << "client send disconnected" << endl;
+        return FAILURE; //to end game.
     }
-    //read the current ","
-    n = read(clientSocket1, &dummy, sizeof(dummy));
-    if(n == -1) {
-        cout << "Error reading dummy" << endl;
-        return -1;
+    if (rowInput == End) {
+        write(socketClient2, &rowInput, sizeof(rowInput));
+        write(socketClient2, &rowInput, sizeof(rowInput));
+        return FAILURE;
+    }
+    //if to player1 no moves to play , send message to player1
+    else if (rowInput == NoMove) { //returning the message to player 2
+        write(socketClient2, &rowInput, sizeof(rowInput));
+        write(socketClient2, &rowInput, sizeof(rowInput));
+        return SUCCESS;
     }
     //check the current col
     n = read(clientSocket1, &colInput, sizeof(colInput));
@@ -162,10 +157,10 @@ int ReversiServer :: checkValidate(char* socketClient1,
         return -1;
     }
     //send the move to player2
-    n = write(clientSocket2, buffer, sizeof(BUFFER_SIZE));
+    n = write(clientSocket2, &colInput, sizeof(colInput));
     if(n == -1) { //check if message send
         cout << "Error writing to socket" << endl;
         return -1;
     }
-    return 0; //turn success, game continues.
+    return SUCCESS; //turn success, game continues.
 }

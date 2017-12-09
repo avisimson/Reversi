@@ -32,7 +32,7 @@ void NetworkClient :: connectToServer() {
     }
     // Convert the ip string to a network address
     struct in_addr address;
-    if (!inet_aton(serverIP, &address)) { //try to convert and check if fail.
+    if (!inet_aton(ip, &address)) { //try to convert and check if fail.
         throw "Can't parse IP address-client";
     }
     // Get a hostent structure for the given host address
@@ -46,13 +46,72 @@ void NetworkClient :: connectToServer() {
     bzero((char *)&address, sizeof(address));
     serverAddress.sin_family = AF_INET;
     memcpy((char *)&serverAddress.sin_addr.s_addr,
-    (char*)server->h_addr, server->h_length);
+           (char*)server->h_addr, server->h_length);
     // htons converts values between host and network byte orders.
-    serverAddress.sin_port = htons(serverPort);
+    serverAddress.sin_port = htons(port);
     // Establish a connection with the TCP server
     if (connect(clientSocket, (struct sockaddr
     *)&serverAddress, sizeof(serverAddress)) == -1) {//check if client-server
         throw "Error connecting to server";         //connection fail/succeed.
     }
     cout << "Connected to server" << endl;
+    cout << "Waiting for other player to join " << endl;
+}
+//function gets a 2 integers move and deliver it to socket.
+void NetworkClient :: sendMove(int x, int y) {
+    //write the move that player enter
+    int n = write(clientSocket, &x, sizeof(x));
+    if(n == -1) {
+        throw "Error writing " << x << " to socket" << endl;
+    }
+    n = write(clientSocket, &y, sizeof(y));
+    if(n == -1) {
+        throw "Error writing " << y << " to socket" << endl;
+    }
+}
+//function gets information if player is player1 or player2.
+int NetworkClient :: getType() {
+    int n;
+    int num;
+    n = read(clientSocket, &num, sizeof(int));
+    if (n == -1) {
+        throw "Error reading player type from socket";
+    }
+    return num;
+}
+//function gets 2 integers(row and column) from socket.
+//returns: a struct of 2 integers(x is row, y is col).
+struct Info NetworkClient :: getMove() {
+    int n;
+    Info newInfo;
+    n = read(clientSocket, &newInfo.x, sizeof(int));
+    if (n == -1) {
+        throw "Error reading row from socket";
+    }
+    n = read(clientSocket, &newInfo.y, sizeof(int));
+    if (n == -1) {
+        throw "Error reading col from socket";
+    }
+    return newInfo;
+}
+//function sends to socket that client has no moves to play in this stage
+//of the game.
+void NetworkClient :: sendNoMove(){
+    int noMove = NoMove;
+    int n = write(clientSocket, &noMove, sizeof(noMove));
+    if (n == -1) {
+        throw "Error writing noMove to socket" << endl;
+    }
+    n = write(clientSocket, &noMove, sizeof(noMove));
+    if (n == -1) {
+        throw "Error writing noMove to socket2" << endl;
+    }
+}
+//function sends from client to socket a message to end the game.
+void NetworkClient :: sendEnd() {
+    int end = End;
+    int n = write(clientSocket, &end, sizeof(end));
+    if (n == -1) {
+        throw "Error writing End to socket" << endl;
+    }
 }

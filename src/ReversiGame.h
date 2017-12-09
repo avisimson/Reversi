@@ -37,6 +37,7 @@ public:
     void playGameVsRemote();
     bool HumanplayOneTurn(Player* player);
     bool ComputerplayOneTurn(Player* player);
+    bool PlayTurnAgainstRemote(NetworkClient* client, Player* player);
     void scoreGame();
     void checkPossibleMoves(Player* player, Board* board1);
     bool checkUp(Player* player, int i, int j, bool flip, Board* b1);

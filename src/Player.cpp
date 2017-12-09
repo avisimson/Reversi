@@ -33,3 +33,7 @@ void Player :: setNum(int num1) {
 int Player :: getNum() {
     return num;
 }
+//set players name from x to o or from o to x.
+void Player :: setName(char name1) {
+    name = name1;
+}
