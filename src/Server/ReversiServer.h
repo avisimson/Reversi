@@ -15,6 +15,7 @@
 #include <fstream>
 #include <stdio.h>
 #include <cstdlib> //for std::atoi
+using namespace std;
 enum StatusForServer {
     NoMove = -2, End = -3
 };

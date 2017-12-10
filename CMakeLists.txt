@@ -14,10 +14,12 @@ set(SOURCE_FILES src/client/Board.h src/client/Board.cpp src/client/Game.cpp src
         src/client/GameType.h src/client/Player.h src/client/Player.cpp src/client/ReversiGame.cpp
         src/client/ReversiGame.h src/client/NetworkClient.cpp src/client/NetworkClient.h)
 
+set(SERVER_FILES src/Server/ReversiServer.cpp src/Server/ReversiServer.h)
 
 set(TEST_FILES Tests/Board_test.cpp Tests/Board_test.h Tests/Player_test.cpp Tests/Player_test.h
         Tests/ReversiGame_test.cpp Tests/ReversiGame_test.h)
 
+add_executable(game ${SERVER_FILES} src/Server/main.cpp)
 add_executable(game ${SOURCE_FILES} src/client/main.cpp)
 add_executable(tests ${SOURCE_FILES} ${TEST_FILES} Tests/test_main.cpp)
 

@@ -7,8 +7,8 @@
  *      Yakir: 203200530
 */
 #include "ReversiServer.h"
+#include <string.h>
 #define MAX_CLIENTS 2
-#define BUFFER_SIZE 1024
 #define FAILURE 1
 #define SUCCESS 0
 //constructor to server class, gets a port and update port in server.
@@ -19,13 +19,14 @@ ReversiServer :: ReversiServer(int port1) {
     cout << "Server initialized through constructor" << endl;
 }
 //constructor that gets a name of a file and read the port from it.
-ReversiServer ::ReversiServer(string fileName) {
-    clientSocket = 0;
+ReversiServer :: ReversiServer(string filename) {
+    serverSocket = 0;
     string buffer;
     ifstream config;
     config.open(filename.c_str()); //open file of ip and port
     if(!config) {
-        throw "Can't open file, aborting";
+        cout << "Can't open file, aborting";
+        exit(1);
     }
     while(!config.eof()) { //read every line until end of file
         config >> buffer;
@@ -45,12 +46,10 @@ ReversiServer ::ReversiServer(string fileName) {
 void ReversiServer :: start() {
     //sockets for both clients.
     int client1_sd, client2_sd;
-    char buffer[BUFFER_SIZE]; //array of messages between players.
     //clients' variables
     struct sockaddr_in client1Address, client2Address;
     socklen_t client1AddressLen, client2AddressLen;
     //cleaning buffer (put zeros in all buffer array)
-    memset(&buffer[0], 0, sizeof(buffer));
     //Creating the socket
     serverSocket = socket(AF_INET, SOCK_STREAM, 0);
     if (serverSocket == -1) { //opening socket in server failed.
@@ -102,14 +101,15 @@ void ReversiServer :: start() {
         //send client 2 a message that he is player 2.
         write(client1_sd, &num, sizeof(int));
         int count = 0;
+        int check;
         while (true) { //send messages between players until game ends.
             if(count == 0) {
-                int check = checkValidate(client1_sd, client2_sd, buffer);
+                check = checkValidate(client1_sd, client2_sd);
                 if(check != -1) {
                     count++;
                 }
             } else if(count == 1) {
-                int check = checkValidate(client2_sd, client1_sd, buffer);
+                int check = checkValidate(client2_sd, client1_sd);
                 if(check != -1) {
                     count--;
                 }
@@ -129,8 +129,8 @@ void ReversiServer :: stop() {
 }
 //function gets 2 ints of client sockets that connected to clients.
 //messages are row, col. return 0 to continue game, 1 to end, -1 to try turn again.
-int ReversiServer :: checkValidate(int socketClient1,
-                                   int socketClient2) {
+int ReversiServer :: checkValidate(int clientSocket1,
+                                   int clientSocket2) {
     int rowInput , colInput; //get from one of players and send to other player,
     //taking input form client 1 for row, game end or no move turn.
     int n = read(clientSocket1, &rowInput, sizeof(rowInput));
@@ -144,14 +144,14 @@ int ReversiServer :: checkValidate(int socketClient1,
         return FAILURE; //to end game.
     }
     if (rowInput == End) {
-        write(socketClient2, &rowInput, sizeof(rowInput));
-        write(socketClient2, &rowInput, sizeof(rowInput));
+        write(clientSocket2, &rowInput, sizeof(rowInput));
+        write(clientSocket2, &rowInput, sizeof(rowInput));
         return FAILURE;
     }
     //if to player1 no moves to play , send message to player1
     else if (rowInput == NoMove) { //returning the message to player 2
-        write(socketClient2, &rowInput, sizeof(rowInput));
-        write(socketClient2, &rowInput, sizeof(rowInput));
+        write(clientSocket2, &rowInput, sizeof(rowInput));
+        write(clientSocket2, &rowInput, sizeof(rowInput));
         return SUCCESS;
     }
     //check the current col

@@ -3,13 +3,14 @@
 #define FILENAME "info configuration.txt"
 using namespace std;
 int main() {
-    ReversiServer server(FILENAME);
+    ReversiServer* server = new ReversiServer(FILENAME);
     try {
-        server.start();
+        server->start();
     } catch (const char *msg) {
         cout << "cannot start server. Reason: " << msg << endl;
         exit(-1);
     }
-    server.stop();
+    server->stop();
+    delete server;
     return 0;
 }

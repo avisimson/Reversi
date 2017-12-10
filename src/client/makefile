@@ -15,5 +15,5 @@ main.o: main.cpp Game.h
 Player.o: Player.cpp Player.h
 	g++ -c Player.cpp
 
-ReversiGame.o: ReversiGame.cpp ReversiGame.h Board.h Player.h GameType.h
+ReversiGame.o: ReversiGame.cpp ReversiGame.h Board.h Player.h GameType.h NetworkClient.cpp NetworkClient.h
 	g++ -c ReversiGame.cpp
