@@ -430,43 +430,51 @@
 		<Unit filename="/home/avi/CLionProjects/Reversi/lib/googletest-release-1.8.0/googletest/src/gtest_main.cc">
 			<Option target="gtest_main"/>
 		</Unit>
-		<Unit filename="/home/avi/CLionProjects/Reversi/src/Board.cpp">
+		<Unit filename="/home/avi/CLionProjects/Reversi/src/client/Board.cpp">
 			<Option target="tests"/>
 			<Option target="game"/>
 		</Unit>
-		<Unit filename="/home/avi/CLionProjects/Reversi/src/Board.h">
+		<Unit filename="/home/avi/CLionProjects/Reversi/src/client/Board.h">
 			<Option target="tests"/>
 			<Option target="game"/>
 		</Unit>
-		<Unit filename="/home/avi/CLionProjects/Reversi/src/Game.cpp">
+		<Unit filename="/home/avi/CLionProjects/Reversi/src/client/Game.cpp">
 			<Option target="tests"/>
 			<Option target="game"/>
 		</Unit>
-		<Unit filename="/home/avi/CLionProjects/Reversi/src/Game.h">
+		<Unit filename="/home/avi/CLionProjects/Reversi/src/client/Game.h">
 			<Option target="tests"/>
 			<Option target="game"/>
 		</Unit>
-		<Unit filename="/home/avi/CLionProjects/Reversi/src/GameType.h">
+		<Unit filename="/home/avi/CLionProjects/Reversi/src/client/GameType.h">
 			<Option target="tests"/>
 			<Option target="game"/>
 		</Unit>
-		<Unit filename="/home/avi/CLionProjects/Reversi/src/Player.cpp">
+		<Unit filename="/home/avi/CLionProjects/Reversi/src/client/NetworkClient.cpp">
 			<Option target="tests"/>
 			<Option target="game"/>
 		</Unit>
-		<Unit filename="/home/avi/CLionProjects/Reversi/src/Player.h">
+		<Unit filename="/home/avi/CLionProjects/Reversi/src/client/NetworkClient.h">
 			<Option target="tests"/>
 			<Option target="game"/>
 		</Unit>
-		<Unit filename="/home/avi/CLionProjects/Reversi/src/ReversiGame.cpp">
+		<Unit filename="/home/avi/CLionProjects/Reversi/src/client/Player.cpp">
 			<Option target="tests"/>
 			<Option target="game"/>
 		</Unit>
-		<Unit filename="/home/avi/CLionProjects/Reversi/src/ReversiGame.h">
+		<Unit filename="/home/avi/CLionProjects/Reversi/src/client/Player.h">
 			<Option target="tests"/>
 			<Option target="game"/>
 		</Unit>
-		<Unit filename="/home/avi/CLionProjects/Reversi/src/main.cpp">
+		<Unit filename="/home/avi/CLionProjects/Reversi/src/client/ReversiGame.cpp">
+			<Option target="tests"/>
+			<Option target="game"/>
+		</Unit>
+		<Unit filename="/home/avi/CLionProjects/Reversi/src/client/ReversiGame.h">
+			<Option target="tests"/>
+			<Option target="game"/>
+		</Unit>
+		<Unit filename="/home/avi/CLionProjects/Reversi/src/client/main.cpp">
 			<Option target="game"/>
 		</Unit>
 		<Unit filename="/home/avi/CLionProjects/Reversi/CMakeLists.txt">

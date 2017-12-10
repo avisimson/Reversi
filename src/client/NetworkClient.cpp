@@ -6,14 +6,16 @@
  *      Avi id: 205789100
  *      Yakir: 203200530
 */
+#include <string.h>
 #include "NetworkClient.h"
 //constructor initialize clientSocket to 0,
+//
 // and read ip and port of server from file.
-NetworkClient ::NetworkClient(char *filename) {
+NetworkClient :: NetworkClient(string filename) {
     clientSocket = 0;
     string portLine, ipLine;
     ifstream infoAddress;
-    infoAddress.open(fileName, std :: fstream :: in); //open file.
+    infoAddress.open(filename.c_str()); //open file.
     getline(infoAddress, ipLine); //read first line of file-the ip
     getline(infoAddress, portLine); //read second line of file-the port.
     portLine.erase(portLine.begin(), portLine.begin() + strlen("Port = "));
@@ -62,11 +64,11 @@ void NetworkClient :: sendMove(int x, int y) {
     //write the move that player enter
     int n = write(clientSocket, &x, sizeof(x));
     if(n == -1) {
-        throw "Error writing " << x << " to socket" << endl;
+        throw "Error writing row to socket";
     }
     n = write(clientSocket, &y, sizeof(y));
     if(n == -1) {
-        throw "Error writing " << y << " to socket" << endl;
+        throw "Error writing col to socket";
     }
 }
 //function gets information if player is player1 or player2.
@@ -100,11 +102,11 @@ void NetworkClient :: sendNoMove(){
     int noMove = NoMove;
     int n = write(clientSocket, &noMove, sizeof(noMove));
     if (n == -1) {
-        throw "Error writing noMove to socket" << endl;
+        throw "Error writing noMove to socket";
     }
     n = write(clientSocket, &noMove, sizeof(noMove));
     if (n == -1) {
-        throw "Error writing noMove to socket2" << endl;
+        throw "Error writing noMove to socket";
     }
 }
 //function sends from client to socket a message to end the game.
@@ -112,6 +114,10 @@ void NetworkClient :: sendEnd() {
     int end = End;
     int n = write(clientSocket, &end, sizeof(end));
     if (n == -1) {
-        throw "Error writing End to socket" << endl;
+        throw "Error writing End to socket";
+    }
+    n = write(clientSocket, &end, sizeof(end));
+    if (n == -1) {
+        throw "Error writing End to socket";
     }
 }

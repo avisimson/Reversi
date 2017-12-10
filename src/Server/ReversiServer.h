@@ -26,7 +26,7 @@ class ReversiServer {
         int serverSocket; //tells if connection is successfull and why if not.
     public:
         ReversiServer(int port);
-        ReversiServer(char* fileName);
+        ReversiServer(string fileName);
         ~ReversiServer() {};
         void start();
         void stop();

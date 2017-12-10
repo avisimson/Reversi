@@ -19,20 +19,24 @@ ReversiServer :: ReversiServer(int port1) {
     cout << "Server initialized through constructor" << endl;
 }
 //constructor that gets a name of a file and read the port from it.
-ReversiServer ::ReversiServer(char* fileName) {
-    serverSocket = 0;
-    string buffer, dummyLine;
-    ifstream infoAddress;
-    infoAddress.open(fileName, fstream :: in);
-    getline(infoAddress, dummyLine);
-    //dummyLine contains the first line of file.
-    getline(infoAddress, buffer);
-    //erase the "Port = " to get the port itself
-    buffer.erase(buffer.begin(), buffer.begin() + strlen("Port = "));
-    //enter to port the currect value from the file
-    port = atoi(buffer.c_str());
-    //close the file.
-    infoAddress.close();
+ReversiServer ::ReversiServer(string fileName) {
+    clientSocket = 0;
+    string buffer;
+    ifstream config;
+    config.open(filename.c_str()); //open file of ip and port
+    if(!config) {
+        throw "Can't open file, aborting";
+    }
+    while(!config.eof()) { //read every line until end of file
+        config >> buffer;
+        if(buffer == "Port") { // if port line
+            config >> buffer;
+            config >> buffer;
+            port = atoi(buffer.c_str());
+            return ;
+        }
+    }
+    config.close();
     cout << "Server initialized through constructor" << endl;
 }
 //function opens socket in server, connect client to server(throws

@@ -8,12 +8,15 @@
 */
 #include <sys/socket.h>
 #include <netinet/in.h>
+#include <arpa/inet.h>
+#include <netdb.h>
 #include <unistd.h>
 #include <string.h>
 #include <iostream>
 #include <fstream>
 #include <stdio.h>
 #include <cstdlib> //for std::atoi
+using namespace std;
 enum StatusForClient {
     NoMove = -2, End = -3
 };
@@ -28,7 +31,7 @@ class NetworkClient {
         int clientSocket;
         const char* ip;
     public:
-        NetworkClient(char* filename);
+        NetworkClient(string filename);
         ~NetworkClient() { delete ip; }
         void connectToServer();
         void sendMove(int x, int y);
