@@ -190,7 +190,7 @@ int ReversiServer :: checkValidate(int clientSocket1,
     }
     return SUCCESS; //turn success, game continues.
 }
-bool ReversiServer::isClientClosed(int clientSocket1, int ClientSocket2) {
+bool ReversiServer::isClientClosed(int clientSocket1, int clientSocket2) {
     pollfd pfd;
     pfd.fd = clientSocket1;
     pfd.events = POLLIN | POLLHUP | POLLRDNORM;
@@ -198,6 +198,10 @@ bool ReversiServer::isClientClosed(int clientSocket1, int ClientSocket2) {
     if(poll(&pfd, 1, 100) > 0) {
         char buffer[32];
         if(recv(clientSocket1, buffer, sizeof(buffer), MSG_PEEK | MSG_DONTWAIT) == 0) {
+            endGame = true;
+            return true;
+        }
+        if(recv(clientSocket2, buffer, sizeof(buffer), MSG_PEEK | MSG_DONTWAIT) == 0) {
             endGame = true;
             return true;
         }
