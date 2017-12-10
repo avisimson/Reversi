@@ -7,7 +7,7 @@
  *      Yakir: 203200530
 */
 #include "gtest/gtest.h"
-#include "Game.h" //includes inside player.h
+#include "../src/client/Game.h" //includes inside player.h
 #ifndef REVERSI_PLAYER_TEST_H
 #define REVERSI_PLAYER_TEST_H
 

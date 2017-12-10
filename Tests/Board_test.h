@@ -7,7 +7,7 @@
  *      Yakir: 203200530
  */
 #include "gtest/gtest.h"
-#include "Game.h"
+#include "../src/client/Game.h"
 #ifndef REVERSI_BOARD_TEST_H
 #define REVERSI_BOARD_TEST_H
 

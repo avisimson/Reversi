@@ -29,10 +29,10 @@ class NetworkClient {
     private:
         int port;
         int clientSocket;
-        const char* ip;
+        const char* ipServer;
     public:
         NetworkClient(string filename);
-        ~NetworkClient() { delete ip; }
+        ~NetworkClient() { delete ipServer; }
         void connectToServer();
         void sendMove(int x, int y);
         void sendNoMove();

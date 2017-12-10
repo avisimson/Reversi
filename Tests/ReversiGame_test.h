@@ -14,7 +14,7 @@
 #include <iostream>
 #include <stdio.h>
 #include "gtest/gtest.h"
-#include "Game.h" //includes inside ReversiGame.h
+#include "../src/client/Game.h" //includes inside ReversiGame.h
 #ifndef REVERSI_REVERSIGAME_TEST_H
 #define REVERSI_REVERSIGAME_TEST_H
 

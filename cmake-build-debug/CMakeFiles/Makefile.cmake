@@ -58,8 +58,9 @@ set(CMAKE_MAKEFILE_PRODUCTS
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
-  "CMakeFiles/tests.dir/DependInfo.cmake"
-  "CMakeFiles/game.dir/DependInfo.cmake"
+  "CMakeFiles/Reversi.dir/DependInfo.cmake"
+  "CMakeFiles/Tests.dir/DependInfo.cmake"
+  "CMakeFiles/Server.dir/DependInfo.cmake"
   "lib/googletest-release-1.8.0/googlemock/CMakeFiles/gmock_main.dir/DependInfo.cmake"
   "lib/googletest-release-1.8.0/googlemock/CMakeFiles/gmock.dir/DependInfo.cmake"
   "lib/googletest-release-1.8.0/googlemock/gtest/CMakeFiles/gtest_main.dir/DependInfo.cmake"

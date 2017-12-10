@@ -22,8 +22,9 @@ NetworkClient :: NetworkClient(string filename) {
     ipLine.erase(ipLine.begin(), ipLine.begin() + strlen("IP = "));
     //enter to port the currect value from the file
     port = atoi(portLine.c_str());
-    ip = new char[ipLine.size() + 1]; //allocate enough memory in heap to ip.
-    ip = ipLine.c_str();
+    char* c = new char[ipLine.size() + 1]; //allocate enough memory in heap to ip.
+    strcpy(c, ipLine.c_str());
+    ipServer = c;
     infoAddress.close(); //close the file.
 }
 //function connects current client user to the reversi server.
@@ -34,7 +35,7 @@ void NetworkClient :: connectToServer() {
     }
     // Convert the ip string to a network address
     struct in_addr address;
-    if (!inet_aton(ip, &address)) { //try to convert and check if fail.
+    if (!inet_aton(ipServer, &address)) { //try to convert and check if fail.
         throw "Can't parse IP address-client";
     }
     // Get a hostent structure for the given host address
@@ -62,11 +63,11 @@ void NetworkClient :: connectToServer() {
 //function gets a 2 integers move and deliver it to socket.
 void NetworkClient :: sendMove(int x, int y) {
     //write the move that player enter
-    int n = write(clientSocket, &x, sizeof(x));
+    int n = write(clientSocket, &x, sizeof(int));
     if(n == -1) {
         throw "Error writing row to socket";
     }
-    n = write(clientSocket, &y, sizeof(y));
+    n = write(clientSocket, &y, sizeof(int));
     if(n == -1) {
         throw "Error writing col to socket";
     }
@@ -100,11 +101,11 @@ struct Info NetworkClient :: getMove() {
 //of the game.
 void NetworkClient :: sendNoMove(){
     int noMove = NoMove;
-    int n = write(clientSocket, &noMove, sizeof(noMove));
+    int n = write(clientSocket, &noMove, sizeof(int));
     if (n == -1) {
         throw "Error writing noMove to socket";
     }
-    n = write(clientSocket, &noMove, sizeof(noMove));
+    n = write(clientSocket, &noMove, sizeof(int));
     if (n == -1) {
         throw "Error writing noMove to socket";
     }
@@ -112,11 +113,11 @@ void NetworkClient :: sendNoMove(){
 //function sends from client to socket a message to end the game.
 void NetworkClient :: sendEnd() {
     int end = End;
-    int n = write(clientSocket, &end, sizeof(end));
+    int n = write(clientSocket, &end, sizeof(int));
     if (n == -1) {
         throw "Error writing End to socket";
     }
-    n = write(clientSocket, &end, sizeof(end));
+    n = write(clientSocket, &end, sizeof(int));
     if (n == -1) {
         throw "Error writing End to socket";
     }

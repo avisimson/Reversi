@@ -109,7 +109,6 @@ void ReversiGame :: playGame() {
     int currentTurn = 1; //tells who's turn is it player1/player2.
     int cantPlay = 0; //counts if both players cant play to finish game.
     bool b = true;
-    board->printBoard();
     //check if to start a network game of user against remote player.
     if(player1->getType() == HUMAN && player2->getType() == REMOTE) {
         playGameVsRemote(); //playing game against remote until game ends
@@ -117,6 +116,7 @@ void ReversiGame :: playGame() {
         scoreGame();
         return;
     }
+    board->printBoard();
     //game is PC-PC, HUMAN-PC, PC-HUMAN, HUMAN-HUMAN. remote wasn't chosen.
     //check if player1 and player2 initialized as C or H type to play.
     if(player1->getType() != PC && player1->getType() != HUMAN)
@@ -810,8 +810,15 @@ void ReversiGame :: playGameVsRemote() {
     struct Info info;
     int cantPlay = 0, turn = PLAYERONE;
     if(type == 1) { //user is player 1.
+        cout << "You are player 1" << endl;
+        while(true) { //stop doing anything until player 2 arrives.
+            if(client->getType() == PLAYERTWO) {
+                break;
+            }
+        }
+        board->printBoard();
         while(cantPlay < 2 && space > 0) {
-            if(turn == PLAYERONE) { //
+            if(turn == PLAYERONE) { //PLAYER1 TURN
                 if(PlayTurnAgainstRemote(client, player1)) {
                     //played and sent row,col
                     cantPlay = 0;
@@ -840,6 +847,7 @@ void ReversiGame :: playGameVsRemote() {
                     }
                 }
             } else { //turn == PLAYERTWO
+                cout << "Waiting for other players move." << endl;
                 try {
                     //remote play.
                     info = client->getMove();
@@ -870,8 +878,11 @@ void ReversiGame :: playGameVsRemote() {
             }
         }
     } else if(type == 2) { //user is player 2
+        cout << "You are player 2" << endl;
+        board->printBoard();
         while(cantPlay < 2 && space > 0) {
             if(turn == PLAYERONE) {
+                cout << "Waiting for other players move." << endl;
                 try {
                     //remote play.
                     info = client->getMove();
@@ -903,7 +914,7 @@ void ReversiGame :: playGameVsRemote() {
                 if(PlayTurnAgainstRemote(client, player2)) {
                     //played and sent row,col
                     cantPlay = 0;
-                    turn++;
+                    turn--;
                     space--; // one empty place less on board
                 } else { //player didnt have possible moves/sending move failed
                     if(possiblePointstwo[0][0] == -1) { //didnt have moves.
@@ -911,7 +922,7 @@ void ReversiGame :: playGameVsRemote() {
                             try {
                                 client->sendNoMove();
                                 cantPlay++;
-                                turn++;
+                                turn--;
                             } catch(char* msg) {
                                 cout << msg << endl;
                             }
@@ -934,7 +945,7 @@ void ReversiGame :: playGameVsRemote() {
 }
 //function plays one turn against remote
 bool ReversiGame :: PlayTurnAgainstRemote(NetworkClient* client, Player* player) {
-    checkPossibleMoves(player1, board);
+    checkPossibleMoves(player, board);
     string row1, col1; //helper for more simple input.
     int row, col;
     int** possiblePoints;
@@ -953,7 +964,19 @@ bool ReversiGame :: PlayTurnAgainstRemote(NetworkClient* client, Player* player)
     }
     //player has possible points and can play.
     while (i >= space) { //input from user to row and col, until good input
-        cout << "Please enter your move- enter row,col: ";
+        cout << player->getName() << ": it's your move" << endl;
+        cout << "Your possible moves: ";
+        int index = 0;
+        //print possible moves for player.
+        while(possiblePoints[index][0] > -1) {
+            cout << "(" << possiblePoints[index][0] <<
+                 "," << possiblePoints[index][1] << ")";
+            if(possiblePoints[index + 1][0] != -1) {
+                cout << ",";
+            }
+            index++;
+        }
+        cout << "Please enter your move- enter row,col: " << endl;
         cin >> row1 >> col1;
         istringstream buffer(row1);
         buffer >> row;

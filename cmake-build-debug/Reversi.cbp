@@ -17,21 +17,21 @@
 					<DistClean command="/usr/bin/make -j4 -f &quot;/home/avi/CLionProjects/Reversi/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="install">
+			<Target title="install/strip">
 				<Option working_dir="/home/avi/CLionProjects/Reversi/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/avi/CLionProjects/Reversi/cmake-build-debug/Makefile&quot;  VERBOSE=1 install"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/avi/CLionProjects/Reversi/cmake-build-debug/Makefile&quot;  VERBOSE=1 install/strip"/>
 					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/avi/CLionProjects/Reversi/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
 					<Clean command="/usr/bin/make -j4 -f &quot;/home/avi/CLionProjects/Reversi/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 					<DistClean command="/usr/bin/make -j4 -f &quot;/home/avi/CLionProjects/Reversi/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="list_install_components">
+			<Target title="install/local">
 				<Option working_dir="/home/avi/CLionProjects/Reversi/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/avi/CLionProjects/Reversi/cmake-build-debug/Makefile&quot;  VERBOSE=1 list_install_components"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/avi/CLionProjects/Reversi/cmake-build-debug/Makefile&quot;  VERBOSE=1 install/local"/>
 					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/avi/CLionProjects/Reversi/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
 					<Clean command="/usr/bin/make -j4 -f &quot;/home/avi/CLionProjects/Reversi/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 					<DistClean command="/usr/bin/make -j4 -f &quot;/home/avi/CLionProjects/Reversi/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
@@ -57,8 +57,8 @@
 					<DistClean command="/usr/bin/make -j4 -f &quot;/home/avi/CLionProjects/Reversi/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="tests">
-				<Option output="/home/avi/CLionProjects/Reversi/cmake-build-debug/tests" prefix_auto="0" extension_auto="0"/>
+			<Target title="Reversi">
+				<Option output="/home/avi/CLionProjects/Reversi/cmake-build-debug/Reversi" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="/home/avi/CLionProjects/Reversi/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
@@ -78,14 +78,14 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/avi/CLionProjects/Reversi/cmake-build-debug/Makefile&quot;  VERBOSE=1 tests"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/avi/CLionProjects/Reversi/cmake-build-debug/Makefile&quot;  VERBOSE=1 Reversi"/>
 					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/avi/CLionProjects/Reversi/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
 					<Clean command="/usr/bin/make -j4 -f &quot;/home/avi/CLionProjects/Reversi/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 					<DistClean command="/usr/bin/make -j4 -f &quot;/home/avi/CLionProjects/Reversi/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="tests/fast">
-				<Option output="/home/avi/CLionProjects/Reversi/cmake-build-debug/tests" prefix_auto="0" extension_auto="0"/>
+			<Target title="Reversi/fast">
+				<Option output="/home/avi/CLionProjects/Reversi/cmake-build-debug/Reversi" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="/home/avi/CLionProjects/Reversi/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
@@ -105,34 +105,34 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/avi/CLionProjects/Reversi/cmake-build-debug/Makefile&quot;  VERBOSE=1 tests/fast"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/avi/CLionProjects/Reversi/cmake-build-debug/Makefile&quot;  VERBOSE=1 Reversi/fast"/>
 					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/avi/CLionProjects/Reversi/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
 					<Clean command="/usr/bin/make -j4 -f &quot;/home/avi/CLionProjects/Reversi/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 					<DistClean command="/usr/bin/make -j4 -f &quot;/home/avi/CLionProjects/Reversi/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="install/strip">
+			<Target title="install">
 				<Option working_dir="/home/avi/CLionProjects/Reversi/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/avi/CLionProjects/Reversi/cmake-build-debug/Makefile&quot;  VERBOSE=1 install/strip"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/avi/CLionProjects/Reversi/cmake-build-debug/Makefile&quot;  VERBOSE=1 install"/>
 					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/avi/CLionProjects/Reversi/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
 					<Clean command="/usr/bin/make -j4 -f &quot;/home/avi/CLionProjects/Reversi/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 					<DistClean command="/usr/bin/make -j4 -f &quot;/home/avi/CLionProjects/Reversi/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="install/local">
+			<Target title="list_install_components">
 				<Option working_dir="/home/avi/CLionProjects/Reversi/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/avi/CLionProjects/Reversi/cmake-build-debug/Makefile&quot;  VERBOSE=1 install/local"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/avi/CLionProjects/Reversi/cmake-build-debug/Makefile&quot;  VERBOSE=1 list_install_components"/>
 					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/avi/CLionProjects/Reversi/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
 					<Clean command="/usr/bin/make -j4 -f &quot;/home/avi/CLionProjects/Reversi/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 					<DistClean command="/usr/bin/make -j4 -f &quot;/home/avi/CLionProjects/Reversi/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="game">
-				<Option output="/home/avi/CLionProjects/Reversi/cmake-build-debug/game" prefix_auto="0" extension_auto="0"/>
+			<Target title="Tests">
+				<Option output="/home/avi/CLionProjects/Reversi/cmake-build-debug/Tests" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="/home/avi/CLionProjects/Reversi/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
@@ -152,14 +152,14 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/avi/CLionProjects/Reversi/cmake-build-debug/Makefile&quot;  VERBOSE=1 game"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/avi/CLionProjects/Reversi/cmake-build-debug/Makefile&quot;  VERBOSE=1 Tests"/>
 					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/avi/CLionProjects/Reversi/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
 					<Clean command="/usr/bin/make -j4 -f &quot;/home/avi/CLionProjects/Reversi/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 					<DistClean command="/usr/bin/make -j4 -f &quot;/home/avi/CLionProjects/Reversi/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="game/fast">
-				<Option output="/home/avi/CLionProjects/Reversi/cmake-build-debug/game" prefix_auto="0" extension_auto="0"/>
+			<Target title="Tests/fast">
+				<Option output="/home/avi/CLionProjects/Reversi/cmake-build-debug/Tests" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="/home/avi/CLionProjects/Reversi/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
@@ -179,7 +179,61 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/avi/CLionProjects/Reversi/cmake-build-debug/Makefile&quot;  VERBOSE=1 game/fast"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/avi/CLionProjects/Reversi/cmake-build-debug/Makefile&quot;  VERBOSE=1 Tests/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/avi/CLionProjects/Reversi/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/avi/CLionProjects/Reversi/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/avi/CLionProjects/Reversi/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Server">
+				<Option output="/home/avi/CLionProjects/Reversi/cmake-build-debug/Server" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/avi/CLionProjects/Reversi/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/avi/CLionProjects/Reversi/src"/>
+					<Add directory="/home/avi/CLionProjects/Reversi/lib/googletest-release-1.8.0/googletest/include"/>
+					<Add directory="/home/avi/CLionProjects/Reversi/lib/googletest-release-1.8.0/googlemock/include"/>
+					<Add directory="/home/avi/CLionProjects/Reversi/lib/googletest-release-1.8.0/googletest"/>
+					<Add directory="/usr/include/c++/5"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
+					<Add directory="/usr/include/c++/5/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/avi/CLionProjects/Reversi/cmake-build-debug/Makefile&quot;  VERBOSE=1 Server"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/avi/CLionProjects/Reversi/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/avi/CLionProjects/Reversi/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/avi/CLionProjects/Reversi/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Server/fast">
+				<Option output="/home/avi/CLionProjects/Reversi/cmake-build-debug/Server" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/avi/CLionProjects/Reversi/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/avi/CLionProjects/Reversi/src"/>
+					<Add directory="/home/avi/CLionProjects/Reversi/lib/googletest-release-1.8.0/googletest/include"/>
+					<Add directory="/home/avi/CLionProjects/Reversi/lib/googletest-release-1.8.0/googlemock/include"/>
+					<Add directory="/home/avi/CLionProjects/Reversi/lib/googletest-release-1.8.0/googletest"/>
+					<Add directory="/usr/include/c++/5"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
+					<Add directory="/usr/include/c++/5/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/avi/CLionProjects/Reversi/cmake-build-debug/Makefile&quot;  VERBOSE=1 Server/fast"/>
 					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/avi/CLionProjects/Reversi/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
 					<Clean command="/usr/bin/make -j4 -f &quot;/home/avi/CLionProjects/Reversi/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 					<DistClean command="/usr/bin/make -j4 -f &quot;/home/avi/CLionProjects/Reversi/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
@@ -395,25 +449,25 @@
 			</Target>
 		</Build>
 		<Unit filename="/home/avi/CLionProjects/Reversi/Tests/Board_test.cpp">
-			<Option target="tests"/>
+			<Option target="Tests"/>
 		</Unit>
 		<Unit filename="/home/avi/CLionProjects/Reversi/Tests/Board_test.h">
-			<Option target="tests"/>
+			<Option target="Tests"/>
 		</Unit>
 		<Unit filename="/home/avi/CLionProjects/Reversi/Tests/Player_test.cpp">
-			<Option target="tests"/>
+			<Option target="Tests"/>
 		</Unit>
 		<Unit filename="/home/avi/CLionProjects/Reversi/Tests/Player_test.h">
-			<Option target="tests"/>
+			<Option target="Tests"/>
 		</Unit>
 		<Unit filename="/home/avi/CLionProjects/Reversi/Tests/ReversiGame_test.cpp">
-			<Option target="tests"/>
+			<Option target="Tests"/>
 		</Unit>
 		<Unit filename="/home/avi/CLionProjects/Reversi/Tests/ReversiGame_test.h">
-			<Option target="tests"/>
+			<Option target="Tests"/>
 		</Unit>
 		<Unit filename="/home/avi/CLionProjects/Reversi/Tests/test_main.cpp">
-			<Option target="tests"/>
+			<Option target="Tests"/>
 		</Unit>
 		<Unit filename="/home/avi/CLionProjects/Reversi/lib/googletest-release-1.8.0/googlemock/src/gmock-all.cc">
 			<Option target="gmock_main"/>
@@ -430,52 +484,62 @@
 		<Unit filename="/home/avi/CLionProjects/Reversi/lib/googletest-release-1.8.0/googletest/src/gtest_main.cc">
 			<Option target="gtest_main"/>
 		</Unit>
+		<Unit filename="/home/avi/CLionProjects/Reversi/src/Server/ReversiServer.cpp">
+			<Option target="Server"/>
+		</Unit>
+		<Unit filename="/home/avi/CLionProjects/Reversi/src/Server/ReversiServer.h">
+			<Option target="Server"/>
+		</Unit>
+		<Unit filename="/home/avi/CLionProjects/Reversi/src/Server/main.cpp">
+			<Option target="Server"/>
+		</Unit>
 		<Unit filename="/home/avi/CLionProjects/Reversi/src/client/Board.cpp">
-			<Option target="tests"/>
-			<Option target="game"/>
+			<Option target="Reversi"/>
+			<Option target="Tests"/>
 		</Unit>
 		<Unit filename="/home/avi/CLionProjects/Reversi/src/client/Board.h">
-			<Option target="tests"/>
-			<Option target="game"/>
+			<Option target="Reversi"/>
+			<Option target="Tests"/>
 		</Unit>
 		<Unit filename="/home/avi/CLionProjects/Reversi/src/client/Game.cpp">
-			<Option target="tests"/>
-			<Option target="game"/>
+			<Option target="Reversi"/>
+			<Option target="Tests"/>
 		</Unit>
 		<Unit filename="/home/avi/CLionProjects/Reversi/src/client/Game.h">
-			<Option target="tests"/>
-			<Option target="game"/>
+			<Option target="Reversi"/>
+			<Option target="Tests"/>
 		</Unit>
 		<Unit filename="/home/avi/CLionProjects/Reversi/src/client/GameType.h">
-			<Option target="tests"/>
-			<Option target="game"/>
+			<Option target="Reversi"/>
+			<Option target="Tests"/>
 		</Unit>
 		<Unit filename="/home/avi/CLionProjects/Reversi/src/client/NetworkClient.cpp">
-			<Option target="tests"/>
-			<Option target="game"/>
+			<Option target="Reversi"/>
+			<Option target="Tests"/>
 		</Unit>
 		<Unit filename="/home/avi/CLionProjects/Reversi/src/client/NetworkClient.h">
-			<Option target="tests"/>
-			<Option target="game"/>
+			<Option target="Reversi"/>
+			<Option target="Tests"/>
 		</Unit>
 		<Unit filename="/home/avi/CLionProjects/Reversi/src/client/Player.cpp">
-			<Option target="tests"/>
-			<Option target="game"/>
+			<Option target="Reversi"/>
+			<Option target="Tests"/>
 		</Unit>
 		<Unit filename="/home/avi/CLionProjects/Reversi/src/client/Player.h">
-			<Option target="tests"/>
-			<Option target="game"/>
+			<Option target="Reversi"/>
+			<Option target="Tests"/>
 		</Unit>
 		<Unit filename="/home/avi/CLionProjects/Reversi/src/client/ReversiGame.cpp">
-			<Option target="tests"/>
-			<Option target="game"/>
+			<Option target="Reversi"/>
+			<Option target="Tests"/>
 		</Unit>
 		<Unit filename="/home/avi/CLionProjects/Reversi/src/client/ReversiGame.h">
-			<Option target="tests"/>
-			<Option target="game"/>
+			<Option target="Reversi"/>
+			<Option target="Tests"/>
 		</Unit>
 		<Unit filename="/home/avi/CLionProjects/Reversi/src/client/main.cpp">
-			<Option target="game"/>
+			<Option target="Reversi"/>
+			<Option target="Tests"/>
 		</Unit>
 		<Unit filename="/home/avi/CLionProjects/Reversi/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>

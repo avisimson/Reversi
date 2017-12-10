@@ -1,9 +1,10 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/Reversi.dir/main.cpp.o"
-  "CMakeFiles/Reversi.dir/Board.cpp.o"
-  "CMakeFiles/Reversi.dir/Game.cpp.o"
-  "CMakeFiles/Reversi.dir/Player.cpp.o"
-  "CMakeFiles/Reversi.dir/ReversiGame.cpp.o"
+  "CMakeFiles/Reversi.dir/src/client/Board.cpp.o"
+  "CMakeFiles/Reversi.dir/src/client/Game.cpp.o"
+  "CMakeFiles/Reversi.dir/src/client/Player.cpp.o"
+  "CMakeFiles/Reversi.dir/src/client/ReversiGame.cpp.o"
+  "CMakeFiles/Reversi.dir/src/client/NetworkClient.cpp.o"
+  "CMakeFiles/Reversi.dir/src/client/main.cpp.o"
   "Reversi.pdb"
   "Reversi"
 )

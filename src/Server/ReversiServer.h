@@ -25,6 +25,7 @@ class ReversiServer {
     private:
         int port; //number in server we connect to.
         int serverSocket; //tells if connection is successfull and why if not.
+        bool endGame;
     public:
         ReversiServer(int port);
         ReversiServer(string fileName);
@@ -32,6 +33,7 @@ class ReversiServer {
         void start();
         void stop();
         int checkValidate(int socketClient1, int socketClient2);
+        bool isClientClosed(int clientSocket1, int ClientSocket2);
 };
 #define SERVER_REVERSISERVER_H
 
