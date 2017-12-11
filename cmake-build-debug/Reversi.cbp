@@ -539,7 +539,6 @@
 		</Unit>
 		<Unit filename="/home/avi/CLionProjects/Reversi/src/client/main.cpp">
 			<Option target="Reversi"/>
-			<Option target="Tests"/>
 		</Unit>
 		<Unit filename="/home/avi/CLionProjects/Reversi/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>

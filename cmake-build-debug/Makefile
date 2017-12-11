@@ -566,7 +566,6 @@ src/client/main.o: src/client/main.cpp.o
 # target to build an object file
 src/client/main.cpp.o:
 	$(MAKE) -f CMakeFiles/Reversi.dir/build.make CMakeFiles/Reversi.dir/src/client/main.cpp.o
-	$(MAKE) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/src/client/main.cpp.o
 .PHONY : src/client/main.cpp.o
 
 src/client/main.i: src/client/main.cpp.i
@@ -576,7 +575,6 @@ src/client/main.i: src/client/main.cpp.i
 # target to preprocess a source file
 src/client/main.cpp.i:
 	$(MAKE) -f CMakeFiles/Reversi.dir/build.make CMakeFiles/Reversi.dir/src/client/main.cpp.i
-	$(MAKE) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/src/client/main.cpp.i
 .PHONY : src/client/main.cpp.i
 
 src/client/main.s: src/client/main.cpp.s
@@ -586,7 +584,6 @@ src/client/main.s: src/client/main.cpp.s
 # target to generate assembly for a file
 src/client/main.cpp.s:
 	$(MAKE) -f CMakeFiles/Reversi.dir/build.make CMakeFiles/Reversi.dir/src/client/main.cpp.s
-	$(MAKE) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/src/client/main.cpp.s
 .PHONY : src/client/main.cpp.s
 
 # Help Target

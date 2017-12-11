@@ -1,7 +1,7 @@
 #AviSimson205789100
 #YakirPinchas203200530
-a.out: Board.o main.o Game.o Player.o ReversiGame.o
-	g++ main.o Board.o Game.o Player.o ReversiGame.o
+a.out: Board.o main.o Game.o Player.o ReversiGame.o NetworkClient.o
+	g++ main.o Board.o Game.o Player.o ReversiGame.o NetworkClient.o
 
 Board.o: Board.cpp Board.h
 	g++ -c Board.cpp
@@ -15,5 +15,8 @@ main.o: main.cpp Game.h
 Player.o: Player.cpp Player.h
 	g++ -c Player.cpp
 
-ReversiGame.o: ReversiGame.cpp ReversiGame.h Board.h Player.h GameType.h NetworkClient.cpp NetworkClient.h
+ReversiGame.o: ReversiGame.cpp ReversiGame.h Board.h Player.h GameType.h NetworkClient.h
 	g++ -c ReversiGame.cpp
+
+NetworkClient.o: NetworkClient.cpp NetworkClient.h
+	g++ -c NetworkClient.cpp

@@ -88,6 +88,7 @@ struct Info NetworkClient :: getMove() {
     int n;
     Info newInfo;
     n = read(clientSocket, &newInfo.x, sizeof(int));
+    cout << newInfo.x << endl;
     if (n == -1) {
         throw "Error reading row from socket";
     }
@@ -101,6 +102,7 @@ struct Info NetworkClient :: getMove() {
 //of the game.
 void NetworkClient :: sendNoMove(){
     int noMove = NoMove;
+    cout <<"sent" << endl;
     int n = write(clientSocket, &noMove, sizeof(int));
     if (n == -1) {
         throw "Error writing noMove to socket";

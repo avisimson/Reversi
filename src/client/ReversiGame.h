@@ -31,7 +31,7 @@ private:
     int** possiblePointsone; //possible moves for player1.
     int** possiblePointstwo; //possible moves for player2.
 public:
-    ReversiGame(char p1, char p2, char p1Type);
+    ReversiGame(char p1, char p2, char p1Type, int sizeOfBoard);
     ~ReversiGame();
     void playGame();
     void playGameVsRemote();
