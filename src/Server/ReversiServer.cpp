@@ -162,13 +162,13 @@ int ReversiServer :: checkValidate(int clientSocket1,
     }
     if (rowInput == End) {
         write(clientSocket2, &rowInput, sizeof(int));
-        write(clientSocket2, &rowInput, sizeof(int));
+        write(clientSocket2, &colInput, sizeof(int));
         return FAILURE;
     }
     //if to player1 no moves to play , send message to player1
     else if (rowInput == NoMove) { //returning the message to player 2
         write(clientSocket2, &rowInput, sizeof(int));
-        write(clientSocket2, &rowInput, sizeof(int));
+        write(clientSocket2, &colInput, sizeof(int));
         return SUCCESS;
     }
     //check the current col

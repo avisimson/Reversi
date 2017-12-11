@@ -18,7 +18,7 @@
 #include <cstdlib> //for std::atoi
 using namespace std;
 enum StatusForClient {
-    NoMove = -2, End = -3
+    NoMove = 100, End = 101
 };
 typedef struct Info {
     int x;

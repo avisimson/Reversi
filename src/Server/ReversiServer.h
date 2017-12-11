@@ -17,7 +17,7 @@
 #include <cstdlib> //for std::atoi
 using namespace std;
 enum StatusForServer {
-    NoMove = -2, End = -3
+    NoMove = 100, End = 101
 };
 #ifndef SERVER_REVERSISERVER_H
 //class is a server between 2 remote players in ReversiGame in Reversi Project.
