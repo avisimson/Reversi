@@ -13,7 +13,7 @@ public:
     virtual void notInitializedTypes(char c) = 0; //print wrong types for players.
     virtual void noPossibleMoves(char c) = 0; //print no possible moves.
     virtual void printItsYourMove(char c) = 0; // print its your moves.
-    virtual void printRowCol(char row, char col) = 0; //print row col.
+    virtual void printRowCol(int row, int col) = 0; //print row col.
     virtual void printPsik() = 0; //print psik.
     virtual void printLineDrop() = 0; //get one line down.
     virtual void printEnterMove() = 0; //print enter move.

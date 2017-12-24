@@ -38,7 +38,7 @@ void ConsoleDisplay :: printItsYourMove(char c) {
     cout << "Your possible moves: ";
 }
 //print row col.
-void ConsoleDisplay :: printRowCol(char row, char col) {
+void ConsoleDisplay :: printRowCol(int row, int col) {
     cout << "(" << row << "," << col << ")";
 }
 void ConsoleDisplay :: printPsik() {
@@ -65,7 +65,7 @@ void ConsoleDisplay :: printPlayerPlayedRowCol(char c, int row, int col) {
 void ConsoleDisplay :: printBoard(Board* board) {
     int j;
     for (int i = 0; i <= board->getSize(); i++) {
-        for (j = 0; j < board->getSize(); j++) {
+        for (j = 0; j <= board->getSize(); j++) {
             cout << board->getBoard()[i][j];
             if(j == 0) {
                 cout << "| ";
@@ -85,11 +85,11 @@ void ConsoleDisplay :: printNoOption() {
     cout << "Wrong input, try again" << endl;
 }
 //computer cant play print.
-void ConsoleDisplay ::printComCantPlay(char c) {
+void ConsoleDisplay :: printComCantPlay(char c) {
     cout << c << " coudn't play the move" << endl;
 }
 //print score of game.
-void printScore(char name1, char name2, int score1, int score2) {
+void ConsoleDisplay :: printScore(char name1, char name2, int score1, int score2) {
     cout << name1 << ": Your score is " << score1 << endl;
     cout << name2 << ": Your score is " << score2 << endl;
     if(score1 > score2) {

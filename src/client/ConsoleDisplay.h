@@ -18,7 +18,7 @@ public:
     void notInitializedTypes(char c);
     void noPossibleMoves(char c);
     void printItsYourMove(char c);
-    void printRowCol(char row, char col);
+    void printRowCol(int row, int col);
     void printPsik();
     void printLineDrop();
     void printEnterMove();
