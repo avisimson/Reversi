@@ -439,6 +439,36 @@ src/client/Board.cpp.s:
 	$(MAKE) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/src/client/Board.cpp.s
 .PHONY : src/client/Board.cpp.s
 
+src/client/ConsoleDisplay.o: src/client/ConsoleDisplay.cpp.o
+
+.PHONY : src/client/ConsoleDisplay.o
+
+# target to build an object file
+src/client/ConsoleDisplay.cpp.o:
+	$(MAKE) -f CMakeFiles/Reversi.dir/build.make CMakeFiles/Reversi.dir/src/client/ConsoleDisplay.cpp.o
+	$(MAKE) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/src/client/ConsoleDisplay.cpp.o
+.PHONY : src/client/ConsoleDisplay.cpp.o
+
+src/client/ConsoleDisplay.i: src/client/ConsoleDisplay.cpp.i
+
+.PHONY : src/client/ConsoleDisplay.i
+
+# target to preprocess a source file
+src/client/ConsoleDisplay.cpp.i:
+	$(MAKE) -f CMakeFiles/Reversi.dir/build.make CMakeFiles/Reversi.dir/src/client/ConsoleDisplay.cpp.i
+	$(MAKE) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/src/client/ConsoleDisplay.cpp.i
+.PHONY : src/client/ConsoleDisplay.cpp.i
+
+src/client/ConsoleDisplay.s: src/client/ConsoleDisplay.cpp.s
+
+.PHONY : src/client/ConsoleDisplay.s
+
+# target to generate assembly for a file
+src/client/ConsoleDisplay.cpp.s:
+	$(MAKE) -f CMakeFiles/Reversi.dir/build.make CMakeFiles/Reversi.dir/src/client/ConsoleDisplay.cpp.s
+	$(MAKE) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/src/client/ConsoleDisplay.cpp.s
+.PHONY : src/client/ConsoleDisplay.cpp.s
+
 src/client/Game.o: src/client/Game.cpp.o
 
 .PHONY : src/client/Game.o
@@ -626,6 +656,9 @@ help:
 	@echo "... src/client/Board.o"
 	@echo "... src/client/Board.i"
 	@echo "... src/client/Board.s"
+	@echo "... src/client/ConsoleDisplay.o"
+	@echo "... src/client/ConsoleDisplay.i"
+	@echo "... src/client/ConsoleDisplay.s"
 	@echo "... src/client/Game.o"
 	@echo "... src/client/Game.i"
 	@echo "... src/client/Game.s"

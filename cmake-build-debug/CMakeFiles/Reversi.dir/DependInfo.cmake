@@ -5,6 +5,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/avi/CLionProjects/Reversi/src/client/Board.cpp" "/home/avi/CLionProjects/Reversi/cmake-build-debug/CMakeFiles/Reversi.dir/src/client/Board.cpp.o"
+  "/home/avi/CLionProjects/Reversi/src/client/ConsoleDisplay.cpp" "/home/avi/CLionProjects/Reversi/cmake-build-debug/CMakeFiles/Reversi.dir/src/client/ConsoleDisplay.cpp.o"
   "/home/avi/CLionProjects/Reversi/src/client/Game.cpp" "/home/avi/CLionProjects/Reversi/cmake-build-debug/CMakeFiles/Reversi.dir/src/client/Game.cpp.o"
   "/home/avi/CLionProjects/Reversi/src/client/NetworkClient.cpp" "/home/avi/CLionProjects/Reversi/cmake-build-debug/CMakeFiles/Reversi.dir/src/client/NetworkClient.cpp.o"
   "/home/avi/CLionProjects/Reversi/src/client/Player.cpp" "/home/avi/CLionProjects/Reversi/cmake-build-debug/CMakeFiles/Reversi.dir/src/client/Player.cpp.o"

@@ -4,7 +4,18 @@
 CMakeFiles/Reversi.dir/src/client/Board.cpp.o: ../src/client/Board.cpp
 CMakeFiles/Reversi.dir/src/client/Board.cpp.o: ../src/client/Board.h
 
+CMakeFiles/Reversi.dir/src/client/ConsoleDisplay.cpp.o: ../src/client/Board.h
+CMakeFiles/Reversi.dir/src/client/ConsoleDisplay.cpp.o: ../src/client/ConsoleDisplay.cpp
+CMakeFiles/Reversi.dir/src/client/ConsoleDisplay.cpp.o: ../src/client/ConsoleDisplay.h
+CMakeFiles/Reversi.dir/src/client/ConsoleDisplay.cpp.o: ../src/client/Display.h
+CMakeFiles/Reversi.dir/src/client/ConsoleDisplay.cpp.o: ../src/client/GameType.h
+CMakeFiles/Reversi.dir/src/client/ConsoleDisplay.cpp.o: ../src/client/NetworkClient.h
+CMakeFiles/Reversi.dir/src/client/ConsoleDisplay.cpp.o: ../src/client/Player.h
+CMakeFiles/Reversi.dir/src/client/ConsoleDisplay.cpp.o: ../src/client/ReversiGame.h
+
 CMakeFiles/Reversi.dir/src/client/Game.cpp.o: ../src/client/Board.h
+CMakeFiles/Reversi.dir/src/client/Game.cpp.o: ../src/client/ConsoleDisplay.h
+CMakeFiles/Reversi.dir/src/client/Game.cpp.o: ../src/client/Display.h
 CMakeFiles/Reversi.dir/src/client/Game.cpp.o: ../src/client/Game.cpp
 CMakeFiles/Reversi.dir/src/client/Game.cpp.o: ../src/client/Game.h
 CMakeFiles/Reversi.dir/src/client/Game.cpp.o: ../src/client/GameType.h
@@ -12,6 +23,8 @@ CMakeFiles/Reversi.dir/src/client/Game.cpp.o: ../src/client/NetworkClient.h
 CMakeFiles/Reversi.dir/src/client/Game.cpp.o: ../src/client/Player.h
 CMakeFiles/Reversi.dir/src/client/Game.cpp.o: ../src/client/ReversiGame.h
 
+CMakeFiles/Reversi.dir/src/client/NetworkClient.cpp.o: ../src/client/Board.h
+CMakeFiles/Reversi.dir/src/client/NetworkClient.cpp.o: ../src/client/Display.h
 CMakeFiles/Reversi.dir/src/client/NetworkClient.cpp.o: ../src/client/NetworkClient.cpp
 CMakeFiles/Reversi.dir/src/client/NetworkClient.cpp.o: ../src/client/NetworkClient.h
 
@@ -19,6 +32,8 @@ CMakeFiles/Reversi.dir/src/client/Player.cpp.o: ../src/client/Player.cpp
 CMakeFiles/Reversi.dir/src/client/Player.cpp.o: ../src/client/Player.h
 
 CMakeFiles/Reversi.dir/src/client/ReversiGame.cpp.o: ../src/client/Board.h
+CMakeFiles/Reversi.dir/src/client/ReversiGame.cpp.o: ../src/client/ConsoleDisplay.h
+CMakeFiles/Reversi.dir/src/client/ReversiGame.cpp.o: ../src/client/Display.h
 CMakeFiles/Reversi.dir/src/client/ReversiGame.cpp.o: ../src/client/GameType.h
 CMakeFiles/Reversi.dir/src/client/ReversiGame.cpp.o: ../src/client/NetworkClient.h
 CMakeFiles/Reversi.dir/src/client/ReversiGame.cpp.o: ../src/client/Player.h
@@ -26,6 +41,8 @@ CMakeFiles/Reversi.dir/src/client/ReversiGame.cpp.o: ../src/client/ReversiGame.c
 CMakeFiles/Reversi.dir/src/client/ReversiGame.cpp.o: ../src/client/ReversiGame.h
 
 CMakeFiles/Reversi.dir/src/client/main.cpp.o: ../src/client/Board.h
+CMakeFiles/Reversi.dir/src/client/main.cpp.o: ../src/client/ConsoleDisplay.h
+CMakeFiles/Reversi.dir/src/client/main.cpp.o: ../src/client/Display.h
 CMakeFiles/Reversi.dir/src/client/main.cpp.o: ../src/client/Game.h
 CMakeFiles/Reversi.dir/src/client/main.cpp.o: ../src/client/GameType.h
 CMakeFiles/Reversi.dir/src/client/main.cpp.o: ../src/client/NetworkClient.h

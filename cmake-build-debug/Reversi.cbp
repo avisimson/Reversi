@@ -501,6 +501,18 @@
 			<Option target="Reversi"/>
 			<Option target="Tests"/>
 		</Unit>
+		<Unit filename="/home/avi/CLionProjects/Reversi/src/client/ConsoleDisplay.cpp">
+			<Option target="Reversi"/>
+			<Option target="Tests"/>
+		</Unit>
+		<Unit filename="/home/avi/CLionProjects/Reversi/src/client/ConsoleDisplay.h">
+			<Option target="Reversi"/>
+			<Option target="Tests"/>
+		</Unit>
+		<Unit filename="/home/avi/CLionProjects/Reversi/src/client/Display.h">
+			<Option target="Reversi"/>
+			<Option target="Tests"/>
+		</Unit>
 		<Unit filename="/home/avi/CLionProjects/Reversi/src/client/Game.cpp">
 			<Option target="Reversi"/>
 			<Option target="Tests"/>

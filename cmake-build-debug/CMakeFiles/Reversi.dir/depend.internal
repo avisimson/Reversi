@@ -4,8 +4,19 @@
 CMakeFiles/Reversi.dir/src/client/Board.cpp.o
  /home/avi/CLionProjects/Reversi/src/client/Board.cpp
  /home/avi/CLionProjects/Reversi/src/client/Board.h
+CMakeFiles/Reversi.dir/src/client/ConsoleDisplay.cpp.o
+ /home/avi/CLionProjects/Reversi/src/client/Board.h
+ /home/avi/CLionProjects/Reversi/src/client/ConsoleDisplay.cpp
+ /home/avi/CLionProjects/Reversi/src/client/ConsoleDisplay.h
+ /home/avi/CLionProjects/Reversi/src/client/Display.h
+ /home/avi/CLionProjects/Reversi/src/client/GameType.h
+ /home/avi/CLionProjects/Reversi/src/client/NetworkClient.h
+ /home/avi/CLionProjects/Reversi/src/client/Player.h
+ /home/avi/CLionProjects/Reversi/src/client/ReversiGame.h
 CMakeFiles/Reversi.dir/src/client/Game.cpp.o
  /home/avi/CLionProjects/Reversi/src/client/Board.h
+ /home/avi/CLionProjects/Reversi/src/client/ConsoleDisplay.h
+ /home/avi/CLionProjects/Reversi/src/client/Display.h
  /home/avi/CLionProjects/Reversi/src/client/Game.cpp
  /home/avi/CLionProjects/Reversi/src/client/Game.h
  /home/avi/CLionProjects/Reversi/src/client/GameType.h
@@ -13,6 +24,8 @@ CMakeFiles/Reversi.dir/src/client/Game.cpp.o
  /home/avi/CLionProjects/Reversi/src/client/Player.h
  /home/avi/CLionProjects/Reversi/src/client/ReversiGame.h
 CMakeFiles/Reversi.dir/src/client/NetworkClient.cpp.o
+ /home/avi/CLionProjects/Reversi/src/client/Board.h
+ /home/avi/CLionProjects/Reversi/src/client/Display.h
  /home/avi/CLionProjects/Reversi/src/client/NetworkClient.cpp
  /home/avi/CLionProjects/Reversi/src/client/NetworkClient.h
 CMakeFiles/Reversi.dir/src/client/Player.cpp.o
@@ -20,6 +33,8 @@ CMakeFiles/Reversi.dir/src/client/Player.cpp.o
  /home/avi/CLionProjects/Reversi/src/client/Player.h
 CMakeFiles/Reversi.dir/src/client/ReversiGame.cpp.o
  /home/avi/CLionProjects/Reversi/src/client/Board.h
+ /home/avi/CLionProjects/Reversi/src/client/ConsoleDisplay.h
+ /home/avi/CLionProjects/Reversi/src/client/Display.h
  /home/avi/CLionProjects/Reversi/src/client/GameType.h
  /home/avi/CLionProjects/Reversi/src/client/NetworkClient.h
  /home/avi/CLionProjects/Reversi/src/client/Player.h
@@ -27,6 +42,8 @@ CMakeFiles/Reversi.dir/src/client/ReversiGame.cpp.o
  /home/avi/CLionProjects/Reversi/src/client/ReversiGame.h
 CMakeFiles/Reversi.dir/src/client/main.cpp.o
  /home/avi/CLionProjects/Reversi/src/client/Board.h
+ /home/avi/CLionProjects/Reversi/src/client/ConsoleDisplay.h
+ /home/avi/CLionProjects/Reversi/src/client/Display.h
  /home/avi/CLionProjects/Reversi/src/client/Game.h
  /home/avi/CLionProjects/Reversi/src/client/GameType.h
  /home/avi/CLionProjects/Reversi/src/client/NetworkClient.h
