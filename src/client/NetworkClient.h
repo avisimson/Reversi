@@ -16,6 +16,7 @@
 #include <fstream>
 #include <stdio.h>
 #include <cstdlib> //for std::atoi
+#include "Display.h"
 using namespace std;
 enum StatusForClient {
     NoMove = 100, End = 101
@@ -33,7 +34,7 @@ class NetworkClient {
     public:
         NetworkClient(string filename);
         ~NetworkClient() { delete ipServer; }
-        void connectToServer();
+        void connectToServer(Display* display);
         void sendMove(int x, int y);
         void sendNoMove();
         void sendEnd();

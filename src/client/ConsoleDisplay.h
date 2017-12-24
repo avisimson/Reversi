@@ -1,8 +1,38 @@
-//
-// Created by avi on 12/24/17.
-//
-
 #ifndef REVERSI_CONSOLEDISPLAY_H
 #define REVERSI_CONSOLEDISPLAY_H
 
-#endif //REVERSI_CONSOLEDISPLAY_H
+
+#include "Board.h"
+#include "Display.h"
+
+/**
+ * This class is used to print on the console.
+ */
+class ConsoleDisplay : public Display {
+public:
+    ConsoleDisplay() {};
+    ~ConsoleDisplay() {};
+    void playerTypeWrong(int num);
+    void initialMenu();
+    void printClientMenu();
+    void notInitializedTypes(char c);
+    void noPossibleMoves(char c);
+    void printItsYourMove(char c);
+    void printRowCol(char row, char col);
+    void printPsik();
+    void printLineDrop();
+    void printEnterMove();
+    void printWrongInput();
+    void printPlayerPlayedRowCol(char c, int row, int col);
+    void printBoard(Board* board);
+    void printNoOption();
+    void printComCantPlay(char c);
+    void printScore(char name1, char name2, int score1, int score2);
+    void printFailToConnect(const char msg);
+    void printYouArePlayer(int num);
+    void printWaiting();
+    void printRemoteCantPlay();
+    void PrintWaitForRemoteToJoin();
+};
+
+#endif //EX3WITHTESTS_CONSOLEDISPLAY_H

@@ -68,25 +68,6 @@ Board :: ~Board() {
     }
     delete board;
 }
-// function prints board on output screen.
-void Board :: printBoard() {
-    int j;
-    for (int i = 0; i < size; i++) {
-        for (j = 0; j < size; j++) {
-            cout << board[i][j];
-            if(j == 0) {
-                cout << "| ";
-                continue;
-            }
-            cout << " | ";
-        }
-        cout << "" <<endl;
-        for (j = 0; j < size; j++) {
-            cout << "----";
-        }
-        cout << "" << endl;
-    }
-}
 //function returns the matrix size without the numbers row and column.
 int Board :: getSize() {
     return size - 1;

@@ -9,10 +9,6 @@
 #include <iostream>
 #include <sstream>
 #include "ReversiGame.h"
-#define HUMAN 'H'
-#define PC 'C'
-#define QUIT 'Q'
-#define REMOTE 'R'
 #define PLAYERONE 1
 #define PLAYERTWO 2
 #define FILENAME "info configuration.txt"
@@ -20,20 +16,16 @@ using namespace std;
 //constructor, initialize board, possible points matrix and players
 //parameters-p1, p2 are player 1 and 2 names, and the type of player1, and size for board.
 ReversiGame :: ReversiGame(char p1, char p2, char p1Type, int boardSize) {
+    display = new ConsoleDisplay(); //initial print system.
     player1 = new Player(p1, p1Type, PLAYERONE); //HUMAN PLAYER
     //initial player 2 to be computer or human player.
-    cout << "Reversi Game" << endl << endl;
-    cout << "Opponet choices:" << endl;
-    cout << "Type " << HUMAN << " for human player opponet" << endl;
-    cout << "Type " << PC << " for PC opponet" << endl;
-    cout << "Type " << REMOTE << " for remote player opponet" << endl;
-    cout << "Type " << QUIT << " to quit game." << endl;
+    display->initialMenu();   //print start menu to choose game type.
     char choice;
     cin >> choice;
     //check if input is ok.
     while(choice != PC && choice != HUMAN && choice != QUIT
           && choice != REMOTE) {
-        cout << "Wrong input, try again." << endl;
+        display->printNoOption();   //print no such option.
         cin >> choice;
     }
     if(choice != QUIT) { //game being played.
@@ -92,6 +84,7 @@ ReversiGame :: ~ReversiGame() {
         }
         delete possiblePointstwo;
     }
+    delete display;
     delete board;
 }
 //function runs reversi game until both players can't play or board is full.
@@ -115,17 +108,17 @@ void ReversiGame :: playGame() {
         scoreGame();
         return;
     }
-    board->printBoard();
+    display->printBoard(board);
     //game is PC-PC, HUMAN-PC, PC-HUMAN, HUMAN-HUMAN. remote wasn't chosen.
     //check if player1 and player2 initialized as C or H type to play.
     if(player1->getType() != PC && player1->getType() != HUMAN)
     {
-        cout << "Game cannot be initialized, player1 type is wrong" << endl;
+        display->playerTypeWrong(PLAYERONE);
         return;
     }
     if(player2->getType() != PC && player2->getType() != HUMAN)
     {
-        cout << "Game cannot be initialized, player2 type is wrong" << endl;
+        display->playerTypeWrong(PLAYERTWO);
         return;
     }
     //Game loop.
@@ -175,35 +168,30 @@ bool ReversiGame :: HumanplayOneTurn(Player* player) {
     } else if(player->getNum() == PLAYERTWO) {
         possiblePoints = possiblePointstwo;
     } else {
-        cout << player->getName() <<
-             " is not initialized as player1 or player2" << endl;
+        display->notInitializedTypes(player->getName()); //print player types wrong.
         return false;
     }
     if (possiblePoints[0][0] == -1) { //player has no possible moves, cant play
-        cout << player->getName()
-             << " You have no possible moves, turn passed." << endl;
+        display->noPossibleMoves(player->getName()); //print no possible moves.
         return false;
     } else { //player can play
-        cout << player->getName() << ": it's your move" << endl;
-        cout << "Your possible moves: ";
+        display->printItsYourMove(player->getName()); //print its your move.
         int index = 0;
         //print possible moves for player.
         while(possiblePoints[index][0] > -1) {
-            cout << "(" << possiblePoints[index][0] <<
-                 "," << possiblePoints[index][1] << ")";
+            display->printRowCol(possiblePoints[index][0], possiblePoints[index][1]);
             if(possiblePoints[index + 1][0] != -1) {
-                cout << ",";
+                display->printPsik(); //print ,
             }
             index++;
         }
-        cout << "" << endl;
-        cout << "" << endl;
+        display->printLineDrop(); //get one line down.
         int row, col, i, counter = 0;
         string row1, col1;
         //player enters row,col and the game makes sure that he played,
         //a legal move.
         while (counter == 0) {
-            cout << "Please enter your move- enter row,col: ";
+            display->printEnterMove(); //print enter move.
             cin >> row1 >> col1;
             istringstream buffer(row1);
             buffer >> row;
@@ -217,7 +205,7 @@ bool ReversiGame :: HumanplayOneTurn(Player* player) {
                 }
             }
             if(i >= space) {
-                cout << "Wrong input!" << endl;
+                display->printWrongInput(); // print wrong input.
             } else {
                 counter = 1;
                 board->setBoard(row, col, player->getName());
@@ -229,9 +217,8 @@ bool ReversiGame :: HumanplayOneTurn(Player* player) {
                     possiblePoints[i][1] = -1;
                     i++;
                 }
-                board->printBoard();
-                cout << player->getName() << " played: ("
-                     << row << "," << col << ")" << endl;
+                display->printBoard(board); //print board.
+                display->printPlayerPlayedRowCol(player->getName(), row, col);
                 return true;
             }
         }
@@ -260,8 +247,7 @@ bool ReversiGame :: ComputerplayOneTurn(Player* player) {
     }
     if (possiblePointsPlayer[0][0] == -1) { //player has no possible moves,
         // cant play
-        cout << player->getName()
-             << " You have no possible moves, turn passed." << endl;
+        display->noPossibleMoves(player->getName()); //print no moves.
         return false;
     } else { //player can play
         //creating a clone of deep copy to the board current positions.
@@ -339,20 +325,17 @@ bool ReversiGame :: ComputerplayOneTurn(Player* player) {
             if(playerRow != -1) {
                 board->setBoard(playerRow, playerCol, player->getName());
                 playPossiblePoints(player, playerRow, playerCol, board);
-                board->printBoard();
-                cout << player->getName() << " played: ("
-                     << playerRow << "," <<
-                     playerCol << ")" << endl;
+                display->printBoard(board);
+                display->printPlayerPlayedRowCol(player->getName(), playerRow, playerCol);
                 return true;
             }
-            cout << player->getName() << " coudn't play the move" << endl;
+            display->printComCantPlay(player->getName()); //print computer cant play.
             return false;
         }
         board->setBoard(minRow, minCol, player->getName());
         playPossiblePoints(player, minRow, minCol, board);
-        board->printBoard();
-        cout << player->getName() << " played: ("
-             << minRow << "," << minCol << ")" << endl;
+        display->printBoard(board);
+        display->printPlayerPlayedRowCol(player->getName(), playerRow, playerCol);
         return true;
     }
 }
@@ -407,15 +390,8 @@ void ReversiGame :: scoreGame() {
             }
         }
     }
-    cout << player1->getName() << ": Your score is " << count1 << endl;
-    cout << player2->getName() << ": Your score is " << count2 << endl;
-    if(count1 > count2) {
-        cout << "The Winner is- " << player1->getName();
-    } else if(count2 > count1) {
-        cout << "The Winner is- " << player2->getName();
-    } else {
-        cout << "The Game ended in a Draw." << endl;
-    }
+    //print score of the game.
+    display->printScore(player1->getName(), player2->getName(), count1, count2);
 }
 //function gets a player as a parameter and update the possible moves of
 //the player on the human/computer possible points array on boards parameter b.
@@ -794,9 +770,9 @@ void ReversiGame :: playGameVsRemote() {
     const string s = FILENAME;
     NetworkClient* client = new NetworkClient(s); //initialize client.
     try {
-        client->connectToServer(); //try to connect to server.
+        client->connectToServer(display); //try to connect to server.
     } catch(const char *msg) {
-        cout << "Failed to connect to server. Reason:" << msg << endl;
+        display->printFailToConnect(*msg);
         delete client;
         return;
     }
@@ -809,13 +785,13 @@ void ReversiGame :: playGameVsRemote() {
     struct Info info;
     int cantPlay = 0, turn = PLAYERONE;
     if(type == 1) { //user is player 1.
-        cout << "You are player 1" << endl;
+        display->printYouArePlayer(PLAYERONE); //print you are player 1/2.
         while(true) { //stop doing anything until player 2 arrives.
             if(client->getType() == PLAYERTWO) {
                 break;
             }
         }
-        board->printBoard();
+        display->printBoard(board); //print board.
         while(cantPlay < 2 && space > 0) {
             if(turn == PLAYERONE) { //PLAYER1 TURN
                 if(PlayTurnAgainstRemote(client, player1)) {
@@ -846,13 +822,13 @@ void ReversiGame :: playGameVsRemote() {
                     }
                 }
             } else { //turn == PLAYERTWO
-                cout << "Waiting for other players move." << endl;
+                display->printWaiting();
                 try {
                     //remote play.
                     info = client->getMove();
                     if(info.x == End) { return; } //got end game from remote so exit func.
                     if(info.x == NoMove) { //remote player did not have moves.
-                        cout << "Remote player did not have moves to play" << endl;
+                        display->printRemoteCantPlay();
                         cantPlay++;
                         if(cantPlay == 2) { //send other player to finish game also.
                             try {
@@ -865,9 +841,8 @@ void ReversiGame :: playGameVsRemote() {
                         board->setBoard(info.x, info.y, player2->getName());
                         playPossiblePoints(player2, info.x, info.y, board);
                         cantPlay = 0;
-                        board->printBoard();
-                        cout << player2->getName() << " played: ("
-                             << info.x << "," << info.y << ")" << endl;
+                        display->printBoard(board); //print board.
+                        display->printPlayerPlayedRowCol(player2->getName(), info.x, info.y);
                         space--; // one empty place less on board
                     }
                     turn--;
@@ -877,17 +852,17 @@ void ReversiGame :: playGameVsRemote() {
             }
         }
     } else if(type == 2) { //user is player 2
-        cout << "You are player 2" << endl;
-        board->printBoard();
+        display->printYouArePlayer(PLAYERTWO); //print you are player 1/2.
+        display->printBoard(board);
         while(cantPlay < 2 && space > 0) {
             if(turn == PLAYERONE) {
-                cout << "Waiting for other players move." << endl;
+                display->printWaiting();
                 try {
                     //remote play.
                     info = client->getMove();
                     if(info.x == End) { return; } //got end game from remote so exit func.
                     if(info.x == NoMove) { //remote player did not have moves.
-                        cout << "Remote player did not have moves to play" << endl;
+                        display->printRemoteCantPlay();
                         cantPlay++;
                         if(cantPlay == 2) { //send other player to finish game also.
                             try {
@@ -900,9 +875,8 @@ void ReversiGame :: playGameVsRemote() {
                         board->setBoard(info.x, info.y, player1->getName());
                         playPossiblePoints(player1, info.x, info.y, board);
                         cantPlay = 0;
-                        board->printBoard();
-                        cout << player1->getName() << " played: ("
-                             << info.x << "," << info.y << ")" << endl;
+                        display->printBoard(board); //print board.
+                        display->printPlayerPlayedRowCol(player1->getName(), info.x, info.y);
                         space--; // one empty place less on board
                     }
                     turn++;
@@ -957,25 +931,22 @@ bool ReversiGame :: PlayTurnAgainstRemote(NetworkClient* client, Player* player)
     }
     int i = space;
     if (possiblePoints[0][0] == -1) { //no possible moves, cant play
-        cout << player->getName()
-             << " You have no possible moves, turn passed." << endl;
+        display->noPossibleMoves(player->getName());
         return false;
     }
     //player has possible points and can play.
     while (i >= space) { //input from user to row and col, until good input
-        cout << player->getName() << ": it's your move" << endl;
-        cout << "Your possible moves: ";
+        display->printItsYourMove(player->getName());
         int index = 0;
         //print possible moves for player.
         while(possiblePoints[index][0] > -1) {
-            cout << "(" << possiblePoints[index][0] <<
-                 "," << possiblePoints[index][1] << ")";
+            display->printRowCol(possiblePoints[index][0], possiblePoints[index][1]);
             if(possiblePoints[index + 1][0] != -1) {
-                cout << ",";
+                display->printPsik(); //print ,
             }
             index++;
         }
-        cout << "Please enter your move- enter row,col: " << endl;
+        display->printEnterMove();
         cin >> row1 >> col1;
         istringstream buffer(row1);
         buffer >> row;
@@ -989,7 +960,7 @@ bool ReversiGame :: PlayTurnAgainstRemote(NetworkClient* client, Player* player)
             }
         }
         if (i >= space) {
-            cout << "Wrong input!" << endl;
+            display->printWrongInput();
         }
     }
     try { //sending move to socket.
@@ -1007,8 +978,7 @@ bool ReversiGame :: PlayTurnAgainstRemote(NetworkClient* client, Player* player)
         possiblePoints[i][1] = -1;
         i++;
     }
-    board->printBoard();
-    cout << player->getName() << " played: ("
-         << row << "," << col << ")" << endl;
+    display->printBoard(board); // print board.
+    display->printPlayerPlayedRowCol(player->getName(), row, col);
     return true;
 }

@@ -19,7 +19,6 @@ public:
     Board(char p1, char p2, int size1);
     Board(int size);
     ~Board();
-    void printBoard();
     int getSize();
     char** getBoard();
     void setBoard(int row, int col, char val);

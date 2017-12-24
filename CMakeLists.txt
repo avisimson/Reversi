@@ -12,7 +12,8 @@ include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
 
 set(SOURCE_FILES src/client/Board.h src/client/Board.cpp src/client/Game.cpp src/client/Game.h
         src/client/GameType.h src/client/Player.h src/client/Player.cpp src/client/ReversiGame.cpp
-        src/client/ReversiGame.h src/client/NetworkClient.cpp src/client/NetworkClient.h)
+        src/client/ReversiGame.h src/client/NetworkClient.cpp src/client/NetworkClient.h src/client/Display.h
+        src/client/ConsoleDisplay.cpp src/client/ConsoleDisplay.h)
 
 set(SERVER_FILES src/Server/ReversiServer.cpp src/Server/ReversiServer.h src/Server/main.cpp)
 

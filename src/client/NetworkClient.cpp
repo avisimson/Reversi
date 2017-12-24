@@ -28,7 +28,8 @@ NetworkClient :: NetworkClient(string filename) {
     infoAddress.close(); //close the file.
 }
 //function connects current client user to the reversi server.
-void NetworkClient :: connectToServer() {
+//func gets a print display as parameter.
+void NetworkClient :: connectToServer(Display* display) {
     clientSocket = socket(AF_INET, SOCK_STREAM, 0); //trying to connect.
     if (clientSocket == -1) { //check if fail.
         throw "Error opening socket-client.";
@@ -57,8 +58,7 @@ void NetworkClient :: connectToServer() {
     *)&serverAddress, sizeof(serverAddress)) == -1) {//check if client-server
         throw "Error connecting to server";         //connection fail/succeed.
     }
-    cout << "Connected to server" << endl;
-    cout << "Waiting for other player to join " << endl;
+    display->PrintWaitForRemoteToJoin();
 }
 //function gets a 2 integers move and deliver it to socket.
 void NetworkClient :: sendMove(int x, int y) {

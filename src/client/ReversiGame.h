@@ -11,6 +11,8 @@
 #include "Board.h"
 #include "Player.h"
 #include "GameType.h"
+#include "Display.h"
+#include "ConsoleDisplay.h"
 #include "NetworkClient.h"
 #include <sys/socket.h>
 #include <netinet/in.h>
@@ -20,6 +22,10 @@
 #include <fstream>
 #include <stdio.h>
 #include <cstdlib> //for std::atoi
+#define HUMAN 'H'
+#define PC 'C'
+#define QUIT 'Q'
+#define REMOTE 'R'
 class ReversiGame: public GameType {
     //class has a board, space left in board, 2 matrixes of x,y of
     // possible moves for both players and 2 players.
@@ -30,6 +36,7 @@ private:
     int space;
     int** possiblePointsone; //possible moves for player1.
     int** possiblePointstwo; //possible moves for player2.
+    Display* display;
 public:
     ReversiGame(char p1, char p2, char p1Type, int sizeOfBoard);
     ~ReversiGame();
