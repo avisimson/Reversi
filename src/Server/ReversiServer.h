@@ -19,6 +19,17 @@ using namespace std;
 enum StatusForServer {
     NoMove = 100, End = 101
 };
+enum StatusOfClientInGame {
+    Active, Waiting
+};
+//struct that splits server into number of games. each game has a name,
+// 2 sockets and a status.
+struct Game{
+    string name;
+    int socket1;
+    int socket2;
+    StatusOfClientInGame status;
+};
 #ifndef SERVER_REVERSISERVER_H
 //class is a server between 2 remote players in ReversiGame in Reversi Project.
 class ReversiServer {

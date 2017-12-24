@@ -1,0 +1,8 @@
+//
+// Created by avi on 12/24/17.
+//
+
+#ifndef REVERSI_CONSOLEDISPLAY_H
+#define REVERSI_CONSOLEDISPLAY_H
+
+#endif //REVERSI_CONSOLEDISPLAY_H
