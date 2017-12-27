@@ -2,6 +2,10 @@
 #define REVERSI_DISPLAY_H
 
 #include "Board.h"
+#include <string.h>
+#include <stdio.h>
+#include <string>
+using namespace std;
 /**
  * This is an abstract class for the display.
  */

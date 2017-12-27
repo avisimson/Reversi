@@ -4,7 +4,10 @@
 
 #include "Board.h"
 #include "Display.h"
-
+#include <string.h>
+#include <stdio.h>
+#include <string>
+using namespace std;
 /**
  * This class is used to print on the console.
  */

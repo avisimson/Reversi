@@ -18,16 +18,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="da7829aa-c6bb-4831-95ca-8285f13fe83d" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/dictionaries/avi.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Server/ReversiServer.cpp" afterPath="$PROJECT_DIR$/src/Server/ReversiServer.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Server/ReversiServer.h" afterPath="$PROJECT_DIR$/src/Server/ReversiServer.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client/ConsoleDisplay.cpp" afterPath="$PROJECT_DIR$/src/client/ConsoleDisplay.cpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client/ConsoleDisplay.h" afterPath="$PROJECT_DIR$/src/client/ConsoleDisplay.h" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client/Display.h" afterPath="$PROJECT_DIR$/src/client/Display.h" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client/NetworkClient.cpp" afterPath="$PROJECT_DIR$/src/client/NetworkClient.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client/NetworkClient.h" afterPath="$PROJECT_DIR$/src/client/NetworkClient.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client/ReversiGame.cpp" afterPath="$PROJECT_DIR$/src/client/ReversiGame.cpp" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -110,9 +104,11 @@
       <file leaf-file-name="ConsoleDisplay.h" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/client/ConsoleDisplay.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="612">
-              <caret line="35" column="10" lean-forward="false" selection-start-line="35" selection-start-column="10" selection-end-line="35" selection-end-column="10" />
-              <folding />
+            <state relative-caret-position="162">
+              <caret line="9" column="20" lean-forward="false" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="20" />
+              <folding>
+                <element signature="e#68#86#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -120,9 +116,11 @@
       <file leaf-file-name="Display.h" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/client/Display.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="558">
-              <caret line="31" column="29" lean-forward="false" selection-start-line="31" selection-start-column="29" selection-end-line="31" selection-end-column="29" />
-              <folding />
+            <state relative-caret-position="103">
+              <caret line="7" column="20" lean-forward="false" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
+              <folding>
+                <element signature="e#53#71#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -142,8 +140,8 @@
       <file leaf-file-name="NetworkClient.cpp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/client/NetworkClient.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="191">
-              <caret line="200" column="4" lean-forward="true" selection-start-line="200" selection-start-column="4" selection-end-line="200" selection-end-column="4" />
+            <state relative-caret-position="563">
+              <caret line="208" column="9" lean-forward="true" selection-start-line="208" selection-start-column="9" selection-end-line="208" selection-end-column="9" />
               <folding>
                 <element signature="e#151#170#0" expanded="true" />
               </folding>
@@ -154,8 +152,8 @@
       <file leaf-file-name="NetworkClient.h" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/client/NetworkClient.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="630">
-              <caret line="45" column="8" lean-forward="false" selection-start-line="45" selection-start-column="8" selection-end-line="45" selection-end-column="8" />
+            <state relative-caret-position="245">
+              <caret line="18" column="7" lean-forward="true" selection-start-line="18" selection-start-column="7" selection-end-line="18" selection-end-column="7" />
               <folding />
             </state>
           </provider>
@@ -221,12 +219,12 @@
         <option value="$PROJECT_DIR$/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/src/Server/ReversiServer.h" />
         <option value="$PROJECT_DIR$/src/Server/ReversiServer.cpp" />
-        <option value="$PROJECT_DIR$/src/client/Display.h" />
-        <option value="$PROJECT_DIR$/src/client/ConsoleDisplay.h" />
         <option value="$PROJECT_DIR$/src/client/ConsoleDisplay.cpp" />
         <option value="$PROJECT_DIR$/src/client/NetworkClient.h" />
         <option value="$PROJECT_DIR$/src/client/ReversiGame.cpp" />
         <option value="$PROJECT_DIR$/src/client/NetworkClient.cpp" />
+        <option value="$PROJECT_DIR$/src/client/ConsoleDisplay.h" />
+        <option value="$PROJECT_DIR$/src/client/Display.h" />
       </list>
     </option>
   </component>
@@ -392,7 +390,7 @@
       <workItem from="1512908995929" duration="25395000" />
       <workItem from="1512997363840" duration="4024000" />
       <workItem from="1514049772075" duration="34000" />
-      <workItem from="1514100445874" duration="29523000" />
+      <workItem from="1514100445874" duration="30293000" />
     </task>
     <task id="LOCAL-00001" summary="finished">
       <created>1511810793533</created>
@@ -604,7 +602,14 @@
       <option name="project" value="LOCAL" />
       <updated>1514119570741</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="ex5 After dealing with client">
+      <created>1514372365464</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1514372365464</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -631,19 +636,18 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="242234000" />
+    <option name="totallyTimeSpent" value="243004000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="260" y="26" width="1922" height="1053" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14895834" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34348738" sideWeight="0.49583334" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.61764705" sideWeight="0.49583334" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32878152" sideWeight="0.49635416" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.6533613" sideWeight="0.50625" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16386555" sideWeight="0.49375" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2909664" sideWeight="0.49375" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -698,7 +702,8 @@
     <MESSAGE value="ex4 server package organizations and client initialize" />
     <MESSAGE value="ex4" />
     <MESSAGE value="ex5 beggining to work on server&#10;new classes added" />
-    <option name="LAST_COMMIT_MESSAGE" value="ex5 beggining to work on server&#10;new classes added" />
+    <MESSAGE value="ex5 After dealing with client" />
+    <option name="LAST_COMMIT_MESSAGE" value="ex5 After dealing with client" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -982,22 +987,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/ConsoleDisplay.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="35" column="10" lean-forward="false" selection-start-line="35" selection-start-column="10" selection-end-line="35" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/NetworkClient.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="630">
-          <caret line="45" column="8" lean-forward="false" selection-start-line="45" selection-start-column="8" selection-end-line="45" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/client/ConsoleDisplay.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="685">
@@ -1005,14 +994,6 @@
           <folding>
             <element signature="e#0#19#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/Display.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="558">
-          <caret line="31" column="29" lean-forward="false" selection-start-line="31" selection-start-column="29" selection-end-line="31" selection-end-column="29" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1050,10 +1031,38 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/NetworkClient.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="245">
+          <caret line="18" column="7" lean-forward="true" selection-start-line="18" selection-start-column="7" selection-end-line="18" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/ConsoleDisplay.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="9" column="20" lean-forward="false" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="20" />
+          <folding>
+            <element signature="e#68#86#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/Display.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="103">
+          <caret line="7" column="20" lean-forward="false" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
+          <folding>
+            <element signature="e#53#71#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/client/NetworkClient.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="191">
-          <caret line="200" column="4" lean-forward="true" selection-start-line="200" selection-start-column="4" selection-end-line="200" selection-end-column="4" />
+        <state relative-caret-position="563">
+          <caret line="208" column="9" lean-forward="true" selection-start-line="208" selection-start-column="9" selection-end-line="208" selection-end-column="9" />
           <folding>
             <element signature="e#151#170#0" expanded="true" />
           </folding>

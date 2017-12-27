@@ -204,8 +204,7 @@ void NetworkClient :: MenuVsRemote(Display *display) {
     }
 }
 //func gets a command from menu and deliver it to the server.
-void NetworkClient::writeToServer(string command) {
-    int length = command.length();
+void NetworkClient :: writeToServer(string command) {
     int n;
     //try to send the client command to server.
     n = (int) write(clientSocket, &command, LENGTH);
@@ -214,7 +213,7 @@ void NetworkClient::writeToServer(string command) {
     }
 }
 //func reads answer from the server and returns it.
-string NetworkClient::readFromServer() {
+string NetworkClient :: readFromServer() {
     string str;
     int n;
     //read the command from the server.
