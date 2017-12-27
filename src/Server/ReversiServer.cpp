@@ -17,12 +17,10 @@
 ReversiServer :: ReversiServer(int port1) {
     serverSocket = 0;
     port = port1;
-    endGame = false;
     cout << "Server initialized through constructor" << endl;
 }
 //constructor that gets a name of a file and read the port from it.
 ReversiServer :: ReversiServer(string filename) {
-    endGame = false;
     serverSocket = 0;
     string buffer;
     ifstream config;
@@ -111,21 +109,11 @@ void ReversiServer :: start() {
         while (true) { //send messages between players until game ends.
             if(count == 0) {
                 check = checkValidate(client1_sd, client2_sd);
-                isClientClosed(client1_sd,client2_sd);
-                isClientClosed(client2_sd,client1_sd);
-                if(endGame == true) {
-                    break;
-                }
                 if(check != -1) {
                     count++;
                 }
             } else if(count == 1) {
                 int check = checkValidate(client2_sd, client1_sd);
-                isClientClosed(client1_sd,client2_sd);
-                isClientClosed(client2_sd,client1_sd);
-                if(endGame == true) {
-                    break;
-                }
                 if(check != -1) {
                     count--;
                 }
@@ -158,6 +146,9 @@ int ReversiServer :: checkValidate(int clientSocket1,
     }
     if(n == 0) { //check if player 1 disconnected
         cout << "client send disconnected" << endl;
+        rowInput = End;
+        write(clientSocket2, &rowInput, sizeof(int));
+        write(clientSocket2, &rowInput, sizeof(int));
         return FAILURE; //to end game.
     }
     if (rowInput == End) {
@@ -189,22 +180,4 @@ int ReversiServer :: checkValidate(int clientSocket1,
         return -1;
     }
     return SUCCESS; //turn success, game continues.
-}
-bool ReversiServer::isClientClosed(int clientSocket1, int clientSocket2) {
-    pollfd pfd;
-    pfd.fd = clientSocket1;
-    pfd.events = POLLIN | POLLHUP | POLLRDNORM;
-    pfd.events = 0;
-    if(poll(&pfd, 1, 100) > 0) {
-        char buffer[32];
-        if(recv(clientSocket1, buffer, sizeof(buffer), MSG_PEEK | MSG_DONTWAIT) == 0) {
-            endGame = true;
-            return true;
-        }
-        if(recv(clientSocket2, buffer, sizeof(buffer), MSG_PEEK | MSG_DONTWAIT) == 0) {
-            endGame = true;
-            return true;
-        }
-    }
-    return false;
 }

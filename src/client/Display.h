@@ -9,7 +9,7 @@ class Display {
 public:
     virtual void playerTypeWrong(int num) = 0; //print player type wrong.
     virtual void initialMenu() = 0; //print game type options.
-    virtual void printClientMenu() = 0; //print command options to server.
+    virtual void printRemoteMenu() = 0; //print command options to server.
     virtual void notInitializedTypes(char c) = 0; //print wrong types for players.
     virtual void noPossibleMoves(char c) = 0; //print no possible moves.
     virtual void printItsYourMove(char c) = 0; // print its your moves.
@@ -28,6 +28,10 @@ public:
     virtual void printWaiting() = 0; //print waiting for other player.
     virtual void printRemoteCantPlay() = 0; //print remote player didnt have moves.
     virtual void PrintWaitForRemoteToJoin() = 0; //print waiting for remote to join.
+    virtual void EnterNameOfGame() = 0; //print name of game to create.
+    virtual void printNotExist() = 0; //print game name not exist in list.
+    virtual void printAlreadyExist() = 0; //print game already exists.
+    virtual void printString(string str) = 0; //gets string and print it.
 
 };
 

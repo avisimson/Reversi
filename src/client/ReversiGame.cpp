@@ -770,7 +770,7 @@ void ReversiGame :: playGameVsRemote() {
     const string s = FILENAME;
     NetworkClient* client = new NetworkClient(s); //initialize client.
     try {
-        client->connectToServer(display); //try to connect to server.
+        client->MenuVsRemote(display); //try to connect to server and choose king of game.
     } catch(const char *msg) {
         display->printFailToConnect(*msg);
         delete client;
@@ -826,7 +826,8 @@ void ReversiGame :: playGameVsRemote() {
                 try {
                     //remote play.
                     info = client->getMove();
-                    if(info.x == End) { return; } //got end game from remote so exit func.
+                    //got end game from remote so exit func.
+                    if(info.x == End) { return; }
                     if(info.x == NoMove) { //remote player did not have moves.
                         display->printRemoteCantPlay();
                         cantPlay++;
@@ -860,7 +861,8 @@ void ReversiGame :: playGameVsRemote() {
                 try {
                     //remote play.
                     info = client->getMove();
-                    if(info.x == End) { return; } //got end game from remote so exit func.
+                    if(info.x == End) {
+                        return; } //got end game from remote so exit func. or player1 disconnected.
                     if(info.x == NoMove) { //remote player did not have moves.
                         display->printRemoteCantPlay();
                         cantPlay++;

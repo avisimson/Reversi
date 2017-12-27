@@ -8,6 +8,7 @@
 */
 #include <string.h>
 #include "NetworkClient.h"
+#define LENGTH 300
 //constructor initialize clientSocket to 0,
 //
 // and read ip and port of server from file.
@@ -58,7 +59,6 @@ void NetworkClient :: connectToServer(Display* display) {
     *)&serverAddress, sizeof(serverAddress)) == -1) {//check if client-server
         throw "Error connecting to server";         //connection fail/succeed.
     }
-    display->PrintWaitForRemoteToJoin();
 }
 //function gets a 2 integers move and deliver it to socket.
 void NetworkClient :: sendMove(int x, int y) {
@@ -91,9 +91,15 @@ struct Info NetworkClient :: getMove() {
     if (n == -1) {
         throw "Error reading row from socket";
     }
+    if(n == 0) {//other player disconnected
+        newInfo.x = End;
+    }
     n = read(clientSocket, &newInfo.y, sizeof(int));
     if (n == -1) {
         throw "Error reading col from socket";
+    }
+    if(n == 0) { //other player disconnected
+        newInfo.y = End;
     }
     return newInfo;
 }
@@ -113,4 +119,109 @@ void NetworkClient :: sendEnd() {
     if (n == -1) {
         throw "Error writing End to socket";
     }
+}
+//function gets string name of a name of a game and operation and returns,
+//the right operation to remote menu func.
+string NetworkClient :: ParseOperation(int operation, string name) {
+    switch(operation) {
+        case 1:
+            return "start " + name;
+        case 2:
+            return "list_games";
+        case 3:
+            return "join " + name;
+        default:
+            return "NotOption";
+    }
+}
+/*
+ *FUNCTION handles all of players options against remote opponet.
+ * function gets display and uses it to print things to the screen.
+ * function handles 1-start a game, 2-get list of games to join, 3-join game.
+ * if it gets number thats not 1,2,3 it says wrong input and enter again.
+ */
+void NetworkClient :: MenuVsRemote(Display *display) {
+    string command, roomName;
+    int operation, n;
+    bool inputILegal = true;
+    connectToServer(display); //initial connection to server.
+    while(inputILegal) {
+        // printing client's menu before joining game
+        display->printRemoteMenu();
+        // get the operation of the client
+        cin >> operation;
+        //1 - start , 2 - list , 3 - join
+        if(operation == 1 || operation == 3) {
+            display->EnterNameOfGame();
+            cin >> roomName;
+        }
+        // translating the command from a number into string
+        command = ParseOperation(operation, roomName);
+        if(command == "NotOption") { //client entered number > 3 or <0.
+        display->printNoOption();
+        continue;
+        }
+        // sending the command to the server
+        try{
+            writeToServer(command);
+        } catch(const char *msg) {
+            throw "Problem with sending menu command to server.";
+        }
+        // reading the servers answer from the socket
+        try{
+            command = readFromServer();
+        } catch(const char *msg) {
+            throw "Problem with reading menu command from server.";
+        }
+        // in option "join" - entering a name that isn't on the list
+        if (command == "NotExist") {
+            display->printNotExist();
+            display->printLineDrop();
+            continue;
+            // in option "start" - entering a name that is already on the list
+        } else if(command == "AlreadyExist") {
+            display->printAlreadyExist();
+            display->printLineDrop();
+            continue;
+        }
+        // in case user entered an option not from the menu
+        // if the input was legal
+        string print;
+        if(command == "Started") {
+            print = "The room: " + roomName + "was created! \n";
+            display->printString(print);
+            display->PrintWaitForRemoteToJoin();
+            inputILegal = false;
+        } else if(command == "Joined") {
+            print = "You have joined " + roomName + " room. Try to win \n";
+            display->printString(print);
+            inputILegal = false;
+        } else { //list of games should be printed.
+            print = command;
+            display->printString(print);
+            display->printLineDrop();
+        }
+    }
+}
+//func gets a command from menu and deliver it to the server.
+void NetworkClient::writeToServer(string command) {
+    int length = command.length();
+    int n;
+    //try to send the client command to server.
+    n = (int) write(clientSocket, &command, LENGTH);
+    if (n == -1) {  //error in writing to server
+        throw "Error writing string command to server";
+    }
+}
+//func reads answer from the server and returns it.
+string NetworkClient::readFromServer() {
+    string str;
+    int n;
+    //read the command from the server.
+    n = (int) read(clientSocket, &str, LENGTH);
+    //error in reading
+    if (n == -1) {
+        throw "Error reading string command from server";
+    }
+    return str;
 }

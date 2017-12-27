@@ -14,7 +14,7 @@ public:
     ~ConsoleDisplay() {};
     void playerTypeWrong(int num);
     void initialMenu();
-    void printClientMenu();
+    void printRemoteMenu();
     void notInitializedTypes(char c);
     void noPossibleMoves(char c);
     void printItsYourMove(char c);
@@ -33,6 +33,10 @@ public:
     void printWaiting();
     void printRemoteCantPlay();
     void PrintWaitForRemoteToJoin();
+    void EnterNameOfGame();
+    void printNotExist();
+    void printAlreadyExist();
+    void printString(string str);
 };
 
 #endif //EX3WITHTESTS_CONSOLEDISPLAY_H

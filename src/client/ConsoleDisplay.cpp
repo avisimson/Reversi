@@ -16,7 +16,7 @@ void ConsoleDisplay :: initialMenu() {
     cout << "Type " << QUIT << " to quit game." << endl;
 }
 //print client menu.
-void ConsoleDisplay :: printClientMenu() {
+void ConsoleDisplay :: printRemoteMenu() {
     cout << "please choose operation number and a name of the game (for 1,3) " << endl;
     cout << "1 for starting a new game." << endl;
     cout << "2 for viewing the list of waiting games." << endl;
@@ -120,4 +120,21 @@ void ConsoleDisplay :: printRemoteCantPlay() {
 void ConsoleDisplay :: PrintWaitForRemoteToJoin() {
     cout << "Connected to server" << endl;
     cout << "Waiting for other player to join " << endl;
+}
+//print enter a name for game to create.
+void ConsoleDisplay :: EnterNameOfGame() {
+    cout << "Please enter the name of the game you want to create:" << endl;
+}
+//client tried to enter room that doesnt exist.
+void ConsoleDisplay :: printNotExist() {
+    cout << "You tried to join a game that doesnt exist. try again" << endl;
+}
+//print to client that he tried to start a room game that exists.
+void ConsoleDisplay :: printAlreadyExist() {
+    cout << "You tried to create a new game with a name that already exist, " <<
+    "try to create game with new name" << endl;
+}
+//get string and print it to client.
+void ConsoleDisplay :: printString(string str) {
+    cout << str;
 }

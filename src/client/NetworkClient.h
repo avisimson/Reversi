@@ -40,6 +40,10 @@ class NetworkClient {
         void sendEnd();
         struct Info getMove();
         int getType();
+        string ParseOperation(int operation, string name);
+        void MenuVsRemote(Display* display);
+        void writeToServer(string command);
+        string readFromServer();
 };
 #define REVERSI_NETWORKCLIENT_H
 
