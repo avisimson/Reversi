@@ -7,6 +7,8 @@
  *      Yakir: 203200530
 */
 //libraries to use Server and reading from file.
+#include <pthread.h>
+#include <cmath>
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <unistd.h>
@@ -15,34 +17,28 @@
 #include <fstream>
 #include <stdio.h>
 #include <cstdlib> //for std::atoi
+#include "HandleClient.h"
+#define MAX_CLIENTS 100
 using namespace std;
-enum StatusForServer {
-    NoMove = 100, End = 101
-};
-enum StatusOfClientInGame {
-    Active, Waiting
-};
-//struct that splits server into number of games. each game has a name,
-// 2 sockets and a status.
-struct Game{
-    string name;
-    int socket1;
-    int socket2;
-    StatusOfClientInGame status;
-};
 #ifndef SERVER_REVERSISERVER_H
 //class is a server between 2 remote players in ReversiGame in Reversi Project.
 class ReversiServer {
     private:
         int port; //number in server we connect to.
         int serverSocket; //tells if connection is successfull and why if not.
+        pthread_t threads[MAX_CLIENTS / 2];
+        pthread_t mainThread;
+        HandleClient* handler;
     public:
         ReversiServer(int port);
         ReversiServer(string fileName);
         ~ReversiServer() {};
         void start();
         void stop();
-        int checkValidate(int socketClient1, int socketClient2);
+        static void *ClientConnections(void* server);
+        int getServerSocket() {return serverSocket;}
+        pthread_t* getThreadsOfGames() {return threads;}
+        HandleClient* getHandler() {return handler;}
 };
 #define SERVER_REVERSISERVER_H
 

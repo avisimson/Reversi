@@ -2,16 +2,14 @@
 #define REVERSI_CLOSECOMMAND_H
 
 #include "Command.h"
-
+#include <unistd.h>
+#include <iostream>
 class CloseCommand: public Command {
 public:
     //constructor of close command
-    CloseCommand(vector<Game>& listOfGames, int socket);
+    CloseCommand(vector<Game> *listOfGames1);
     //function the execute the command
-    virtual void execute(vector<string> args);
-private:
-    vector<Game> &m_listOfGames;
-    int socket;
+    bool execute(string command, string args, int client);
 
 };
 

@@ -67,9 +67,15 @@ void NetworkClient :: sendMove(int x, int y) {
     if(n == -1) {
         throw "Error writing row to socket";
     }
+    if (n == 0) {
+        throw "server has disconnected.";
+    }
     n = write(clientSocket, &y, sizeof(int));
     if(n == -1) {
         throw "Error writing col to socket";
+    }
+    if (n == 0) {
+        throw "server has disconnected.";
     }
 }
 //function gets information if player is player1 or player2.
@@ -79,6 +85,9 @@ int NetworkClient :: getType() {
     n = read(clientSocket, &num, sizeof(int));
     if (n == -1) {
         throw "Error reading player type from socket";
+    }
+    if (n == 0) {
+        throw "server has disconnected.";
     }
     return num;
 }
@@ -111,6 +120,9 @@ void NetworkClient :: sendNoMove(){
     if (n == -1) {
         throw "Error writing noMove to socket";
     }
+    if (n == 0) {
+        throw "server has disconnected.";
+    }
 }
 //function sends from client to socket a message to end the game.
 void NetworkClient :: sendEnd() {
@@ -118,6 +130,9 @@ void NetworkClient :: sendEnd() {
     int n = write(clientSocket, &end, sizeof(int));
     if (n == -1) {
         throw "Error writing End to socket";
+    }
+    if (n == 0) {
+        throw "server has disconnected.";
     }
 }
 //function gets string name of a name of a game and operation and returns,
@@ -127,7 +142,7 @@ string NetworkClient :: ParseOperation(int operation, string name) {
         case 1:
             return "start " + name;
         case 2:
-            return "list_games";
+            return "list";
         case 3:
             return "join " + name;
         default:
@@ -142,7 +157,7 @@ string NetworkClient :: ParseOperation(int operation, string name) {
  */
 void NetworkClient :: MenuVsRemote(Display *display) {
     string command, roomName;
-    int operation, n;
+    int operation;
     bool inputILegal = true;
     connectToServer(display); //initial connection to server.
     while(inputILegal) {
@@ -158,8 +173,8 @@ void NetworkClient :: MenuVsRemote(Display *display) {
         // translating the command from a number into string
         command = ParseOperation(operation, roomName);
         if(command == "NotOption") { //client entered number > 3 or <0.
-        display->printNoOption();
-        continue;
+            display->printNoOption();
+            continue;
         }
         // sending the command to the server
         try{
@@ -188,11 +203,13 @@ void NetworkClient :: MenuVsRemote(Display *display) {
         // if the input was legal
         string print;
         if(command == "Started") {
+            playerNum = P1;
             print = "The room: " + roomName + "was created! \n";
             display->printString(print);
             display->PrintWaitForRemoteToJoin();
             inputILegal = false;
         } else if(command == "Joined") {
+            playerNum = P2;
             print = "You have joined " + roomName + " room. Try to win \n";
             display->printString(print);
             inputILegal = false;
@@ -207,20 +224,26 @@ void NetworkClient :: MenuVsRemote(Display *display) {
 void NetworkClient :: writeToServer(string command) {
     int n;
     //try to send the client command to server.
-    n = (int) write(clientSocket, &command, LENGTH);
+    const char* command1 = command.c_str();
+    n = (int) write(clientSocket, &command1, LENGTH);
     if (n == -1) {  //error in writing to server
         throw "Error writing string command to server";
     }
 }
 //func reads answer from the server and returns it.
 string NetworkClient :: readFromServer() {
-    string str;
+    char message[LENGTH];
     int n;
     //read the command from the server.
-    n = (int) read(clientSocket, &str, LENGTH);
+    n = (int) read(clientSocket, &message, LENGTH);
     //error in reading
     if (n == -1) {
         throw "Error reading string command from server";
     }
+    string str(message);
     return str;
+}
+//get playerNum.
+int NetworkClient ::getPlayerNum() {
+    return playerNum;
 }

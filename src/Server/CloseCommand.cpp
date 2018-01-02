@@ -1,36 +1,23 @@
 #include "CloseCommand.h"
-#include <unistd.h>
-#include <iostream>
 using namespace std;
-#define SUCCESSFUL_CLOSE 2000
-//constructor, get list of games and a socket and initial them.
-CloseCommand :: CloseCommand(vector<Game>& listOfGames, int socket):
-        m_listOfGames(listOfGames), socket(socket){
+//constructor.
+CloseCommand :: CloseCommand(vector<Game> *listOfGames1) {
+    listOfGames = listOfGames1;
 }
-//get vector of strings and get a name of a game to close.
-void CloseCommand :: execute(vector<string> args){
-    for(int i = 0; i < m_listOfGames.size(); i++) {
-        //if name of game that want to close equal to game in list games.
-        if(m_listOfGames[i].name == args[0]) {
-            int num = SUCCESSFUL_CLOSE;
-            int n = write(m_listOfGames[i].socket1, &num,
-                          sizeof(moveToSendToOtherClient));
-            if (n == -1) {
-                cout << "Error writing to socket1 that game ended." << endl;
-                return;
-            }
-            n = write(m_listOfGames[i].socket2, &num,
-                      sizeof(moveToSendToOtherClient));
-            if (n == -1) {
-                cout << "Error writing to socket2 that game ended." << endl;
-                return;
-            }
-            close(m_listOfGames[i].socket1);
-            close(m_listOfGames[i].socket2);
-            cout << "Game: " << m_listOfGames[i].name << "Has been closed" <<
-                 endl;
-            m_listOfGames.erase(m_listOfGames.begin() + i); //erase game from list of games.
+//function gets command, name of a game and a client of a game and check which game to close,
+//and removes the game from list, and close sockets.
+bool CloseCommand :: execute(string command, string args, int client){
+    for(int i = 0; i < listOfGames.size(); i++) { //search specific game to close by name.
+        if(args == listOfGames[i].name) {
+            //closing player of game.
+            cout << "close Client "<< listOfGames[i]->socket1<< endl;
+            close(listOfGames[i].socket1);
+            cout << "close Client " << listOfGames[i]->socket2 << endl;
+            close(listOfGames[i].socket2);
+            //remove the game from list
+            listOfGames.erase(listOfGames.begin()+i);
             break;
         }
     }
+    return true;
 }

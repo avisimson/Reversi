@@ -355,6 +355,168 @@ Tests/test_main.cpp.s:
 	$(MAKE) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/Tests/test_main.cpp.s
 .PHONY : Tests/test_main.cpp.s
 
+src/Server/CloseCommand.o: src/Server/CloseCommand.cpp.o
+
+.PHONY : src/Server/CloseCommand.o
+
+# target to build an object file
+src/Server/CloseCommand.cpp.o:
+	$(MAKE) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/src/Server/CloseCommand.cpp.o
+.PHONY : src/Server/CloseCommand.cpp.o
+
+src/Server/CloseCommand.i: src/Server/CloseCommand.cpp.i
+
+.PHONY : src/Server/CloseCommand.i
+
+# target to preprocess a source file
+src/Server/CloseCommand.cpp.i:
+	$(MAKE) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/src/Server/CloseCommand.cpp.i
+.PHONY : src/Server/CloseCommand.cpp.i
+
+src/Server/CloseCommand.s: src/Server/CloseCommand.cpp.s
+
+.PHONY : src/Server/CloseCommand.s
+
+# target to generate assembly for a file
+src/Server/CloseCommand.cpp.s:
+	$(MAKE) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/src/Server/CloseCommand.cpp.s
+.PHONY : src/Server/CloseCommand.cpp.s
+
+src/Server/GameListCommand.o: src/Server/GameListCommand.cpp.o
+
+.PHONY : src/Server/GameListCommand.o
+
+# target to build an object file
+src/Server/GameListCommand.cpp.o:
+	$(MAKE) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/src/Server/GameListCommand.cpp.o
+.PHONY : src/Server/GameListCommand.cpp.o
+
+src/Server/GameListCommand.i: src/Server/GameListCommand.cpp.i
+
+.PHONY : src/Server/GameListCommand.i
+
+# target to preprocess a source file
+src/Server/GameListCommand.cpp.i:
+	$(MAKE) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/src/Server/GameListCommand.cpp.i
+.PHONY : src/Server/GameListCommand.cpp.i
+
+src/Server/GameListCommand.s: src/Server/GameListCommand.cpp.s
+
+.PHONY : src/Server/GameListCommand.s
+
+# target to generate assembly for a file
+src/Server/GameListCommand.cpp.s:
+	$(MAKE) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/src/Server/GameListCommand.cpp.s
+.PHONY : src/Server/GameListCommand.cpp.s
+
+src/Server/GameManager.o: src/Server/GameManager.cpp.o
+
+.PHONY : src/Server/GameManager.o
+
+# target to build an object file
+src/Server/GameManager.cpp.o:
+	$(MAKE) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/src/Server/GameManager.cpp.o
+.PHONY : src/Server/GameManager.cpp.o
+
+src/Server/GameManager.i: src/Server/GameManager.cpp.i
+
+.PHONY : src/Server/GameManager.i
+
+# target to preprocess a source file
+src/Server/GameManager.cpp.i:
+	$(MAKE) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/src/Server/GameManager.cpp.i
+.PHONY : src/Server/GameManager.cpp.i
+
+src/Server/GameManager.s: src/Server/GameManager.cpp.s
+
+.PHONY : src/Server/GameManager.s
+
+# target to generate assembly for a file
+src/Server/GameManager.cpp.s:
+	$(MAKE) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/src/Server/GameManager.cpp.s
+.PHONY : src/Server/GameManager.cpp.s
+
+src/Server/HandleClient.o: src/Server/HandleClient.cpp.o
+
+.PHONY : src/Server/HandleClient.o
+
+# target to build an object file
+src/Server/HandleClient.cpp.o:
+	$(MAKE) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/src/Server/HandleClient.cpp.o
+.PHONY : src/Server/HandleClient.cpp.o
+
+src/Server/HandleClient.i: src/Server/HandleClient.cpp.i
+
+.PHONY : src/Server/HandleClient.i
+
+# target to preprocess a source file
+src/Server/HandleClient.cpp.i:
+	$(MAKE) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/src/Server/HandleClient.cpp.i
+.PHONY : src/Server/HandleClient.cpp.i
+
+src/Server/HandleClient.s: src/Server/HandleClient.cpp.s
+
+.PHONY : src/Server/HandleClient.s
+
+# target to generate assembly for a file
+src/Server/HandleClient.cpp.s:
+	$(MAKE) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/src/Server/HandleClient.cpp.s
+.PHONY : src/Server/HandleClient.cpp.s
+
+src/Server/JoinGameCommand.o: src/Server/JoinGameCommand.cpp.o
+
+.PHONY : src/Server/JoinGameCommand.o
+
+# target to build an object file
+src/Server/JoinGameCommand.cpp.o:
+	$(MAKE) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/src/Server/JoinGameCommand.cpp.o
+.PHONY : src/Server/JoinGameCommand.cpp.o
+
+src/Server/JoinGameCommand.i: src/Server/JoinGameCommand.cpp.i
+
+.PHONY : src/Server/JoinGameCommand.i
+
+# target to preprocess a source file
+src/Server/JoinGameCommand.cpp.i:
+	$(MAKE) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/src/Server/JoinGameCommand.cpp.i
+.PHONY : src/Server/JoinGameCommand.cpp.i
+
+src/Server/JoinGameCommand.s: src/Server/JoinGameCommand.cpp.s
+
+.PHONY : src/Server/JoinGameCommand.s
+
+# target to generate assembly for a file
+src/Server/JoinGameCommand.cpp.s:
+	$(MAKE) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/src/Server/JoinGameCommand.cpp.s
+.PHONY : src/Server/JoinGameCommand.cpp.s
+
+src/Server/MakeMoveCommand.o: src/Server/MakeMoveCommand.cpp.o
+
+.PHONY : src/Server/MakeMoveCommand.o
+
+# target to build an object file
+src/Server/MakeMoveCommand.cpp.o:
+	$(MAKE) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/src/Server/MakeMoveCommand.cpp.o
+.PHONY : src/Server/MakeMoveCommand.cpp.o
+
+src/Server/MakeMoveCommand.i: src/Server/MakeMoveCommand.cpp.i
+
+.PHONY : src/Server/MakeMoveCommand.i
+
+# target to preprocess a source file
+src/Server/MakeMoveCommand.cpp.i:
+	$(MAKE) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/src/Server/MakeMoveCommand.cpp.i
+.PHONY : src/Server/MakeMoveCommand.cpp.i
+
+src/Server/MakeMoveCommand.s: src/Server/MakeMoveCommand.cpp.s
+
+.PHONY : src/Server/MakeMoveCommand.s
+
+# target to generate assembly for a file
+src/Server/MakeMoveCommand.cpp.s:
+	$(MAKE) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/src/Server/MakeMoveCommand.cpp.s
+.PHONY : src/Server/MakeMoveCommand.cpp.s
+
 src/Server/ReversiServer.o: src/Server/ReversiServer.cpp.o
 
 .PHONY : src/Server/ReversiServer.o
@@ -381,6 +543,33 @@ src/Server/ReversiServer.s: src/Server/ReversiServer.cpp.s
 src/Server/ReversiServer.cpp.s:
 	$(MAKE) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/src/Server/ReversiServer.cpp.s
 .PHONY : src/Server/ReversiServer.cpp.s
+
+src/Server/StartCommand.o: src/Server/StartCommand.cpp.o
+
+.PHONY : src/Server/StartCommand.o
+
+# target to build an object file
+src/Server/StartCommand.cpp.o:
+	$(MAKE) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/src/Server/StartCommand.cpp.o
+.PHONY : src/Server/StartCommand.cpp.o
+
+src/Server/StartCommand.i: src/Server/StartCommand.cpp.i
+
+.PHONY : src/Server/StartCommand.i
+
+# target to preprocess a source file
+src/Server/StartCommand.cpp.i:
+	$(MAKE) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/src/Server/StartCommand.cpp.i
+.PHONY : src/Server/StartCommand.cpp.i
+
+src/Server/StartCommand.s: src/Server/StartCommand.cpp.s
+
+.PHONY : src/Server/StartCommand.s
+
+# target to generate assembly for a file
+src/Server/StartCommand.cpp.s:
+	$(MAKE) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/src/Server/StartCommand.cpp.s
+.PHONY : src/Server/StartCommand.cpp.s
 
 src/Server/main.o: src/Server/main.cpp.o
 
@@ -647,9 +836,30 @@ help:
 	@echo "... Tests/test_main.o"
 	@echo "... Tests/test_main.i"
 	@echo "... Tests/test_main.s"
+	@echo "... src/Server/CloseCommand.o"
+	@echo "... src/Server/CloseCommand.i"
+	@echo "... src/Server/CloseCommand.s"
+	@echo "... src/Server/GameListCommand.o"
+	@echo "... src/Server/GameListCommand.i"
+	@echo "... src/Server/GameListCommand.s"
+	@echo "... src/Server/GameManager.o"
+	@echo "... src/Server/GameManager.i"
+	@echo "... src/Server/GameManager.s"
+	@echo "... src/Server/HandleClient.o"
+	@echo "... src/Server/HandleClient.i"
+	@echo "... src/Server/HandleClient.s"
+	@echo "... src/Server/JoinGameCommand.o"
+	@echo "... src/Server/JoinGameCommand.i"
+	@echo "... src/Server/JoinGameCommand.s"
+	@echo "... src/Server/MakeMoveCommand.o"
+	@echo "... src/Server/MakeMoveCommand.i"
+	@echo "... src/Server/MakeMoveCommand.s"
 	@echo "... src/Server/ReversiServer.o"
 	@echo "... src/Server/ReversiServer.i"
 	@echo "... src/Server/ReversiServer.s"
+	@echo "... src/Server/StartCommand.o"
+	@echo "... src/Server/StartCommand.i"
+	@echo "... src/Server/StartCommand.s"
 	@echo "... src/Server/main.o"
 	@echo "... src/Server/main.i"
 	@echo "... src/Server/main.s"

@@ -2,19 +2,18 @@
 #define REVERSI_DIRECTORCOMMAND_H
 
 #include <map>
-#include "Command.h"
-#include "ReversiServer.h"
-
-class DirectorCommand {
+#include "StartCommand.h"
+#include "CloseCommand.h"
+#include "GameListCommand.h"
+#include "JoinGameCommand.h"
+#include "MakeMoveCommand.h"
+class DirectorCommand: public Command {
 public:
-    DirectorCommand(vector<Game> &listOfGames, int socket);
+    DirectorCommand(vector<Game> *listOfGames);
     ~DirectorCommand();
-    void executeCommand(string command,
-                        vector<string> args);
+    bool execute(string command, string args, int client);
 private:
     map<string, Command*> commandsMap;
-    vector<Game> listOfGames;
-    int socket;
 };
 
 

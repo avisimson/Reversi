@@ -3,12 +3,29 @@
 
 #include <vector>
 #include <string>
-#include <ReversiServer.h>
+#include <string.h>
+#include <iostream>
+#include <stdio.h>
 using namespace std;
+enum StatusOfClientInGame {
+    Active = 0, Waiting = 1
+};
+//struct that splits server into number of games. each game has a name,
+// 2 sockets and a status.
+struct Game {
+    string name;
+    int socket1;
+    int socket2;
+    StatusOfClientInGame status;
+};
 class Command {
+protected: //all of the classes that include this interface will use this vector.
+    vector <Game> *listOfGames;
 public:
+    Command(vector<Game> *listOfGames):listOfGames(listOfGames){}
     // global function of execute actions that needs for the server
-    virtual void execute(vector<string> args) = 0;
+    virtual bool execute(string command, string args, int client) = 0;
+    vector<Game>* getListOfGames() { return listOfGames;}
     //destructor
     virtual ~Command() {}
 };

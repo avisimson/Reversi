@@ -17,6 +17,8 @@
 #include <stdio.h>
 #include <cstdlib> //for std::atoi
 #include "Display.h"
+#define P1 1
+#define P2 2
 using namespace std;
 enum StatusForClient {
     NoMove = 100, End = 101
@@ -31,6 +33,7 @@ class NetworkClient {
         int port;
         int clientSocket;
         const char* ipServer;
+        int playerNum = 0;
     public:
         NetworkClient(string filename);
         ~NetworkClient() { delete ipServer; }
@@ -44,6 +47,7 @@ class NetworkClient {
         void MenuVsRemote(Display* display);
         void writeToServer(string command);
         string readFromServer();
+        int getPlayerNum();
 };
 #define REVERSI_NETWORKCLIENT_H
 

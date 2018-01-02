@@ -7,20 +7,17 @@
  *      Yakir: 203200530
 */
 #include "ReversiServer.h"
-#include <string.h>
-#include <poll.h>
-#define MAX_CLIENTS 2
-#define FAILURE 1
-#define SUCCESS 0
 //constructor to server class, gets a port and update port in server.
 //constructor initialize serverSocket into 0.
 ReversiServer :: ReversiServer(int port1) {
     serverSocket = 0;
     port = port1;
+    handler = new HandleClient();
     cout << "Server initialized through constructor" << endl;
 }
 //constructor that gets a name of a file and read the port from it.
 ReversiServer :: ReversiServer(string filename) {
+    handler = new HandleClient();
     serverSocket = 0;
     string buffer;
     ifstream config;
@@ -41,9 +38,8 @@ ReversiServer :: ReversiServer(string filename) {
     config.close();
     cout << "Server initialized through constructor" << endl;
 }
-//function opens socket in server, connect client to server(throws
-//exception if there is a problem in connection), and handles all communication
-//between the clients until they disconnect.
+//function opens socket in server and starts listening to clients.
+//func opens threads of games and client connections to server.
 void ReversiServer :: start() {
     //cleaning buffer (put zeros in all buffer array)
     //Creating the socket
@@ -66,118 +62,58 @@ void ReversiServer :: start() {
     }
     //start listening for clients
     listen(serverSocket, MAX_CLIENTS);
-    //clients' variables
-    struct sockaddr_in client1Address;
-    socklen_t client1AddressLen;
-    struct sockaddr_in client2Address;
-    socklen_t client2AddressLen;
-    int num1 , num2;
-    //If a game has ended, start a new one
+    int rc = pthread_create(&mainThread,
+                            NULL, &ClientConnections, (void*)this);
+    if (rc) { //check if thread was created.
+        cout << "Error: unable to create main thread, " << rc << endl;
+        exit(-1);
+    }
+    string str = NULL;
+    while(str != "exit") {
+        cout << "Enter exit to close server" << endl;
+        cin >> str;
+    }
+    stop();
+}
+//function gets ReversiServer member and connects between clients to server.
+static void* ReversiServer :: ClientConnections(void* server) {
+    ReversiServer* rs = (ReversiServer*)server;
+    //Server start on trying to connects clients and start games.
+    int countOfClients = 0;
+    //create a thread of connecting clients to server.
+
+    struct sockaddr_in clientAddress;
+    socklen_t clientAddressLen;
     while (true) {
         cout << "Waiting for connections" << endl;
         //Accepting first client
-        int client1_sd = accept(serverSocket,
-                            (struct sockaddr *) &client1Address,
-                            &client1AddressLen);
-        cout << "Client 1 entered!" << endl;
-        //Sending 1 to him to show him he is the first to enter
-        num1 = 1;
-        //if have problem in accept
-        if(client1_sd == -1) { //client 1 connection failed.
-            stop();
-            throw "Error on accept";
+        int client_sd = accept(rs->getServerSocket(),
+                               (struct sockaddr *) &clientAddress,
+                               &clientAddressLen);
+        countOfClients++;
+        cout << "Client number " << countOfClients << " has entered!" << endl;
+        //if have problem in accepting client close the server
+        if (client_sd == -1) { //error accepting client-skip to next one.
+            cout << "Error on accept client: " << countOfClients << endl;
+            countOfClients--;
+            continue;
         }
-        //send client 1 a message that he is player 1.
-        write(client1_sd, &num1, sizeof(int));
-        //Accepting second client
-        int client2_sd = accept(serverSocket,
-                            (struct sockaddr *) &client2Address,
-                            &client2AddressLen);
-        cout << "Client 2 entered!" << endl;
-        //Sending 2 to him to show him he is the second to enter
-        num2 = 2;
-        //if have problem in accept
-        if(client2_sd == -1) { //client 2 connection failed.
-            stop();
-            throw "Error on accept";
-        }
-        //send client 2 a message that he is player 2.
-        write(client2_sd, &num2, sizeof(int));
-        write(client1_sd, &num2, sizeof(int));
-        int count = 0;
-        int check;
-        while (true) { //send messages between players until game ends.
-            if(count == 0) {
-                check = checkValidate(client1_sd, client2_sd);
-                if(check != -1) {
-                    count++;
-                }
-            } else if(count == 1) {
-                int check = checkValidate(client2_sd, client1_sd);
-                if(check != -1) {
-                    count--;
-                }
-            }
-            //if function get "end"
-            if (check == FAILURE){
-                close(client1_sd);
-                close(client2_sd);
-                break;
-            }
+        //create thread to handle client to join/start game.
+        int rc = pthread_create(&rs->getThreadsOfGames()[countOfClients - 1],
+                                NULL, &rs->getHandler()->InitialClientServerConversation,
+                                (void*)client_sd);
+        if (rc) { //check if thread was created.
+            cout << "Error: unable to create thread, " << rc << endl;
+            exit(-1);
         }
     }
 }
 //function closes socket of the server that initialized in start method.
 void ReversiServer :: stop() {
-    close(serverSocket);
-}
-//function gets 2 ints of client sockets that connected to clients.
-//messages are row, col. return 0 to continue game, 1 to end, -1 to try turn again.
-int ReversiServer :: checkValidate(int clientSocket1,
-                                   int clientSocket2) {
-    int rowInput;
-    int colInput; //get from one of players and send to other player,
-    //taking input form client 1 for row, game end or no move turn.
-    int n = read(clientSocket1, &rowInput, sizeof(int));
-    //if player1 see that game is over
-    if(n == -1) { //if reading row failed.
-        cout << "Error reading row" << endl;
-        return -1;
+    for(int i = 0; i < MAX_CLIENTS / 2; i++) { //close all threads of games.
+        pthread_cancel(threads[i]);
     }
-    if(n == 0) { //check if player 1 disconnected
-        cout << "client send disconnected" << endl;
-        rowInput = End;
-        write(clientSocket2, &rowInput, sizeof(int));
-        write(clientSocket2, &rowInput, sizeof(int));
-        return FAILURE; //to end game.
-    }
-    if (rowInput == End) {
-        write(clientSocket2, &rowInput, sizeof(int));
-        write(clientSocket2, &colInput, sizeof(int));
-        return FAILURE;
-    }
-    //if to player1 no moves to play , send message to player1
-    else if (rowInput == NoMove) { //returning the message to player 2
-        write(clientSocket2, &rowInput, sizeof(int));
-        write(clientSocket2, &colInput, sizeof(int));
-        return SUCCESS;
-    }
-    //check the current col
-    n = read(clientSocket1, &colInput, sizeof(int));
-    if(n == -1) {
-        cout << "Error reading col" << endl;
-        return -1;
-    }
-    //send the move to player2
-    n = write(clientSocket2, &rowInput, sizeof(int));
-    if(n == -1) { //check if message send
-        cout << "Error writing ROW to socket" << endl;
-        return -1;
-    }
-    n = write(clientSocket2, &colInput, sizeof(int));
-    if(n == -1) { //check if message send
-        cout << "Error writing COL to socket" << endl;
-        return -1;
-    }
-    return SUCCESS; //turn success, game continues.
+    pthread_cancel(mainThread); // close thread of -while true loop.
+    delete handler; //remove list of games vector from heap.
+    close(serverSocket); //close socket.
 }

@@ -4,11 +4,8 @@
 #include "Command.h"
 class GameListCommand: public Command {
 public:
-    GameListCommand(vector<Game>& listOfGames, int socket);
-    virtual void execute(vector<string> args);
-private:
-    vector<Game> &m_listOfGames;
-    int socket;
+    GameListCommand(vector<Game> *listOfGames);
+    bool execute(string command, string args, int client);
 };
 
 

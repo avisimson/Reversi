@@ -778,13 +778,13 @@ void ReversiGame :: playGameVsRemote() {
     }
     int type;
     try {
-        type =  client->getType(); //get 1,2 to know if client is player 1 or 2
+        type = client->getPlayerNum(); //get 1,2 to know if client is player 1 or 2
     } catch(char* msg) {
         cout << msg;
     }
     struct Info info;
     int cantPlay = 0, turn = PLAYERONE;
-    if(type == 1) { //user is player 1.
+    if(type == PLAYERONE) { //user is player 1.
         display->printYouArePlayer(PLAYERONE); //print you are player 1/2.
         while(true) { //stop doing anything until player 2 arrives.
             if(client->getType() == PLAYERTWO) {
@@ -852,7 +852,7 @@ void ReversiGame :: playGameVsRemote() {
                 }
             }
         }
-    } else if(type == 2) { //user is player 2
+    } else if(type == PLAYERTWO) { //user is player 2
         display->printYouArePlayer(PLAYERTWO); //print you are player 1/2.
         display->printBoard(board);
         while(cantPlay < 2 && space > 0) {

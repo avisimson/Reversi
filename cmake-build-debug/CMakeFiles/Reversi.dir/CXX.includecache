@@ -27,10 +27,22 @@ Board.h
 /home/avi/CLionProjects/Reversi/src/client/Board.h
 Display.h
 /home/avi/CLionProjects/Reversi/src/client/Display.h
+string.h
+-
+stdio.h
+-
+string
+-
 
 /home/avi/CLionProjects/Reversi/src/client/Display.h
 Board.h
 /home/avi/CLionProjects/Reversi/src/client/Board.h
+string.h
+-
+stdio.h
+-
+string
+-
 
 /home/avi/CLionProjects/Reversi/src/client/Game.cpp
 iostream

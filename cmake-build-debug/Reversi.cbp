@@ -484,10 +484,55 @@
 		<Unit filename="/home/avi/CLionProjects/Reversi/lib/googletest-release-1.8.0/googletest/src/gtest_main.cc">
 			<Option target="gtest_main"/>
 		</Unit>
+		<Unit filename="/home/avi/CLionProjects/Reversi/src/Server/CloseCommand.cpp">
+			<Option target="Server"/>
+		</Unit>
+		<Unit filename="/home/avi/CLionProjects/Reversi/src/Server/CloseCommand.h">
+			<Option target="Server"/>
+		</Unit>
+		<Unit filename="/home/avi/CLionProjects/Reversi/src/Server/Command.h">
+			<Option target="Server"/>
+		</Unit>
+		<Unit filename="/home/avi/CLionProjects/Reversi/src/Server/GameListCommand.cpp">
+			<Option target="Server"/>
+		</Unit>
+		<Unit filename="/home/avi/CLionProjects/Reversi/src/Server/GameListCommand.h">
+			<Option target="Server"/>
+		</Unit>
+		<Unit filename="/home/avi/CLionProjects/Reversi/src/Server/GameManager.cpp">
+			<Option target="Server"/>
+		</Unit>
+		<Unit filename="/home/avi/CLionProjects/Reversi/src/Server/GameManager.h">
+			<Option target="Server"/>
+		</Unit>
+		<Unit filename="/home/avi/CLionProjects/Reversi/src/Server/HandleClient.cpp">
+			<Option target="Server"/>
+		</Unit>
+		<Unit filename="/home/avi/CLionProjects/Reversi/src/Server/HandleClient.h">
+			<Option target="Server"/>
+		</Unit>
+		<Unit filename="/home/avi/CLionProjects/Reversi/src/Server/JoinGameCommand.cpp">
+			<Option target="Server"/>
+		</Unit>
+		<Unit filename="/home/avi/CLionProjects/Reversi/src/Server/JoinGameCommand.h">
+			<Option target="Server"/>
+		</Unit>
+		<Unit filename="/home/avi/CLionProjects/Reversi/src/Server/MakeMoveCommand.cpp">
+			<Option target="Server"/>
+		</Unit>
+		<Unit filename="/home/avi/CLionProjects/Reversi/src/Server/MakeMoveCommand.h">
+			<Option target="Server"/>
+		</Unit>
 		<Unit filename="/home/avi/CLionProjects/Reversi/src/Server/ReversiServer.cpp">
 			<Option target="Server"/>
 		</Unit>
 		<Unit filename="/home/avi/CLionProjects/Reversi/src/Server/ReversiServer.h">
+			<Option target="Server"/>
+		</Unit>
+		<Unit filename="/home/avi/CLionProjects/Reversi/src/Server/StartCommand.cpp">
+			<Option target="Server"/>
+		</Unit>
+		<Unit filename="/home/avi/CLionProjects/Reversi/src/Server/StartCommand.h">
 			<Option target="Server"/>
 		</Unit>
 		<Unit filename="/home/avi/CLionProjects/Reversi/src/Server/main.cpp">

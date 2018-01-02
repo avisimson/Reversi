@@ -1,36 +1,27 @@
 #include <iostream>
 #include <unistd.h>
 #include "JoinGameCommand.h"
-#define SUCCESSFUL_CONNECTION 1000
-//constructor initial current socket and list of games in server.
-JoinGameCommand::JoinGameCommand(vector<Game>& listOfGames, int socket):
-        m_listOfGames(listOfGames), socket(socket){
-
+#define PLAYERTWO 2
+//constructor initial current list of games in server.
+JoinGameCommand::JoinGameCommand(vector<Game> *listOfGames1) {
+    listOfGames = listOfGames1;
 }
 //func gets a vector of commands,
 // add socket to specific game as player2 and makes game active.
-void JoinGameCommand :: execute(vector<string> args){
-    for(int i = 0; i < m_listOfGames.size(); i++) {
-        if (args[0] == m_listOfGames[i].name) {
-            m_listOfGames[i].socket2 = socket;  //add socket as player 2 in game.
-            sendGameStarts(m_listOfGames[i].socket1, m_listOfGames[i].socket2);
-            m_listOfGames[i].status = Active; //game becomes active a starts.
-            break;
+//command is the start command, args is name of game, client is the socket of client.
+//return: false if args name is not in list of games, true if it is and join him to game.
+bool JoinGameCommand :: execute(string command, string args, int client) {
+    for(int i = 0; i < listOfGames.size(); i++) {
+        if (args == listOfGames[i].name) { //search client input with names in list.
+            listOfGames[i].socket2 = client; //set client as player2.
+            listOfGames[i].status = Active; //2 players are now connected to game.
+            int p2 = PLAYERTWO;
+            //write to player 1 that player 2 connected.
+            int n = write(listOfGames[i].socket1, &p2, sizeof(int));
+            if(n == -1) {
+                throw "coudlnt send player 1 in game " << i << " that player 2 connected\n";
+            }
         }
     }
-    /// need to write to the socket if failed
-}
-//func gets 2 sockets of specific game and send them that game started.
-void CommandJoin :: sendValueOfClient(int clientSocket1, int clientSocket2) {
-    int num = SUCCESSFUL_CONNECTION;
-    int n = write(clientSocket1, &num, sizeof(player1));
-    if (n == -1) {
-        cout << "Error writing to player 1 that game started." << endl;
-        return;
-    }
-    n = write(clientSocket2, &num, sizeof(player2));
-    if (n == -1) {
-        cout << "Error writing to player2 that game started." << endl;
-        return;
-    }
+    return false; //game name not found in list.
 }
