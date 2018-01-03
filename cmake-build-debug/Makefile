@@ -382,6 +382,33 @@ src/Server/CloseCommand.cpp.s:
 	$(MAKE) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/src/Server/CloseCommand.cpp.s
 .PHONY : src/Server/CloseCommand.cpp.s
 
+src/Server/DirectorCommand.o: src/Server/DirectorCommand.cpp.o
+
+.PHONY : src/Server/DirectorCommand.o
+
+# target to build an object file
+src/Server/DirectorCommand.cpp.o:
+	$(MAKE) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/src/Server/DirectorCommand.cpp.o
+.PHONY : src/Server/DirectorCommand.cpp.o
+
+src/Server/DirectorCommand.i: src/Server/DirectorCommand.cpp.i
+
+.PHONY : src/Server/DirectorCommand.i
+
+# target to preprocess a source file
+src/Server/DirectorCommand.cpp.i:
+	$(MAKE) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/src/Server/DirectorCommand.cpp.i
+.PHONY : src/Server/DirectorCommand.cpp.i
+
+src/Server/DirectorCommand.s: src/Server/DirectorCommand.cpp.s
+
+.PHONY : src/Server/DirectorCommand.s
+
+# target to generate assembly for a file
+src/Server/DirectorCommand.cpp.s:
+	$(MAKE) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/src/Server/DirectorCommand.cpp.s
+.PHONY : src/Server/DirectorCommand.cpp.s
+
 src/Server/GameListCommand.o: src/Server/GameListCommand.cpp.o
 
 .PHONY : src/Server/GameListCommand.o
@@ -839,6 +866,9 @@ help:
 	@echo "... src/Server/CloseCommand.o"
 	@echo "... src/Server/CloseCommand.i"
 	@echo "... src/Server/CloseCommand.s"
+	@echo "... src/Server/DirectorCommand.o"
+	@echo "... src/Server/DirectorCommand.i"
+	@echo "... src/Server/DirectorCommand.s"
 	@echo "... src/Server/GameListCommand.o"
 	@echo "... src/Server/GameListCommand.i"
 	@echo "... src/Server/GameListCommand.s"

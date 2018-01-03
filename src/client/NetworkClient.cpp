@@ -27,6 +27,7 @@ NetworkClient :: NetworkClient(string filename) {
     strcpy(c, ipLine.c_str());
     ipServer = c;
     infoAddress.close(); //close the file.
+    playerNum = 0;
 }
 //function connects current client user to the reversi server.
 //func gets a print display as parameter.
@@ -204,7 +205,7 @@ void NetworkClient :: MenuVsRemote(Display *display) {
         string print;
         if(command == "Started") {
             playerNum = P1;
-            print = "The room: " + roomName + "was created! \n";
+            print = "The room: " + roomName + " was created! \n";
             display->printString(print);
             display->PrintWaitForRemoteToJoin();
             inputILegal = false;
@@ -222,25 +223,27 @@ void NetworkClient :: MenuVsRemote(Display *display) {
 }
 //func gets a command from menu and deliver it to the server.
 void NetworkClient :: writeToServer(string command) {
+    char command1[LENGTH];
+    strcpy(command1, command.c_str());
     int n;
-    //try to send the client command to server.
-    const char* command1 = command.c_str();
-    n = (int) write(clientSocket, &command1, LENGTH);
+    n = write(clientSocket, &command1, sizeof(command1));
     if (n == -1) {  //error in writing to server
         throw "Error writing string command to server";
     }
 }
 //func reads answer from the server and returns it.
 string NetworkClient :: readFromServer() {
-    char message[LENGTH];
     int n;
-    //read the command from the server.
-    n = (int) read(clientSocket, &message, LENGTH);
+    char message[LENGTH];
+    n = read(clientSocket, &message, sizeof(message));
+    if (n == 0) {
+        throw "Server disconnected";
+    }
     //error in reading
     if (n == -1) {
         throw "Error reading string command from server";
     }
-    string str(message);
+    string str = message;
     return str;
 }
 //get playerNum.

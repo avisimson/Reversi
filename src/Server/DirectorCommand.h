@@ -1,3 +1,9 @@
+/*
+ *  Created on: jan 01 2018
+ *      Author: avi simson & yakir pinchas
+ *      Avi id: 205789100
+ *      Yakir: 203200530
+*/
 #ifndef REVERSI_DIRECTORCOMMAND_H
 #define REVERSI_DIRECTORCOMMAND_H
 

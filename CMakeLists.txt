@@ -20,7 +20,7 @@ set(SERVER_FILES src/Server/ReversiServer.cpp src/Server/ReversiServer.h src/Ser
         src/Server/Command.h src/Server/StartCommand.cpp src/Server/StartCommand.h src/Server/JoinGameCommand.cpp
         src/Server/JoinGameCommand.h src/Server/GameListCommand.cpp src/Server/GameListCommand.h
         src/Server/CloseCommand.cpp src/Server/CloseCommand.h src/Server/MakeMoveCommand.cpp
-        src/Server/MakeMoveCommand.h)
+        src/Server/MakeMoveCommand.h src/Server/DirectorCommand.cpp src/Server/DirectorCommand.h)
 
 set(TEST_FILES Tests/Board_test.cpp Tests/Board_test.h Tests/Player_test.cpp Tests/Player_test.h
         Tests/ReversiGame_test.cpp Tests/ReversiGame_test.h Tests/test_main.cpp)

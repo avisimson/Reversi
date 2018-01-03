@@ -1,3 +1,9 @@
+/*
+ *  Created on: jan 01 2018
+ *      Author: avi simson & yakir pinchas
+ *      Avi id: 205789100
+ *      Yakir: 203200530
+*/
 #ifndef REVERSI_DISPLAY_H
 #define REVERSI_DISPLAY_H
 
@@ -27,7 +33,7 @@ public:
     virtual void printNoOption() = 0; //print no option.
     virtual void printComCantPlay(char c) = 0; //print computer cant play.
     virtual void printScore(char name1, char name2, int score1, int score2) = 0; //score print.
-    virtual void printFailToConnect(const char msg) = 0; //print fail to connect and why.
+    virtual void printFailToConnect(const char* msg) = 0; //print fail to connect and why.
     virtual void printYouArePlayer(int num) = 0; //print you are player 1/2.
     virtual void printWaiting() = 0; //print waiting for other player.
     virtual void printRemoteCantPlay() = 0; //print remote player didnt have moves.

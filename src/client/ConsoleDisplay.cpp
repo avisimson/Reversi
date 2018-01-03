@@ -1,3 +1,9 @@
+/*
+ *  Created on: jan 01 2018
+ *      Author: avi simson & yakir pinchas
+ *      Avi id: 205789100
+ *      Yakir: 203200530
+*/
 #include <iostream>
 #include "ConsoleDisplay.h"
 #include "ReversiGame.h"
@@ -101,7 +107,7 @@ void ConsoleDisplay :: printScore(char name1, char name2, int score1, int score2
     }
 }
 //print fail to connect and reason.
-void ConsoleDisplay :: printFailToConnect(const char msg) {
+void ConsoleDisplay :: printFailToConnect(const char* msg) {
     cout << "Failed to connect to server. Reason:" << msg << endl;
 }
 //print you are player 1/2.
@@ -123,7 +129,7 @@ void ConsoleDisplay :: PrintWaitForRemoteToJoin() {
 }
 //print enter a name for game to create.
 void ConsoleDisplay :: EnterNameOfGame() {
-    cout << "Please enter the name of the game you want to create:" << endl;
+    cout << "Please enter the name of the game you want:" << endl;
 }
 //client tried to enter room that doesnt exist.
 void ConsoleDisplay :: printNotExist() {

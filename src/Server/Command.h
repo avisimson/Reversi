@@ -1,3 +1,9 @@
+/*
+ *  Created on: jan 01 2018
+ *      Author: avi simson & yakir pinchas
+ *      Avi id: 205789100
+ *      Yakir: 203200530
+*/
 #ifndef REVERSI_COMMAND_H
 #define REVERSI_COMMAND_H
 
@@ -20,9 +26,9 @@ struct Game {
 };
 class Command {
 protected: //all of the classes that include this interface will use this vector.
-    vector <Game> *listOfGames;
+    vector<Game> *listOfGames;
 public:
-    Command(vector<Game> *listOfGames):listOfGames(listOfGames){}
+    
     // global function of execute actions that needs for the server
     virtual bool execute(string command, string args, int client) = 0;
     vector<Game>* getListOfGames() { return listOfGames;}

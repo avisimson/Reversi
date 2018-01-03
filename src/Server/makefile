@@ -1,11 +1,18 @@
-#AviSimson205789100
-#YakirPinchas203200530
-a.out: ReversiServer.o main.o
-	g++ main.o ReversiServer.o 
+CC = g++
+SERVER_H_FILES = *.h
+SERVER_CPP_FILES = *.cpp
+SERVER_O_FILES = ./obj/server_obj/*
 
-ReversiServer.o: ReversiServer.cpp ReversiServer.h
-	g++ -c ReversiServer.cpp
+create_all: obj server clean
 
-main.o: main.cpp ReversiServer.h
-	g++ -c main.cpp
+server: $(SERVER_CPP_FILES) $(SERVER_H_FILES)
+	$(CC) -c $(SERVER_CPP_FILES)
+	mv *.o obj/server_obj
+	$(CC) -pthread $(SERVER_O_FILES) -o ../../exe/server
 
+obj:
+	mkdir obj
+	mkdir obj/server_obj
+
+clean:	
+	rm -rf obj/

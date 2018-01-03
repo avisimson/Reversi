@@ -1,3 +1,12 @@
+/*
+ *  Created on: jan 01 2018
+ *      Author: avi simson & yakir pinchas
+ *      Avi id: 205789100
+ *      Yakir: 203200530
+*/
+using namespace std;
+#ifndef REVERSI_GAMEMANAGER_H
+#define REVERSI_GAMEMANAGER_H
 #include <pthread.h>
 #include <cmath>
 #include <sys/socket.h>
@@ -5,21 +14,14 @@
 #include <unistd.h>
 #include "MakeMoveCommand.h"
 #include "CloseCommand.h"
-using namespace std;
-enum StatusForServer {
-    NoMove = 100, End = 101
-};
-#ifndef REVERSI_GAMEMANAGER_H
 class GameManager {
-    private:
+private:
     Command* command;
-        Game game;
-    public:
-        GameManager(Game game, Command* command);
-        ~GameManager() {};
-        void ManageGame();
-        void Swap();
+    Game game;
+public:
+    GameManager(Game game, Command* command);
+    ~GameManager() {};
+    void ManageGame();
+    void Swap();
 };
-#define REVERSI_GAMEMANAGER_H
-
 #endif //REVERSI_GAMEMANAGER_H

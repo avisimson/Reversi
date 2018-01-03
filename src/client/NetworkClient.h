@@ -33,7 +33,7 @@ class NetworkClient {
         int port;
         int clientSocket;
         const char* ipServer;
-        int playerNum = 0;
+        int playerNum;
     public:
         NetworkClient(string filename);
         ~NetworkClient() { delete ipServer; }

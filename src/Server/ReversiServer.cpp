@@ -10,6 +10,8 @@
 //constructor to server class, gets a port and update port in server.
 //constructor initialize serverSocket into 0.
 ReversiServer :: ReversiServer(int port1) {
+    threads = new vector<pthread_t*>;
+    threads->clear();
     serverSocket = 0;
     port = port1;
     handler = new HandleClient();
@@ -17,6 +19,8 @@ ReversiServer :: ReversiServer(int port1) {
 }
 //constructor that gets a name of a file and read the port from it.
 ReversiServer :: ReversiServer(string filename) {
+    threads = new vector<pthread_t*>;
+    threads->clear();
     handler = new HandleClient();
     serverSocket = 0;
     string buffer;
@@ -68,7 +72,7 @@ void ReversiServer :: start() {
         cout << "Error: unable to create main thread, " << rc << endl;
         exit(-1);
     }
-    string str = NULL;
+    string str;
     while(str != "exit") {
         cout << "Enter exit to close server" << endl;
         cin >> str;
@@ -76,20 +80,25 @@ void ReversiServer :: start() {
     stop();
 }
 //function gets ReversiServer member and connects between clients to server.
-static void* ReversiServer :: ClientConnections(void* server) {
+void* ReversiServer :: ClientConnections(void* server) {
     ReversiServer* rs = (ReversiServer*)server;
     //Server start on trying to connects clients and start games.
     int countOfClients = 0;
     //create a thread of connecting clients to server.
-
+    struct Details* details = (struct Details*) malloc(sizeof(struct Details));
     struct sockaddr_in clientAddress;
-    socklen_t clientAddressLen;
+    socklen_t clientAddressLen = sizeof(clientAddress);
+    vector<Game>* vec = new vector<Game>();
+    Command* commandsOfClient = new DirectorCommand(vec);
+    details->commandOfClient = commandsOfClient;
+    details->handler = rs->getHandler();
     while (true) {
         cout << "Waiting for connections" << endl;
         //Accepting first client
         int client_sd = accept(rs->getServerSocket(),
                                (struct sockaddr *) &clientAddress,
                                &clientAddressLen);
+        details->clientSocket = client_sd;
         countOfClients++;
         cout << "Client number " << countOfClients << " has entered!" << endl;
         //if have problem in accepting client close the server
@@ -98,22 +107,26 @@ static void* ReversiServer :: ClientConnections(void* server) {
             countOfClients--;
             continue;
         }
+        pthread_t newThread;
+        rs->getThreadsOfGames()->push_back(&newThread); //insert new thread to treads vector.
+        details->currentThread = &newThread;
+        details->threads = rs->getThreadsOfGames();
         //create thread to handle client to join/start game.
-        int rc = pthread_create(&rs->getThreadsOfGames()[countOfClients - 1],
-                                NULL, &rs->getHandler()->InitialClientServerConversation,
-                                (void*)client_sd);
+        int rc = pthread_create(&newThread, NULL, &rs->getHandler()->InitialClientServerConversation, (void*)details);
         if (rc) { //check if thread was created.
             cout << "Error: unable to create thread, " << rc << endl;
             exit(-1);
         }
     }
 }
-//function closes socket of the server that initialized in start method.
+//function closes/deletes all open threads, server socket and all helpers to reversi server class.
 void ReversiServer :: stop() {
-    for(int i = 0; i < MAX_CLIENTS / 2; i++) { //close all threads of games.
-        pthread_cancel(threads[i]);
+    vector<pthread_t*> :: iterator it = threads->begin();
+    for(it; it != threads->end();it++) {
+        pthread_cancel(**it);
     }
+    close(serverSocket); //close socket.
+    delete threads;//release vector from heap.
     pthread_cancel(mainThread); // close thread of -while true loop.
     delete handler; //remove list of games vector from heap.
-    close(serverSocket); //close socket.
 }

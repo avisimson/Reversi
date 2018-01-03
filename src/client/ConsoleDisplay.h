@@ -1,3 +1,9 @@
+/*
+ *  Created on: jan 01 2018
+ *      Author: avi simson & yakir pinchas
+ *      Avi id: 205789100
+ *      Yakir: 203200530
+*/
 #ifndef REVERSI_CONSOLEDISPLAY_H
 #define REVERSI_CONSOLEDISPLAY_H
 
@@ -31,7 +37,7 @@ public:
     void printNoOption();
     void printComCantPlay(char c);
     void printScore(char name1, char name2, int score1, int score2);
-    void printFailToConnect(const char msg);
+    void printFailToConnect(const char *msg);
     void printYouArePlayer(int num);
     void printWaiting();
     void printRemoteCantPlay();

@@ -772,7 +772,7 @@ void ReversiGame :: playGameVsRemote() {
     try {
         client->MenuVsRemote(display); //try to connect to server and choose king of game.
     } catch(const char *msg) {
-        display->printFailToConnect(*msg);
+        display->printFailToConnect(msg);
         delete client;
         return;
     }
@@ -787,8 +787,13 @@ void ReversiGame :: playGameVsRemote() {
     if(type == PLAYERONE) { //user is player 1.
         display->printYouArePlayer(PLAYERONE); //print you are player 1/2.
         while(true) { //stop doing anything until player 2 arrives.
-            if(client->getType() == PLAYERTWO) {
-                break;
+            try {
+                if(client->getType() == PLAYERTWO) {
+                    break;
+                }
+            } catch(const char* msg) {
+                cout << msg << endl;
+                return;
             }
         }
         display->printBoard(board); //print board.
@@ -967,7 +972,7 @@ bool ReversiGame :: PlayTurnAgainstRemote(NetworkClient* client, Player* player)
     }
     try { //sending move to socket.
         client->sendMove(row, col);
-    } catch (char* msg) { //fail to send move to socket.
+    } catch (const char* msg) { //fail to send move to socket.
         cout << msg << endl;
         return false;
     }

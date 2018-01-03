@@ -493,6 +493,12 @@
 		<Unit filename="/home/avi/CLionProjects/Reversi/src/Server/Command.h">
 			<Option target="Server"/>
 		</Unit>
+		<Unit filename="/home/avi/CLionProjects/Reversi/src/Server/DirectorCommand.cpp">
+			<Option target="Server"/>
+		</Unit>
+		<Unit filename="/home/avi/CLionProjects/Reversi/src/Server/DirectorCommand.h">
+			<Option target="Server"/>
+		</Unit>
 		<Unit filename="/home/avi/CLionProjects/Reversi/src/Server/GameListCommand.cpp">
 			<Option target="Server"/>
 		</Unit>

@@ -1,9 +1,16 @@
+/*
+ *  Created on: jan 01 2018
+ *      Author: avi simson & yakir pinchas
+ *      Avi id: 205789100
+ *      Yakir: 203200530
+*/
 #include "DirectorCommand.h"
 //constructor-initializes all command options in this command.
-DirectorCommand :: DirectorCommand(vector<Game> *listOfGames) {
+DirectorCommand :: DirectorCommand(vector<Game> *listOfGames1) {
+    listOfGames = listOfGames1;
     commandsMap["start"] = new StartCommand(listOfGames);
     commandsMap["close"] = new CloseCommand(listOfGames);
-    commandsMap["list_games"] = new GameListCommand(listOfGames);
+    commandsMap["list"] = new GameListCommand(listOfGames);
     commandsMap["join"] = new JoinGameCommand(listOfGames);
     commandsMap["play"] = new MakeMoveCommand(listOfGames);
 }
@@ -11,8 +18,8 @@ DirectorCommand :: DirectorCommand(vector<Game> *listOfGames) {
 //command executes the command by the map of the class with string command.
 bool DirectorCommand :: execute(string command, string args, int client) {
     Command *commandObj = commandsMap[command]; //understand which command we are in.
-    commandObj->execute(command, args, client); //execute.
-    return true;
+    bool answer = commandObj->execute(command, args, client); //execute.
+    return answer;
 }
 //destructor, delete all from heap.
 DirectorCommand :: ~DirectorCommand() {

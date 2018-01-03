@@ -1,6 +1,4 @@
 /*
- * ReversiServer.cpp
- *
  *  Created on: DEC29, 2017
  *      Author: avi simson & yakir pinchas
  *      Avi id: 205789100
@@ -19,12 +17,18 @@
 #include "GameManager.h"
 using namespace std;
 class HandleClient {
-    private:
-        Command* commandOfClient;
     public:
-        HandleClient() {vector<Game>* vec = new vector<Game>();
-            new DirectorCommand(vec);};
-        ~HandleClient() { delete commandOfClient;};
+        HandleClient() {};
+        ~HandleClient() {};
         static void* InitialClientServerConversation(void* clientID);
+        void CloseThread(vector<pthread_t*>* threads, pthread_t* currentThread);
+};
+struct Details { //struct that we use in initial client server conversation method
+    //to pass arguments between threads.
+    int clientSocket; //client socket.
+    Command* commandOfClient; //deliever command to thread.
+    pthread_t* currentThread; //deliver current thread pointer to the thread itself.
+    vector<pthread_t*>* threads;
+    HandleClient* handler;
 };
 #endif //REVERSI_HANDLECLIENT_H
