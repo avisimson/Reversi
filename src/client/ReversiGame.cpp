@@ -72,17 +72,17 @@ ReversiGame :: ~ReversiGame() {
     delete player1;
     delete player2;
     if(space == -1) {
-        delete possiblePointsone;
-        delete possiblePointstwo;
+        delete[] possiblePointsone;
+        delete[] possiblePointstwo;
     } else {
         for (int i = 0; i < ((board->getSize()) * board->getSize()) - 4; i++) {
             delete possiblePointsone[i];
         }
-        delete possiblePointsone;
+        delete[] possiblePointsone;
         for (int i = 0; i < ((board->getSize()) * board->getSize()) - 4; i++) {
             delete possiblePointstwo[i];
         }
-        delete possiblePointstwo;
+        delete[] possiblePointstwo;
     }
     delete display;
     delete board;

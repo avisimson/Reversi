@@ -7,11 +7,11 @@
  *      Yakir: 203200530
 */
 #include "ReversiServer.h"
+#define THREADSSIZE 5
 //constructor to server class, gets a port and update port in server.
 //constructor initialize serverSocket into 0.
 ReversiServer :: ReversiServer(int port1) {
-    threads = new vector<pthread_t*>;
-    threads->clear();
+    threads = new ThreadPool(THREADSSIZE);
     serverSocket = 0;
     port = port1;
     handler = new HandleClient();
@@ -19,8 +19,7 @@ ReversiServer :: ReversiServer(int port1) {
 }
 //constructor that gets a name of a file and read the port from it.
 ReversiServer :: ReversiServer(string filename) {
-    threads = new vector<pthread_t*>;
-    threads->clear();
+    threads = new ThreadPool(THREADSSIZE);
     handler = new HandleClient();
     serverSocket = 0;
     string buffer;
@@ -91,7 +90,6 @@ void* ReversiServer :: ClientConnections(void* server) {
     vector<Game>* vec = new vector<Game>();
     Command* commandsOfClient = new DirectorCommand(vec);
     details->commandOfClient = commandsOfClient;
-    details->handler = rs->getHandler();
     while (true) {
         cout << "Waiting for connections" << endl;
         //Accepting first client
@@ -107,26 +105,14 @@ void* ReversiServer :: ClientConnections(void* server) {
             countOfClients--;
             continue;
         }
-        pthread_t newThread;
-        rs->getThreadsOfGames()->push_back(&newThread); //insert new thread to treads vector.
-        details->currentThread = &newThread;
-        details->threads = rs->getThreadsOfGames();
-        //create thread to handle client to join/start game.
-        int rc = pthread_create(&newThread, NULL, &rs->getHandler()->InitialClientServerConversation, (void*)details);
-        if (rc) { //check if thread was created.
-            cout << "Error: unable to create thread, " << rc << endl;
-            exit(-1);
-        }
+        //handle client to join/start game.
+        Task* task = new Task(rs->getHandler()->InitialClientServerConversation, (void*)details);
+        rs->getThreads()->addTask(task);
     }
 }
 //function closes/deletes all open threads, server socket and all helpers to reversi server class.
 void ReversiServer :: stop() {
-    vector<pthread_t*> :: iterator it = threads->begin();
-    for(it; it != threads->end();it++) {
-        pthread_cancel(**it);
-    }
+    threads->terminate(); //kill all threads.
     close(serverSocket); //close socket.
-    delete threads;//release vector from heap.
     pthread_cancel(mainThread); // close thread of -while true loop.
-    delete handler; //remove list of games vector from heap.
 }

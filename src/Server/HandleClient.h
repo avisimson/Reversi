@@ -21,14 +21,10 @@ class HandleClient {
         HandleClient() {};
         ~HandleClient() {};
         static void* InitialClientServerConversation(void* clientID);
-        void CloseThread(vector<pthread_t*>* threads, pthread_t* currentThread);
 };
 struct Details { //struct that we use in initial client server conversation method
     //to pass arguments between threads.
     int clientSocket; //client socket.
     Command* commandOfClient; //deliever command to thread.
-    pthread_t* currentThread; //deliver current thread pointer to the thread itself.
-    vector<pthread_t*>* threads;
-    HandleClient* handler;
 };
 #endif //REVERSI_HANDLECLIENT_H

@@ -66,7 +66,7 @@ Board :: ~Board() {
     for (int i = 0; i < size; i++) {
         delete board[i];
     }
-    delete board;
+    delete[] board;
 }
 //function returns the matrix size without the numbers row and column.
 int Board :: getSize() {

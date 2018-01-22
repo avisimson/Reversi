@@ -18,12 +18,10 @@ void* HandleClient :: InitialClientServerConversation(void *details1) {
     n = read(client, &command, sizeof(command));
     if(n == 0) { //client disconnected.
         cout << "Client disconnected before recieving initial command." << endl;
-        details->handler->CloseThread(details->threads, details->currentThread); //delete thread from vector
         return 0;
     }
     if(n == -1) {
         cout << "error reading message from client" << endl;
-        details->handler->CloseThread(details->threads, details->currentThread); //delete thread from vector
         return 0;
     }
     char* splitCommand = strtok(command, " "); //get first word-list,start,join.
@@ -39,7 +37,6 @@ void* HandleClient :: InitialClientServerConversation(void *details1) {
             n = write(client, &command, sizeof(command)); //write to client-already exist.
             if(n == -1) {
                 cout << "error writing already exist message to socket." << endl;
-                details->handler->CloseThread(details->threads, details->currentThread); //delete thread from vector
                 return 0;
             }
             InitialClientServerConversation(details1); //listen again to clients order.
@@ -49,11 +46,9 @@ void* HandleClient :: InitialClientServerConversation(void *details1) {
             n = write(client, &command, sizeof(command)); //write to client-Started.
             if(n == -1) {
                 cout << "error writing started message to socket." << endl;
-                details->handler->CloseThread(details->threads, details->currentThread); //delete thread from vector
                 return 0;
             }
         }
-        details->handler->CloseThread(details->threads, details->currentThread); //delete thread from vector
         return 0;
     }
     //check if command is list of games
@@ -66,7 +61,6 @@ void* HandleClient :: InitialClientServerConversation(void *details1) {
         if(check == true) {
             InitialClientServerConversation(details1); //listen again to clients order.
         } else { //check == false and client disconnected.
-            details->handler->CloseThread(details->threads, details->currentThread); //delete thread from vector
             return 0;
         }
     }
@@ -81,12 +75,10 @@ void* HandleClient :: InitialClientServerConversation(void *details1) {
             n = write(client, &command, sizeof(command)); //write to client-not exist.
             if (n == -1) {
                 cout << "error writing not-exist message to socket." << endl;
-                details->handler->CloseThread(details->threads, details->currentThread); //delete thread from vector
                 return 0;
             }
             if (n == 0) {
                 cout << "Client disconnected." << endl;
-                details->handler->CloseThread(details->threads, details->currentThread); //delete thread from vector
                 return 0;
             }
             InitialClientServerConversation(details1); //listen again to clients order.
@@ -96,12 +88,10 @@ void* HandleClient :: InitialClientServerConversation(void *details1) {
             n = write(client, &command, sizeof(command)); //write to client-joined.
             if (n == -1) {
                 cout << "error writing joined message to socket." << endl;
-                details->handler->CloseThread(details->threads, details->currentThread); //delete thread from vector
                 return 0;
             }
             if (n == 0) {
                 cout << "Client disconnected." << endl;
-                details->handler->CloseThread(details->threads, details->currentThread); //delete thread from vector
                 return 0;
             }
             vector<Game> *list = details->commandOfClient->getListOfGames(); //get the list of current games.
@@ -115,16 +105,5 @@ void* HandleClient :: InitialClientServerConversation(void *details1) {
             }
         }
     }
-    details->handler->CloseThread(details->threads, details->currentThread); //delete thread from vector
     return 0;
-}
-//function gets pointer to vector of threads and current thread and erase thread from the vector.
-void HandleClient :: CloseThread(vector<pthread_t*>* threads, pthread_t* currentThread) {
-    vector<pthread_t*> :: iterator it = threads->begin();
-    for(it; it != threads->end();++it) {
-        if(*it == currentThread) {
-            threads->erase(it);
-            break;
-        }
-    }
 }

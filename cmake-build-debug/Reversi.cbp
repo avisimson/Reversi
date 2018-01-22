@@ -541,6 +541,15 @@
 		<Unit filename="/home/avi/CLionProjects/Reversi/src/Server/StartCommand.h">
 			<Option target="Server"/>
 		</Unit>
+		<Unit filename="/home/avi/CLionProjects/Reversi/src/Server/Task.h">
+			<Option target="Server"/>
+		</Unit>
+		<Unit filename="/home/avi/CLionProjects/Reversi/src/Server/ThreadPool.cpp">
+			<Option target="Server"/>
+		</Unit>
+		<Unit filename="/home/avi/CLionProjects/Reversi/src/Server/ThreadPool.h">
+			<Option target="Server"/>
+		</Unit>
 		<Unit filename="/home/avi/CLionProjects/Reversi/src/Server/main.cpp">
 			<Option target="Server"/>
 		</Unit>
